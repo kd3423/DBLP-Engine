@@ -2,9 +2,6 @@ import org.xml.sax.Attributes; //org.xml.sax package defines all the interfaces 
 import org.xml.sax.helpers.DefaultHandler; // DefaultHandler class that will handle the SAX events that the parser generates
 import org.xml.sax.SAXException;
 public class XmlHandler extends DefaultHandler{
-	public void startDocument(){
-		System.out.println("Begin parsing Xml file");
-	}
 	public void startElement(String uri, String localName, String qname, Attributes attributes ) throws SAXException{
 		try{
 			System.out.println("start of : " + qname);
@@ -23,9 +20,6 @@ public class XmlHandler extends DefaultHandler{
 		catch(Exception e){
 			e.printStackTrace();
 		}
-	}
-	public void endDocument(){
-		System.out.println("End parsing Xml file");
 	}
 
 }
