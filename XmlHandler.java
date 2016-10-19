@@ -15,7 +15,6 @@ public class XmlHandler extends DefaultHandler{
 	}
 	public void character(char [] chArray , int start , int length){
 		System.out.println(new String(chArray,start,length));
-		}
 	}
 	public void endElement(String uri, String localName, String qname)throws SAXException{
 		try{
