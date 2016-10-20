@@ -4,8 +4,84 @@
 		"selected_items":
 		[
 			[
+				"aut",
+				"author_title"
+			],
+			[
+				"a",
+				"author_Name"
+			],
+			[
+				"parse",
+				"parseInt"
+			],
+			[
+				"ee",
+				"ee_String"
+			],
+			[
+				"url",
+				"url_String"
+			],
+			[
+				"number",
+				"number_String"
+			],
+			[
+				"journla",
+				"journal_String"
+			],
+			[
+				"volu",
+				"volume_String"
+			],
+			[
+				"vo",
+				"volume_String"
+			],
+			[
+				"year",
+				"year_String"
+			],
+			[
+				"yea",
+				"year_String"
+			],
+			[
+				"page",
+				"pages_String"
+			],
+			[
+				"pa",
+				"pages_String"
+			],
+			[
+				"ti",
+				"title_String"
+			],
+			[
+				"autho",
+				"author_Name"
+			],
+			[
+				"auth",
+				"author_Name"
+			],
+			[
 				"ch",
 				"chArray"
+			],
+			[
+				"author",
+				"author_title"
+			],
+			[
+				"str",
+				"strLength"
+			],
+			[
+				"Xml",
+				"XmlHandler"
 			],
 			[
 				"pr",
@@ -404,10 +480,6 @@
 				"Song"
 			],
 			[
-				"str",
-				"strlist"
-			],
-			[
 				"S",
 				"System"
 			],
@@ -442,96 +514,16 @@
 			[
 				"A",
 				"AbsComplex"
-			],
-			[
-				"0b",
-				"0b01100101"
-			],
-			[
-				"ADC",
-				"ADCtemp"
-			],
-			[
-				"Pr",
-				"PORTB"
-			],
-			[
-				"P",
-				"PINB"
-			],
-			[
-				"acc",
-				"acc_rej"
-			],
-			[
-				"pending",
-				"pendingRequest"
-			],
-			[
-				"r",
-				"requests"
-			],
-			[
-				"Print",
-				"println"
-			],
-			[
-				"prin",
-				"println"
-			],
-			[
-				"pri",
-				"println"
-			],
-			[
-				"sts",
-				"status"
-			],
-			[
-				"pass",
-				"password"
-			],
-			[
-				"st",
-				"static"
-			],
-			[
-				"p",
-				"println"
-			],
-			[
-				"disp",
-				"disp_name"
-			],
-			[
-				"close",
-				"closefile"
-			],
-			[
-				"de",
-				"define"
-			],
-			[
-				"WD",
-				"WDTCSR"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "dblp.xml",
-			"settings":
-			{
-				"buffer_size": 1167589376,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "XmlHandler.java",
 			"settings":
 			{
-				"buffer_size": 1020,
+				"buffer_size": 4274,
 				"line_ending": "Unix"
 			}
 		}
@@ -600,6 +592,8 @@
 	},
 	"file_history":
 	[
+		"/home/karan/Desktop/Java/Xml/dblp.xml",
+		"/home/karan/Desktop/Java/Project/dblp.xml",
 		"/home/karan/Desktop/Java/lab8_10oct2016/MainBoard.java",
 		"/home/karan/Desktop/Java/lab3_13aug2016/User.java",
 		"/home/karan/Desktop/Java/lab3_13aug2016/LabOne.java",
@@ -725,9 +719,7 @@
 		"/home/karan/Desktop/CP-1/july/qq2.c",
 		"/home/karan/Desktop/CP-1/july/spnum.c",
 		"/home/karan/Desktop/CP-1/july/spnum1.c",
-		"/home/karan/Desktop/CP-1/sprint5/q2.c",
-		"/home/karan/Desktop/CP-1/sprint5/q1.c",
-		"/home/karan/Desktop/CP-1/july/q7.c"
+		"/home/karan/Desktop/CP-1/sprint5/q2.c"
 	],
 	"find":
 	{
@@ -745,6 +737,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"qname",
+			"year",
+			"journals/acta/Saxena96",
 			"textForStat",
 			"flag=0;",
 			"BLACK",
@@ -869,9 +864,6 @@
 			"double",
 			"int",
 			"Object",
-			"int",
-			"Complex1",
-			" Complex3",
 			"int"
 		],
 		"highlight": true,
@@ -890,52 +882,24 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "dblp.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1167589376,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								150,
-								150
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "XmlHandler.java",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1020,
+						"buffer_size": 4274,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								615,
-								615
+								492,
+								545
 							]
 						],
 						"settings":
