@@ -7,12 +7,12 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 public class Query2_GUI {
-	JPanel query2_panel = new JPanel(null);
-	JLabel publication = new JLabel("No of Publications");
-	JTextField text_publication = new JTextField();
+	private JPanel query2_panel = new JPanel(null);
+	private JLabel publication = new JLabel("No of Publications");
+	private JTextField text_publication = new JTextField();
 	public Query2_GUI(JPanel panel){
 		query2_panel.setVisible(false);
-		query2_panel.setBounds(0,125,300,500);
+		query2_panel.setBounds(0,125,250,500);
 		publication.setBounds(30,65,175,30);
 		publication.setFont(new Font("Courier New", Font.PLAIN, 15));
 		text_publication.setBounds(170,65,70,30);

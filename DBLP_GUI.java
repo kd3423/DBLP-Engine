@@ -3,19 +3,22 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 
 public class DBLP_GUI extends JFrame{
 	private JPanel panel = new JPanel(null);
 	private JLabel label = new JLabel("DBLP Query Engine");
 	private JComboBox<String> dropdown = new JComboBox<String>();
-	Query1_GUI query1;
-	Query2_GUI query2;
-	
-	
+	private Query1_GUI query1;
+	private Query2_GUI query2;
+	private JPanel panel2 = new JPanel(null);
+	private JButton next = new JButton("Next");
+	private JButton prev = new JButton("Prev");
 
 	public DBLP_GUI(){
 		super("DBLP");
@@ -27,10 +30,38 @@ public class DBLP_GUI extends JFrame{
 		Dropdown();
 		
 		//Panel
+		String[] columnNames = {"First Name",
+                "Last Name",
+                "Sport",
+                "# of Years",
+                "Vegetarian"};
+		Object[][] data = {
+			    {"Kathy", "Smith",
+			     "Snowboarding", new Integer(5), new Boolean(false)},
+			    {"John", "Doe",
+			     "Rowing", new Integer(3), new Boolean(true)},
+			    {"Sue", "Black",
+			     "Knitting", new Integer(2), new Boolean(false)},
+			    {"Jane", "White",
+			     "Speed reading", new Integer(20), new Boolean(true)},
+			    {"Joe", "Brown",
+			     "Pool", new Integer(10), new Boolean(false)}
+			};
+		JTable table = new JTable(data, columnNames);
+		panel2.add(table);
+		prev.setBounds(300,450,100, 30);
+		prev.setBackground(Color.white);
+		next.setBounds(450,450,100, 30);
+		next.setBackground(Color.white);
 		panel.setBounds(getBounds());
 		query1 = new Query1_GUI(panel);
 		query2 = new Query2_GUI(panel);
+		panel2.setBounds(260,80,325,350);
+		panel2.setBackground(Color.white);
+		panel.add(panel2);
 		panel.add(label);
+		panel.add(prev);
+		panel.add(next);
 		panel.add(dropdown);
 		
 		
