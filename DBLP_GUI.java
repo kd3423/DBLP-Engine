@@ -8,6 +8,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 public class DBLP_GUI extends JFrame{
@@ -30,25 +31,22 @@ public class DBLP_GUI extends JFrame{
 		Dropdown();
 		
 		//Panel
-		String[] columnNames = {"First Name",
-                "Last Name",
-                "Sport",
-                "# of Years",
-                "Vegetarian"};
-		Object[][] data = {
-			    {"Kathy", "Smith",
-			     "Snowboarding", new Integer(5), new Boolean(false)},
-			    {"John", "Doe",
-			     "Rowing", new Integer(3), new Boolean(true)},
-			    {"Sue", "Black",
-			     "Knitting", new Integer(2), new Boolean(false)},
-			    {"Jane", "White",
-			     "Speed reading", new Integer(20), new Boolean(true)},
-			    {"Joe", "Brown",
-			     "Pool", new Integer(10), new Boolean(false)}
-			};
+		final Object[][] data = {
+			    {"Mary", "Campione", "Snowboarding", "5"},
+			    {"Alison", "Huml", "Rowing", "3"},
+			    {"Kathy", "Walrath", "Chasing toddlers", "2"},
+			    {"Mark", "Andrews", "Speed reading", "20"},
+			    {"Angela", "Lih", "Teaching high school", "4"}
+			    };
+			    final Object[] columnNames = {"First Name", 
+			                              "Last Name",
+			                              "Sport",
+			                              "Est. Years Experience"};
 		JTable table = new JTable(data, columnNames);
-		panel2.add(table);
+		JScrollPane pane = new JScrollPane(table);
+		pane.setBounds(0,0,525,350);
+		//table.setBounds(panel2.getBounds());
+		panel2.add(pane);
 		prev.setBounds(300,450,100, 30);
 		prev.setBackground(Color.white);
 		next.setBounds(450,450,100, 30);
@@ -56,8 +54,8 @@ public class DBLP_GUI extends JFrame{
 		panel.setBounds(getBounds());
 		query1 = new Query1_GUI(panel);
 		query2 = new Query2_GUI(panel);
-		panel2.setBounds(260,80,325,350);
-		panel2.setBackground(Color.white);
+		panel2.setBounds(260,80,525,350);
+		//panel2.setBackground(Color.white);
 		panel.add(panel2);
 		panel.add(label);
 		panel.add(prev);
@@ -66,7 +64,7 @@ public class DBLP_GUI extends JFrame{
 		
 		
 		//Frame
-		setSize(600, 500);
+		setSize(800, 500);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setVisible(true);
