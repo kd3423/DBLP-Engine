@@ -4,6 +4,78 @@
 		"selected_items":
 		[
 			[
+				"check",
+				"checkVolume"
+			],
+			[
+				"pub",
+				"publication"
+			],
+			[
+				"che",
+				"checkEe"
+			],
+			[
+				"chec",
+				"checkCat"
+			],
+			[
+				"volu",
+				"volume"
+			],
+			[
+				"autho",
+				"author"
+			],
+			[
+				"page",
+				"pages"
+			],
+			[
+				"cat",
+				"category"
+			],
+			[
+				"yea",
+				"year"
+			],
+			[
+				"number",
+				"number"
+			],
+			[
+				"pri",
+				"private"
+			],
+			[
+				"cha",
+				"characters"
+			],
+			[
+				"au",
+				"author"
+			],
+			[
+				"S",
+				"SAXException"
+			],
+			[
+				"att",
+				"Attributes"
+			],
+			[
+				"u",
+				"uri"
+			],
+			[
+				"SAX",
+				"SAXParserFactory"
+			],
+			[
+				"prin",
+				"printStackTrace"
+			],
+			[
 				"aut",
 				"author_title"
 			],
@@ -24,16 +96,8 @@
 				"url_String"
 			],
 			[
-				"number",
-				"number_String"
-			],
-			[
 				"journla",
 				"journal_String"
-			],
-			[
-				"volu",
-				"volume_String"
 			],
 			[
 				"vo",
@@ -44,24 +108,12 @@
 				"year_String"
 			],
 			[
-				"yea",
-				"year_String"
-			],
-			[
-				"page",
-				"pages_String"
-			],
-			[
 				"pa",
 				"pages_String"
 			],
 			[
 				"ti",
 				"title_String"
-			],
-			[
-				"autho",
-				"author_Name"
 			],
 			[
 				"auth",
@@ -220,10 +272,6 @@
 				"Grid"
 			],
 			[
-				"che",
-				"checkState"
-			],
-			[
 				"cp",
 				"cpuX"
 			],
@@ -261,10 +309,6 @@
 			],
 			[
 				"char",
-				"charCheck"
-			],
-			[
-				"check",
 				"charCheck"
 			],
 			[
@@ -470,50 +514,6 @@
 			[
 				"ra",
 				"rateNew"
-			],
-			[
-				"rat",
-				"rateOld"
-			],
-			[
-				"Son",
-				"Song"
-			],
-			[
-				"S",
-				"System"
-			],
-			[
-				"s",
-				"slist"
-			],
-			[
-				"Movie",
-				"MovieSerialize"
-			],
-			[
-				"Mo",
-				"Movieread_file"
-			],
-			[
-				"movi",
-				"movieData"
-			],
-			[
-				"song",
-				"songData"
-			],
-			[
-				"Complex",
-				"Complex3"
-			],
-			[
-				"Compl",
-				"Complex3"
-			],
-			[
-				"A",
-				"AbsComplex"
 			]
 		]
 	},
@@ -523,7 +523,15 @@
 			"file": "XmlHandler.java",
 			"settings":
 			{
-				"buffer_size": 4274,
+				"buffer_size": 7124,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Cmain.java",
+			"settings":
+			{
+				"buffer_size": 614,
 				"line_ending": "Unix"
 			}
 		}
@@ -593,6 +601,7 @@
 	"file_history":
 	[
 		"/home/karan/Desktop/Java/Xml/dblp.xml",
+		"/home/karan/Desktop/Java/Project/dblpp.xml",
 		"/home/karan/Desktop/Java/Project/dblp.xml",
 		"/home/karan/Desktop/Java/lab8_10oct2016/MainBoard.java",
 		"/home/karan/Desktop/Java/lab3_13aug2016/User.java",
@@ -718,12 +727,11 @@
 		"/home/karan/Desktop/CP-1/july/qqq2.c",
 		"/home/karan/Desktop/CP-1/july/qq2.c",
 		"/home/karan/Desktop/CP-1/july/spnum.c",
-		"/home/karan/Desktop/CP-1/july/spnum1.c",
-		"/home/karan/Desktop/CP-1/sprint5/q2.c"
+		"/home/karan/Desktop/CP-1/july/spnum1.c"
 	],
 	"find":
 	{
-		"height": 39.0
+		"height": 44.0
 	},
 	"find_in_files":
 	{
@@ -737,6 +745,17 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Chua-Huang Huang",
+			"Chen Li",
+			"<person>",
+			"K&ouml",
+			"&ouml",
+			"GoodmanS83",
+			"XMLReader",
+			"Factory",
+			"GoodmanS83",
+			"Saxena96",
+			"journals/acta/Saxena96",
 			"qname",
 			"year",
 			"journals/acta/Saxena96",
@@ -853,18 +872,7 @@
 			"c32",
 			"c31",
 			".img()",
-			".real()",
-			"int",
-			"double",
-			"int",
-			"double",
-			"int",
-			"img()",
-			"real()",
-			"double",
-			"int",
-			"Object",
-			"int"
+			".real()"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -891,15 +899,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4274,
+						"buffer_size": 7124,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								492,
-								545
+								2852,
+								2871
 							]
 						],
 						"settings":
@@ -912,13 +920,41 @@
 					},
 					"stack_index": 0,
 					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Cmain.java",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 614,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								566,
+								566
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Java/Java.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
 				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 31.0
+		"height": 36.0
 	},
 	"input":
 	{
@@ -963,7 +999,7 @@
 	"project": "DBLP_QueryEngine.sublime-project",
 	"replace":
 	{
-		"height": 58.0
+		"height": 68.0
 	},
 	"save_all_on_build": true,
 	"select_file":
