@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"au",
+				"auth"
+			],
+			[
 				"sub",
 				"Subject"
 			],
@@ -58,10 +62,6 @@
 			[
 				"cha",
 				"characters"
-			],
-			[
-				"au",
-				"author"
 			],
 			[
 				"S",
@@ -531,7 +531,7 @@
 			"file": "XmlHandlerTitle.java",
 			"settings":
 			{
-				"buffer_size": 2157,
+				"buffer_size": 2171,
 				"line_ending": "Unix"
 			}
 		},
@@ -906,7 +906,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -922,8 +922,8 @@
 						"selection":
 						[
 							[
-								1661,
-								1661
+								719,
+								719
 							]
 						],
 						"settings":
@@ -931,10 +931,10 @@
 							"syntax": "Packages/Java/Java.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1057.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -943,15 +943,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2157,
+						"buffer_size": 2171,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								544,
-								544
+								1521,
+								1521
 							]
 						],
 						"settings":
@@ -963,7 +963,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
