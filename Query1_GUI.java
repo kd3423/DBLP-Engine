@@ -14,7 +14,7 @@ public class Query1_GUI {
 	private JComboBox<String> drop = new JComboBox<String>();
 	private JLabel name = new JLabel("Name/Title tags");
 	private JLabel year = new JLabel("Since Year");
-	private JLabel range = new JLabel("Custon Range             -");
+	private JLabel range = new JLabel("Custom Range            -");
 	private JTextField text_name = new JTextField();
 	private JTextField text_year = new JTextField();
 	private JTextField text_range1 = new JTextField();

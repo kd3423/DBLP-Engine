@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -18,13 +19,20 @@ public class DBLP_GUI extends JFrame{
 	private Query1_GUI query1;
 	private Query2_GUI query2;
 	private JPanel panel2 = new JPanel(null);
-	private JButton next = new JButton("Next");
-	private JButton prev = new JButton("Prev");
+	private JButton next = new JButton("Next->>");
+	private JButton prev = new JButton("<<-Prev");
+	String[] test1;
+	String[][] test2;
+	
+	private ArrayList<String> author;
+	private ArrayList<String> title;
+	private ArrayList<String> genre;
+	private ArrayList<String> price;
 
 	public DBLP_GUI(){
 		super("DBLP");
 		//Label
-		label.setBounds(100,10,400,45);
+		label.setBounds(200,10,400,45);
 		label.setFont(new Font("Courier New",Font.PLAIN,40));
 		
 		//DropDown
@@ -38,10 +46,10 @@ public class DBLP_GUI extends JFrame{
 			    {"Mark", "Andrews", "Speed reading", "20"},
 			    {"Angela", "Lih", "Teaching high school", "4"}
 			    };
-			    final Object[] columnNames = {"First Name", 
-			                              "Last Name",
-			                              "Sport",
-			                              "Est. Years Experience"};
+			    final Object[] columnNames = {"Author", 
+			                              "title",
+			                              "genre",
+			                              "price"};
 		JTable table = new JTable(data, columnNames);
 		JScrollPane pane = new JScrollPane(table);
 		pane.setBounds(0,0,525,350);
@@ -49,7 +57,7 @@ public class DBLP_GUI extends JFrame{
 		panel2.add(pane);
 		prev.setBounds(300,450,100, 30);
 		prev.setBackground(Color.white);
-		next.setBounds(450,450,100, 30);
+		next.setBounds(650,450,100, 30);
 		next.setBackground(Color.white);
 		panel.setBounds(getBounds());
 		query1 = new Query1_GUI(panel);
