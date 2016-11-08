@@ -6,60 +6,37 @@ import java.io.*;
 	xmlobj.setContentHandler(new XmlHandler());
 	xmlobj.parse("dblp.xml");
 */
-public class XmlHandler{
-	private String author,title,ee,url,pages,volume,category;
-	private int number,year,publication;
+public class XmlHandlerAuthor{
+	// private String title,ee,url,pages,volume,category;
+	private ArrayList<String> author = new ArrayList<>();
+	// private int number,year,publication;
+	
 	public void find(String str){
 		try{
 			SAXParserFactory fac = SAXParserFactory.newInstance();
 			SAXParser saxTheFile = factory.new SAXParser();
 			DefaultHandler defHandler = new DefaultHandler(){
 				
-				boolean checkAuth = false;
-				boolean checkVal = false;
+				// boolean checkAuth = false;
+				// boolean checkVal = false;
+				// boolean checkCat = false;
+				// boolean checkEe = false;
+				// boolean checkUrl = false;
+				// boolean checkPages = false;
+				// boolean checkVolume = false;
+				// boolean checkNumber = false;
+				// boolean checkYear = false;
+				// boolean checkTitle = false;
 				boolean checkCat = false;
-				boolean checkEe = false;
-				boolean checkUrl = false;
-				boolean checkPages = false;
-				boolean checkVolume = false;
-				boolean checkNumber = false;
-				boolean checkYear = false;
-				boolean checkTitle = false;
 				public void startElement(String uri,String localName,String qname,Attributes att)throws SAXException{
-					if(qname.equals("article") || qname.equals("journal") || qname.equals("")){
-						setCategory(qname);
-					}
-					else if(qname.equals("author")){
-						checkAuth = true;
-					}
-					else if(qname.equals("title")){
-						checkTitle = true;
-					}
-					else if(qname.equals("ee")){
-						checkEe = true;
-					}
-					else if(qname.equals("number")){
-						checkNumber = true;
-					}
-					else if(qname.equals("publications")){
-						checkPub = true;
-					}
-					else if(qname.equals("pages")){
-						checkPages = true;
-					}
-					else if(qname.equals("volume")){
-						checkVolume = true;
-					}
-					else if(qname.equals("year")){
-						checkYear = true;
-					}
-					else if(qname.equals("url")){
-						checkUrl = true;
+					if(qname.equals("www")){
+						// setCategory(qname);
+						checkCat = true;
 					}
 				}
 				public void characters(char chArray[],int start,int length)throws SAXException{
-					if(checkVal){
-						System.out.println(new String(chArray,start,length));
+					if(checkCat){
+						
 					}
 					else if(checkString){
 						if(str.equals(new String(chArray,start,length))){

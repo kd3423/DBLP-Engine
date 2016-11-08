@@ -4,8 +4,16 @@
 		"selected_items":
 		[
 			[
+				"sub",
+				"Subject"
+			],
+			[
+				"temp",
+				"tempArray"
+			],
+			[
 				"check",
-				"checkVolume"
+				"checkCat"
 			],
 			[
 				"pub",
@@ -506,24 +514,32 @@
 			[
 				"so",
 				"songInt"
-			],
-			[
-				"getD",
-				"getDirector"
-			],
-			[
-				"ra",
-				"rateNew"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "XmlHandler.java",
+			"file": "XmlHandlerAuthor.java",
 			"settings":
 			{
-				"buffer_size": 7124,
+				"buffer_size": 1661,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "XmlHandlerTitle.java",
+			"settings":
+			{
+				"buffer_size": 2157,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/karan/Desktop/Java/lab7_1oct2016/MediaSystem.java",
+			"settings":
+			{
+				"buffer_size": 8630,
 				"line_ending": "Unix"
 			}
 		},
@@ -600,6 +616,21 @@
 	},
 	"file_history":
 	[
+		"/home/karan/Desktop/Java/lab9_5nov2016/code/humidity.java",
+		"/home/karan/Desktop/Java/lab9_5nov2016/code/temp.java",
+		"/home/karan/Desktop/Java/lab9_5nov2016/code/rain.java",
+		"/home/karan/Desktop/Java/lab9_5nov2016/code/newCode/Consumer3.java",
+		"/home/karan/Desktop/Java/lab9_5nov2016/code/newCode/Consumer2.java",
+		"/home/karan/Desktop/Java/lab9_5nov2016/code/newCode/Consumer1.java",
+		"/home/karan/Desktop/Java/lab9_5nov2016/code/Main.java",
+		"/home/karan/Desktop/Java/lab9_5nov2016/code/newCode/Consumer.java",
+		"/home/karan/Desktop/Java/lab9_5nov2016/code/newCode/Subject.java",
+		"/home/karan/Desktop/Java/lab9_5nov2016/temperature",
+		"/home/karan/Desktop/Java/lab7_1oct2016/Media.java",
+		"/home/karan/Desktop/Java/lab7_1oct2016/Song.java",
+		"/home/karan/Desktop/Java/lab5_10sep2016/Lab/final/Person.java",
+		"/home/karan/Desktop/Java/lab5_10sep2016/Lab/final/MyNetwork.java",
+		"/home/karan/Desktop/Java/lab5_10sep2016/createfile.java",
 		"/home/karan/Desktop/Java/Xml/dblp.xml",
 		"/home/karan/Desktop/Java/Project/dblpp.xml",
 		"/home/karan/Desktop/Java/Project/dblp.xml",
@@ -615,18 +646,14 @@
 		"/home/karan/Desktop/ELD/assignment8/sounddata.h",
 		"/home/karan/Desktop/ELD/assignment8/sound.c",
 		"/home/karan/Desktop/Java/lab7_1oct2016/MediaSystem.java",
-		"/home/karan/Desktop/Java/lab5_10sep2016/Lab/final/Person.java",
 		"/home/karan/Desktop/frame.java",
 		"/home/karan/Desktop/Welcome.java",
 		"/home/karan/Desktop/SizedFrame.java",
 		"/home/karan/Documents/assign8/music.c",
 		"/home/karan/Desktop/SimpleGui1.java",
 		"/home/karan/Desktop/ABC.java",
-		"/home/karan/Desktop/Java/lab7_1oct2016/Media.java",
-		"/home/karan/Desktop/Java/lab7_1oct2016/Song.java",
 		"/home/karan/Desktop/Java/lab7_1oct2016/Movie.java",
 		"/home/karan/Desktop/Java/lab7_1oct2016/song.dat",
-		"/home/karan/Desktop/Java/lab5_10sep2016/createfile.java",
 		"/home/karan/Desktop/Java/serial/DeserializationClass.java",
 		"/home/karan/Desktop/Java/lab5_10sep2016/findfile.java",
 		"/home/karan/Desktop/Java/serial/Employee.java",
@@ -637,7 +664,6 @@
 		"/home/karan/Desktop/Java/lab6_26sep2016/ComplexDemo.java",
 		"/home/karan/Desktop/Java/lab6_26sep2016/Complex1.java",
 		"/home/karan/Desktop/Java/lab5_10sep2016/Lab/final/input.txt",
-		"/home/karan/Desktop/Java/lab5_10sep2016/Lab/final/MyNetwork.java",
 		"/home/karan/Desktop/Java/lab5_10sep2016/Lab/final/MyNetwork.class",
 		"/home/karan/Desktop/Java/lab5_10sep2016/Lab/final/Person.class",
 		"/home/karan/Desktop/Java/lab5_10sep2016/Lab/Person.java",
@@ -717,21 +743,11 @@
 		"/home/karan/Desktop/Java/2time.java",
 		"/home/karan/Desktop/Java/array.java",
 		"/home/karan/Desktop/Java/array.class",
-		"/home/karan/Desktop/Java/time.class",
-		"/home/karan/Desktop/mst.c",
-		"/home/karan/Desktop/CP-1/july/test.txt",
-		"/home/karan/Desktop/CP-1/july/q1.c",
-		"/home/karan/Desktop/CP-1/july/q2.c",
-		"/home/karan/Desktop/CP-1/july/qqqq2.c",
-		"/home/karan/Desktop/CP-1/july/q3.c",
-		"/home/karan/Desktop/CP-1/july/qqq2.c",
-		"/home/karan/Desktop/CP-1/july/qq2.c",
-		"/home/karan/Desktop/CP-1/july/spnum.c",
-		"/home/karan/Desktop/CP-1/july/spnum1.c"
+		"/home/karan/Desktop/Java/time.class"
 	],
 	"find":
 	{
-		"height": 44.0
+		"height": 40.0
 	},
 	"find_in_files":
 	{
@@ -745,6 +761,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"www>",
+			"www",
 			"Chua-Huang Huang",
 			"Chen Li",
 			"<person>",
@@ -870,9 +888,7 @@
 			"br",
 			"song",
 			"c32",
-			"c31",
-			".img()",
-			".real()"
+			"c31"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -895,19 +911,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "XmlHandler.java",
+					"file": "XmlHandlerAuthor.java",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7124,
+						"buffer_size": 1661,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2852,
-								2871
+								1661,
+								1661
 							]
 						],
 						"settings":
@@ -915,7 +931,7 @@
 							"syntax": "Packages/Java/Java.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1057.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -923,6 +939,64 @@
 				},
 				{
 					"buffer": 1,
+					"file": "XmlHandlerTitle.java",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2157,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								544,
+								544
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Java/Java.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/karan/Desktop/Java/lab7_1oct2016/MediaSystem.java",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8630,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								680,
+								680
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Java/Java.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
 					"file": "Cmain.java",
 					"semi_transient": false,
 					"settings":
@@ -946,7 +1020,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
