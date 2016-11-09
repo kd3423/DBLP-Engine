@@ -27,6 +27,7 @@ public class Query1_GUI {
 	private JButton search  = new JButton("Search");
 	private JButton reset  = new JButton("Reset");
 	public Query1_GUI(JPanel panel){
+		
 		query1_panel.setVisible(false);
 		query1_panel.setBounds(0,125,250,500);
 		drop.setBounds(25,20,175,30);

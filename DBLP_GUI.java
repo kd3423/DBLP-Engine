@@ -53,7 +53,6 @@ public class DBLP_GUI extends JFrame{
 		JTable table = new JTable(data, columnNames);
 		JScrollPane pane = new JScrollPane(table);
 		pane.setBounds(0,0,525,350);
-		//table.setBounds(panel2.getBounds());
 		panel2.add(pane);
 		prev.setBounds(300,450,100, 30);
 		prev.setBackground(Color.white);
@@ -63,7 +62,6 @@ public class DBLP_GUI extends JFrame{
 		query1 = new Query1_GUI(panel);
 		query2 = new Query2_GUI(panel);
 		panel2.setBounds(260,80,525,350);
-		//panel2.setBackground(Color.white);
 		panel.add(panel2);
 		panel.add(label);
 		panel.add(prev);
