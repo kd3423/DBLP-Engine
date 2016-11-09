@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"url",
+				"urlCheck"
+			],
+			[
+				"vol",
+				"volCheck"
+			],
+			[
+				"pub",
+				"pubCheck"
+			],
+			[
+				"ee",
+				"eeCheck"
+			],
+			[
+				"title",
+				"titleCheck"
+			],
+			[
 				"au",
 				"auth"
 			],
@@ -18,10 +38,6 @@
 			[
 				"check",
 				"checkCat"
-			],
-			[
-				"pub",
-				"publication"
 			],
 			[
 				"che",
@@ -94,14 +110,6 @@
 			[
 				"parse",
 				"parseInt"
-			],
-			[
-				"ee",
-				"ee_String"
-			],
-			[
-				"url",
-				"url_String"
 			],
 			[
 				"journla",
@@ -506,14 +514,6 @@
 			[
 				"movie",
 				"movieSerialize"
-			],
-			[
-				"print",
-				"println"
-			],
-			[
-				"so",
-				"songInt"
 			]
 		]
 	},
@@ -531,7 +531,7 @@
 			"file": "XmlHandlerTitle.java",
 			"settings":
 			{
-				"buffer_size": 2171,
+				"buffer_size": 3459,
 				"line_ending": "Unix"
 			}
 		},
@@ -616,6 +616,7 @@
 	},
 	"file_history":
 	[
+		"/home/karan/Desktop/Java/Xml/dblp.xml",
 		"/home/karan/Desktop/Java/lab9_5nov2016/code/humidity.java",
 		"/home/karan/Desktop/Java/lab9_5nov2016/code/temp.java",
 		"/home/karan/Desktop/Java/lab9_5nov2016/code/rain.java",
@@ -631,7 +632,6 @@
 		"/home/karan/Desktop/Java/lab5_10sep2016/Lab/final/Person.java",
 		"/home/karan/Desktop/Java/lab5_10sep2016/Lab/final/MyNetwork.java",
 		"/home/karan/Desktop/Java/lab5_10sep2016/createfile.java",
-		"/home/karan/Desktop/Java/Xml/dblp.xml",
 		"/home/karan/Desktop/Java/Project/dblpp.xml",
 		"/home/karan/Desktop/Java/Project/dblp.xml",
 		"/home/karan/Desktop/Java/lab8_10oct2016/MainBoard.java",
@@ -943,15 +943,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2171,
+						"buffer_size": 3459,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1521,
-								1521
+								3459,
+								3459
 							]
 						],
 						"settings":
@@ -960,7 +960,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2065.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
