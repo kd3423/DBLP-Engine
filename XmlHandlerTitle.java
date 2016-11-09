@@ -8,43 +8,88 @@ import java.io.*;
 */
 public class XmlHandlerTitle{
 	private ArrayList<String> title = new ArrayList<>();
-	
+	private ArrayList<String> ee = new ArrayList<>();
+	private ArrayList<String> pages = new ArrayList<>();
+	private ArrayList<Integer> year = new ArrayList<>();
+	private ArrayList<String> url = new ArrayList<>();
+	private ArrayList<String> volume = new ArrayList<>();
+	private ArrayList<String> publication = new ArrayList<>(); 	
 	public void findTitle(ArrayList<String> auth){
 		try{
 			SAXParserFactory fac = SAXParserFactory.newInstance();
 			SAXParser saxTheFile = factory.new SAXParser();
 			DefaultHandler defHandler = new DefaultHandler(){
-				// boolean checkAuth = false;
-				// boolean checkVal = false;
-				// boolean checkCat = false;
-				// boolean checkEe = false;
-				// boolean checkUrl = false;
-				// boolean checkPages = false;
-				// boolean checkVolume = false;
-				// boolean checkNumber = false;
-				// boolean checkYear = false;
-				// boolean checkTitle = false;
+				
+				boolean titleCheck = false;
+				boolean eeCheck = false;
+				boolean pubCheck = false;
+				boolean volCheck = false;
+				boolean yearCheck = false;
+				boolean urlCheck = false;
 				boolean checkAuth = false;
 				boolean check = false;
+				boolean checkforall = false;
 				public void startElement(String uri,String localName,String qname,Attributes att)throws SAXException{
 					if(qname.equals("author")){
-						// setCategory(qname);
-						check = true;
+						checkAuth = true;
 					}
 
 				}
 				public void characters(char chArray[],int start,int length)throws SAXException{
-					if(check){
+					if(checkAuth){
 						for(String x : auth){
 							if(x.equals(new String(chArray,start,length))){
-								//do things
+								checkforall = true;
 							}
+						}
+					}
+					if(checkforall){
+						if(titleCheck){
+							title.add(new String(chArray,start,length)));
+						}
+						else if(eeCheck){
+							ee.add(new String(chArray,start,length)));
+						}
+						else if(urlCheck){
+							url.add(new String(chArray,start,length)));
+						}
+						else if(volCheck){
+							volume.add(new String(chArray,start,length)));
+						}
+						else if(yearCheck){
+							title.add(new String(chArray,start,length)));
+						}
+						else if(pagesCheck){
+							pages.add(new String(chArray,start,length)));
+						}
+						else if(pubCheck){
+							title.add(new String(chArray,start,length)));
 						}
 					}
 
 				}
 				public void endElement(String uri,String localName,String qname,Attributes att){
-					
+					if(qname.equals("title")){
+						titleCheck = false;
+					}
+					else if(qname.equals("ee")){
+						eeCheck = false;
+					}
+					else if(qname.equals("url")){
+						urlCheck = false;
+					}
+					else if(qname.equals("publication")){
+						pubCheck = false;
+					}
+					else if(qname.equals("year")){
+						yearCheck = false;
+					}
+					else if(qname.equals("pages")){
+						pagesCheck = false;
+					}
+					else if(qname.equals("volume")){
+						volCheck = false;
+					}
 				}
 			}
 		}
