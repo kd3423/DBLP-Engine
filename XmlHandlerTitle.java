@@ -1,11 +1,12 @@
 import org.xml.sax.Attributes; //org.xml.sax package defines all the interfaces used for the SAX parser
 import org.xml.sax.helpers.DefaultHandler; // DefaultHandler class that will handle the SAX events that the parser generates
 import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
+import org.xml.sax.helpers.XMLReaderFactory;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import java.io.*;
-/* 	XMLReader xmlobj = XMLReader.Factory.createXMLReader();
-	xmlobj.setContentHandler(new XmlHandler());
-	xmlobj.parse("dblp.xml");
-*/
+import java.util.*;
 public class XmlHandlerTitle{
 	private ArrayList<String> title = new ArrayList<>();
 	private ArrayList<String> ee = new ArrayList<>();
@@ -17,7 +18,7 @@ public class XmlHandlerTitle{
 	public void findTitle(ArrayList<String> auth){
 		try{
 			SAXParserFactory fac = SAXParserFactory.newInstance();
-			SAXParser saxTheFile = factory.new SAXParser();
+			SAXParser saxTheFile = fac.newSAXParser();
 			DefaultHandler defHandler = new DefaultHandler(){
 				
 				boolean titleCheck = false;
@@ -28,6 +29,7 @@ public class XmlHandlerTitle{
 				boolean urlCheck = false;
 				boolean checkAuth = false;
 				boolean check = false;
+				boolean pagesCheck = false;
 				boolean checkforall = false;
 				public void startElement(String uri,String localName,String qname,Attributes att)throws SAXException{
 					if(qname.equals("author")){
@@ -45,25 +47,25 @@ public class XmlHandlerTitle{
 					}
 					if(checkforall){
 						if(titleCheck){
-							title.add(new String(chArray,start,length)));
+							title.add(new String(chArray,start,length));
 						}
 						else if(eeCheck){
-							ee.add(new String(chArray,start,length)));
+							ee.add(new String(chArray,start,length));
 						}
 						else if(urlCheck){
-							url.add(new String(chArray,start,length)));
+							url.add(new String(chArray,start,length));
 						}
 						else if(volCheck){
-							volume.add(new String(chArray,start,length)));
+							volume.add(new String(chArray,start,length));
 						}
 						else if(yearCheck){
-							title.add(new String(chArray,start,length)));
+							year.add(Integer.parseInt(new String(chArray,start,length)));
 						}
 						else if(pagesCheck){
-							pages.add(new String(chArray,start,length)));
+							pages.add(new String(chArray,start,length));
 						}
 						else if(pubCheck){
-							title.add(new String(chArray,start,length)));
+							publication.add(new String(chArray,start,length));
 						}
 					}
 
@@ -91,36 +93,31 @@ public class XmlHandlerTitle{
 						volCheck = false;
 					}
 				}
-			}
+			};
 		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
 	}
-	public void setCategory(String cat){
-		category = cat;
+	public ArrayList<String> getEe(){
+		return ee;
 	}
-	public void setEe(String eE){
-		ee = eE;
+	public ArrayList<String> getPages(){
+		return pages;
 	}
-	public void setPages(String pag){
-		pages = pag;
+	public ArrayList<Integer> getYear(){
+		return year;
 	}
-	public void setYear(int y){
-		year = y;
+	public ArrayList<String> getUrl(){
+		return url;
 	}
-	public void setUrl(String ur){
-		url = ur;
+	public ArrayList<String> getTitle(){
+		return title;
 	}
-	public void setTitle(String t){
-		title = t;
+	public ArrayList<String> getVolume(){
+		return volume;
 	}
-	public void setAuthor(String auth){
-		author = auth;
+	public ArrayList<String> getPub(){
+		return publication;
 	}
-	public void setVolume(String vol){
-		volume = vol;
-	}
-	public void setPub(int x){
-		publication = x;
-	}
+}

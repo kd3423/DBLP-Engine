@@ -536,14 +536,6 @@
 			}
 		},
 		{
-			"file": "/home/karan/Desktop/Java/lab7_1oct2016/MediaSystem.java",
-			"settings":
-			{
-				"buffer_size": 8630,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "Cmain.java",
 			"settings":
 			{
@@ -616,6 +608,12 @@
 	},
 	"file_history":
 	[
+		"/home/karan/Desktop/Java/lab7_1oct2016/Song.java",
+		"/home/karan/Desktop/Java/lab7_1oct2016/Movie.java",
+		"/home/karan/Desktop/Java/lab7_1oct2016/MediaSystem.java",
+		"/home/karan/Desktop/Java/lab7_1oct2016/Media.java",
+		"/home/karan/Desktop/Java/lab8_10oct2016/MainBoard.java",
+		"/home/karan/Desktop/Java/lab8_10oct2016/GridGame.java",
 		"/home/karan/Desktop/Java/Xml/dblp.xml",
 		"/home/karan/Desktop/Java/lab9_5nov2016/code/humidity.java",
 		"/home/karan/Desktop/Java/lab9_5nov2016/code/temp.java",
@@ -627,32 +625,26 @@
 		"/home/karan/Desktop/Java/lab9_5nov2016/code/newCode/Consumer.java",
 		"/home/karan/Desktop/Java/lab9_5nov2016/code/newCode/Subject.java",
 		"/home/karan/Desktop/Java/lab9_5nov2016/temperature",
-		"/home/karan/Desktop/Java/lab7_1oct2016/Media.java",
-		"/home/karan/Desktop/Java/lab7_1oct2016/Song.java",
 		"/home/karan/Desktop/Java/lab5_10sep2016/Lab/final/Person.java",
 		"/home/karan/Desktop/Java/lab5_10sep2016/Lab/final/MyNetwork.java",
 		"/home/karan/Desktop/Java/lab5_10sep2016/createfile.java",
 		"/home/karan/Desktop/Java/Project/dblpp.xml",
 		"/home/karan/Desktop/Java/Project/dblp.xml",
-		"/home/karan/Desktop/Java/lab8_10oct2016/MainBoard.java",
 		"/home/karan/Desktop/Java/lab3_13aug2016/User.java",
 		"/home/karan/Desktop/Java/lab3_13aug2016/LabOne.java",
 		"/home/karan/Desktop/Java/lab8_10oct2016/xyz.java",
-		"/home/karan/Desktop/Java/lab8_10oct2016/GridGame.java",
 		"/home/karan/Desktop/Java/lab3_13aug2016/Board.java",
 		"/home/karan/Desktop/Java/lab3_13aug2016/CPU.java",
 		"/home/karan/Desktop/GUI/Welcome.java",
 		"/home/karan/Desktop/GUI/frame.java",
 		"/home/karan/Desktop/ELD/assignment8/sounddata.h",
 		"/home/karan/Desktop/ELD/assignment8/sound.c",
-		"/home/karan/Desktop/Java/lab7_1oct2016/MediaSystem.java",
 		"/home/karan/Desktop/frame.java",
 		"/home/karan/Desktop/Welcome.java",
 		"/home/karan/Desktop/SizedFrame.java",
 		"/home/karan/Documents/assign8/music.c",
 		"/home/karan/Desktop/SimpleGui1.java",
 		"/home/karan/Desktop/ABC.java",
-		"/home/karan/Desktop/Java/lab7_1oct2016/Movie.java",
 		"/home/karan/Desktop/Java/lab7_1oct2016/song.dat",
 		"/home/karan/Desktop/Java/serial/DeserializationClass.java",
 		"/home/karan/Desktop/Java/lab5_10sep2016/findfile.java",
@@ -960,7 +952,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2065.0,
+						"translation.y": 2041.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -968,35 +960,6 @@
 				},
 				{
 					"buffer": 2,
-					"file": "/home/karan/Desktop/Java/lab7_1oct2016/MediaSystem.java",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8630,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								680,
-								680
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Java/Java.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
 					"file": "Cmain.java",
 					"semi_transient": false,
 					"settings":
@@ -1020,7 +983,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]

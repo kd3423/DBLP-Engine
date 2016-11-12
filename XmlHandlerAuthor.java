@@ -1,65 +1,60 @@
 import org.xml.sax.Attributes; //org.xml.sax package defines all the interfaces used for the SAX parser
 import org.xml.sax.helpers.DefaultHandler; // DefaultHandler class that will handle the SAX events that the parser generates
 import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
+import org.xml.sax.helpers.XMLReaderFactory;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import java.io.*;
+import java.util.*;
 public class XmlHandlerAuthor{
-	private ArrayList<String> author = new ArrayList<>();
-	
-	public void find(String str){
+	private ArrayList<String> author = new ArrayList<>();	
+	public void findAuth(String str){
 		try{
 			SAXParserFactory fac = SAXParserFactory.newInstance();
-			SAXParser saxTheFile = factory.new SAXParser();
+			SAXParser saxTheFile = fac.newSAXParser();
 			DefaultHandler defHandler = new DefaultHandler(){
 				boolean checkCat = false;
+				boolean checkAuth = false;
+				boolean checkString = false;
 				public void startElement(String uri,String localName,String qname,Attributes att)throws SAXException{
 					if(qname.equals("www")){
 						// setCategory(qname);
 						checkCat = true;
 					}
+					else if(qname.equals("author")){
+						checkAuth = true;
+					}
 				}
 				public void characters(char chArray[],int start,int length)throws SAXException{
 					if(checkCat){
-						
-					}
-					else if(checkString){
-						if(str.equals(new String(chArray,start,length))){
-							checkVal = true;
+						if(checkAuth){
+							if(str.equals(new String(chArray,start,length))){
+								checkString = true;
+							}
+							else if(checkString){
+								author.add(new String(chArray,start,length));
+							}
 						}
 					}
-				}
-				public void endElement(String uri,String localName,String qname,Attributes att){
 					
 				}
-			}
+				public void endElement(String uri,String localName,String qname,Attributes att){
+					if(qname.equals("www")){
+						checkCat = false;
+						checkString = false;
+					}
+					else if(qname.equals("author")){
+						checkAuth = false;
+					}
+				}
+			};
 		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
 	}
-	public void setCategory(String cat){
-		category = cat;
+	public ArrayList<String> getAuth(){
+		return author;
 	}
-	public void setEe(String eE){
-		ee = eE;
-	}
-	public void setPages(String pag){
-		pages = pag;
-	}
-	public void setYear(int y){
-		year = y;
-	}
-	public void setUrl(String ur){
-		url = ur;
-	}
-	public void setTitle(String t){
-		title = t;
-	}
-	public void setAuthor(String auth){
-		author = auth;
-	}
-	public void setVolume(String vol){
-		volume = vol;
-	}
-	public void setPub(int x){
-		publication = x;
-	}
+}	
