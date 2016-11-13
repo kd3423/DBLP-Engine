@@ -19,36 +19,34 @@ public class XmlHandlerAuthor{
 				boolean checkString = false;
 				public void startElement(String uri,String localName,String qname,Attributes att)throws SAXException{
 					if(qname.equals("www")){
-						// setCategory(qname);
 						checkCat = true;
 					}
-					else if(qname.equals("author")){
+					else if(qname.equals("author") && checkCat){
 						checkAuth = true;
 					}
 				}
 				public void characters(char chArray[],int start,int length)throws SAXException{
-					if(checkCat){
-						if(checkAuth){
-							if(str.equals(new String(chArray,start,length))){
-								checkString = true;
-							}
-							else if(checkString){
-								author.add(new String(chArray,start,length));
-							}
+					if(checkCat && checkAuth){
+						if(str.equals(new String(chArray,start,length))){
+							checkString = true;
+							System.out.println("Found!!");
 						}
-					}
-					
+						else if(checkString){
+							author.add(new String(chArray,start,length));
+						}
+					}	
 				}
 				public void endElement(String uri,String localName,String qname,Attributes att){
-					if(qname.equals("www")){
+					if(qname.equals("author")){
+						checkAuth = false;
+					}
+					else if(qname.equals("www")){
 						checkCat = false;
 						checkString = false;
 					}
-					else if(qname.equals("author")){
-						checkAuth = false;
-					}
 				}
 			};
+			saxTheFile.parse("dblp.xml",defHandler);
 		}
 		catch(Exception e){
 			e.printStackTrace();

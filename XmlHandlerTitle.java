@@ -94,6 +94,7 @@ public class XmlHandlerTitle{
 					}
 				}
 			};
+			saxTheFile.parse("dblp.xml",defHandler);
 		}
 		catch(Exception e){
 			e.printStackTrace();

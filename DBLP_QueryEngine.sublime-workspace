@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"XM",
+				"XmlHandlerAuthor"
+			],
+			[
+				"def",
+				"defHandler"
+			],
+			[
+				"sa",
+				"saxTheFile"
+			],
+			[
+				"check",
+				"checkCat"
+			],
+			[
+				"page",
+				"pagesCheck"
+			],
+			[
+				"publi",
+				"publication"
+			],
+			[
 				"url",
 				"urlCheck"
 			],
@@ -36,10 +60,6 @@
 				"tempArray"
 			],
 			[
-				"check",
-				"checkCat"
-			],
-			[
 				"che",
 				"checkEe"
 			],
@@ -54,10 +74,6 @@
 			[
 				"autho",
 				"author"
-			],
-			[
-				"page",
-				"pages"
 			],
 			[
 				"cat",
@@ -498,22 +514,6 @@
 			[
 				"ge",
 				"getRating"
-			],
-			[
-				"nex",
-				"nextInt"
-			],
-			[
-				"rate",
-				"rateNew"
-			],
-			[
-				"son",
-				"songSerialize"
-			],
-			[
-				"movie",
-				"movieSerialize"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "XmlHandlerAuthor.java",
 			"settings":
 			{
-				"buffer_size": 1661,
+				"buffer_size": 1834,
 				"line_ending": "Unix"
 			}
 		},
@@ -531,7 +531,7 @@
 			"file": "XmlHandlerTitle.java",
 			"settings":
 			{
-				"buffer_size": 3459,
+				"buffer_size": 3522,
 				"line_ending": "Unix"
 			}
 		},
@@ -539,7 +539,15 @@
 			"file": "Cmain.java",
 			"settings":
 			{
-				"buffer_size": 614,
+				"buffer_size": 844,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dblp.xml",
+			"settings":
+			{
+				"buffer_size": 1918678705,
 				"line_ending": "Unix"
 			}
 		}
@@ -898,7 +906,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -907,15 +915,72 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1661,
+						"buffer_size": 1834,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								719,
-								719
+								1673,
+								1673
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Java/Java.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 409.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "XmlHandlerTitle.java",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3522,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3069,
+								3069
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Java/Java.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 108.0,
+						"translation.y": 1969.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Cmain.java",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 844,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								784,
+								784
 							]
 						],
 						"settings":
@@ -930,60 +995,31 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "XmlHandlerTitle.java",
+					"buffer": 3,
+					"file": "dblp.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3459,
+						"buffer_size": 1918678705,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3459,
-								3459
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Java/Java.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2041.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "Cmain.java",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 614,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								566,
-								566
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Java/Java.sublime-syntax"
+							"syntax": "Packages/XML/XML.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
