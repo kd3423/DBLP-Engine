@@ -24,12 +24,18 @@ public class XmlHandlerAuthor{
 					else if(qname.equals("author") && checkCat){
 						checkAuth = true;
 					}
+					else{
+						checkCat = false;
+						checkAuth = false;
+						checkString = false;
+					}
 				}
 				public void characters(char chArray[],int start,int length)throws SAXException{
 					if(checkCat && checkAuth){
 						if(str.equals(new String(chArray,start,length))){
 							checkString = true;
 							System.out.println("Found!!");
+							author.add(new String(chArray,start,length));
 						}
 						else if(checkString){
 							author.add(new String(chArray,start,length));
