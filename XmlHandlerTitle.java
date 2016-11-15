@@ -35,6 +35,27 @@ public class XmlHandlerTitle{
 					if(qname.equals("author")){
 						checkAuth = true;
 					}
+					else if(qname.equals("title")){
+						titleCheck = true;
+					}
+					else if(qname.equals("ee")){
+						eeCheck = true;
+					}
+					else if(qname.equals("url")){
+						urlCheck = true;
+					}
+					else if(qname.equals("publication")){
+						pubCheck = true;
+					}
+					else if(qname.equals("year")){
+						yearCheck = true;
+					}
+					else if(qname.equals("pages")){
+						pagesCheck = true;
+					}
+					else if(qname.equals("volume")){
+						volCheck = true;
+					}
 
 				}
 				public void characters(char chArray[],int start,int length)throws SAXException{
@@ -70,7 +91,7 @@ public class XmlHandlerTitle{
 					}
 
 				}
-				public void endElement(String uri,String localName,String qname,Attributes att){
+				public void endElement(String uri,String localName,String qname){
 					if(qname.equals("title")){
 						titleCheck = false;
 					}

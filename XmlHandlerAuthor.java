@@ -18,7 +18,7 @@ public class XmlHandlerAuthor{
 				boolean checkAuth = false;
 				boolean checkString = false;
 				boolean checkTitle = false;
-				int counter =0;
+				int counter =0,xx=0;
 				public void startElement(String uri,String localName,String qname,Attributes att)throws SAXException{
 					if(qname.equals("www")){
 						checkCat = true;
@@ -59,7 +59,6 @@ public class XmlHandlerAuthor{
 					else if(checkTitle == true){
 						if(!(new String(chArray,start,length)).equals("Home Page")){
 							checkTitle = false;
-							checkString = false;
 						}
 					}
 				}
@@ -68,8 +67,14 @@ public class XmlHandlerAuthor{
 						checkAuth = false;
 					}
 					else if(qname.equals("www")){
-						if(checkString == false){
-							author.subList(author.size()-counter,author.size()).clear();
+						if(checkString == false || checkTitle == false){
+							// System.out.println(author);
+							if(xx < author.size()){
+								author.subList(author.size()-(counter-1),author.size()).clear();
+								xx = author.size();
+							}
+							// System.out.println("gfmdl");
+							// System.out.println(author);
 							// System.out.println("Clear ArrayList due to string");
 						}
 						counter = 0;
