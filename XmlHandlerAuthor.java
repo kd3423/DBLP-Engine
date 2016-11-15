@@ -17,6 +17,7 @@ public class XmlHandlerAuthor{
 				boolean checkCat = false;
 				boolean checkAuth = false;
 				boolean checkString = false;
+				boolean checkTitle = false;
 				public void startElement(String uri,String localName,String qname,Attributes att)throws SAXException{
 					if(qname.equals("www")){
 						checkCat = true;
@@ -24,23 +25,41 @@ public class XmlHandlerAuthor{
 					else if(qname.equals("author") && checkCat){
 						checkAuth = true;
 					}
+					else if(qname.equals("title") && checkCat){
+						checkTitle = true;
+						checkAuth = false;
+					}
 					else{
 						checkCat = false;
 						checkAuth = false;
 						checkString = false;
+						checkTitle = false;
 					}
 				}
 				public void characters(char chArray[],int start,int length)throws SAXException{
 					if(checkCat && checkAuth){
+						author.add(new String(chArray,start,length));
+						// System.out.println("add");
+						// if(str.equals(new String(chArray,start,length))){
+						// 	checkString = true;
+						// 	// System.out.println("Found!!");
+						// 	author.add(new String(chArray,start,length));
+						// }
+						// else if(checkString){
+						// 	author.add(new String(chArray,start,length));
+						// }
 						if(str.equals(new String(chArray,start,length))){
 							checkString = true;
-							System.out.println("Found!!");
-							author.add(new String(chArray,start,length));
+							System.out.println("Same");
 						}
-						else if(checkString){
-							author.add(new String(chArray,start,length));
+
+					}
+					else if(checkTitle == true){
+						if(!(new String(chArray,start,length)).equals("Home Page")){
+							checkTitle = false;
+							author.removeAll(author);
 						}
-					}	
+					}
 				}
 				public void endElement(String uri,String localName,String qname,Attributes att){
 					if(qname.equals("author")){
@@ -48,8 +67,17 @@ public class XmlHandlerAuthor{
 					}
 					else if(qname.equals("www")){
 						checkCat = false;
+						if(checkString == false){
+							author.removeAll(author);
+							System.out.println("Clear ArrayList due to string");
+						}
 						checkString = false;
 					}
+					// else if(qname.equals("title")){
+					// 	if(checkTitle == false){
+					// 		author.clear();
+					// 	}
+					// }
 				}
 			};
 			saxTheFile.parse("/home/karan/Desktop/Java/Xml/dblp.xml",defHandler);

@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"check",
+				"checkTitle"
+			],
+			[
+				"che",
+				"checkTitle"
+			],
+			[
 				"print",
 				"println"
 			],
@@ -24,10 +32,6 @@
 				"XmlHandlerAuthor"
 			],
 			[
-				"che",
-				"checkString"
-			],
-			[
 				"chec",
 				"checkAuth"
 			],
@@ -42,10 +46,6 @@
 			[
 				"sa",
 				"saxTheFile"
-			],
-			[
-				"check",
-				"checkCat"
 			],
 			[
 				"page",
@@ -523,7 +523,7 @@
 			"file": "XmlHandlerAuthor.java",
 			"settings":
 			{
-				"buffer_size": 2026,
+				"buffer_size": 2617,
 				"line_ending": "Unix"
 			}
 		},
@@ -539,7 +539,7 @@
 			"file": "Cmain.java",
 			"settings":
 			{
-				"buffer_size": 1678,
+				"buffer_size": 1754,
 				"line_ending": "Unix"
 			}
 		}
@@ -608,10 +608,11 @@
 	},
 	"file_history":
 	[
+		"/home/karan/Desktop/Java/lab7_1oct2016/Song.java",
+		"/home/karan/Desktop/Java/lab7_1oct2016/final/Song.class",
 		"/home/karan/Desktop/xor.c",
 		"/home/karan/Desktop/Java/Xml/dblp.xml",
 		"/home/karan/Desktop/Java/Project/dblp.xml",
-		"/home/karan/Desktop/Java/lab7_1oct2016/Song.java",
 		"/home/karan/Desktop/Java/lab7_1oct2016/Movie.java",
 		"/home/karan/Desktop/Java/lab7_1oct2016/MediaSystem.java",
 		"/home/karan/Desktop/Java/lab7_1oct2016/Media.java",
@@ -734,8 +735,7 @@
 		"/home/karan/Desktop/Java/enumer.java",
 		"/home/karan/Desktop/Java/ttime.java",
 		"/home/karan/Desktop/Java/2time.java",
-		"/home/karan/Desktop/Java/array.java",
-		"/home/karan/Desktop/Java/array.class"
+		"/home/karan/Desktop/Java/array.java"
 	],
 	"find":
 	{
@@ -907,15 +907,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2026,
+						"buffer_size": 2617,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1858,
-								1858
+								1837,
+								1837
 							]
 						],
 						"settings":
@@ -923,7 +923,7 @@
 							"syntax": "Packages/Java/Java.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 132.0,
+						"translation.y": 858.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -964,15 +964,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1678,
+						"buffer_size": 1754,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								563,
-								563
+								679,
+								679
 							]
 						],
 						"settings":
@@ -980,7 +980,7 @@
 							"syntax": "Packages/Java/Java.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 145.0,
+						"translation.y": 264.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,

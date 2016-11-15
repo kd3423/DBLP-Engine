@@ -21,7 +21,7 @@ class Cmain{
 				empt = true;
 			}
 			else{
-				for(String x: auth){
+				for(String x : auth){
 					System.out.println(x);
 				}	
 			}
@@ -29,26 +29,26 @@ class Cmain{
 				System.out.println("No such author found");
 			}
 			
-			obj1.findTitle(auth);
-			ArrayList<String> title = new ArrayList<>();
-			ArrayList<String> publication = new ArrayList<>();
-			ArrayList<String> ee = new ArrayList<>();
-			ArrayList<String> pages = new ArrayList<>();
-			ArrayList<String> url = new ArrayList<>();
-			ArrayList<String> volume = new ArrayList<>();
-			ArrayList<Integer> year = new ArrayList<>();
-			title = obj1.getTitle();
-			ee = obj1.getEe();
-			publication = obj1.getPub();
-			url = obj1.getUrl();
-			pages = obj1.getPages();
-			year = obj1.getYear();
-			int i =0;
-			for(i = 0 ; i< title.size();i++){
-				System.out.print(title.get(i) +" "+ pages.get(i) +" "+ ee.get(i) +" "+ url.get(i) +" "+ publication.get(i) + " ");
-				System.out.println(year.get(i));
-				System.out.println();
-			}
+			// obj1.findTitle(auth);
+			// ArrayList<String> title = new ArrayList<>();
+			// ArrayList<String> publication = new ArrayList<>();
+			// ArrayList<String> ee = new ArrayList<>();
+			// ArrayList<String> pages = new ArrayList<>();
+			// ArrayList<String> url = new ArrayList<>();
+			// ArrayList<String> volume = new ArrayList<>();
+			// ArrayList<Integer> year = new ArrayList<>();
+			// title = obj1.getTitle();
+			// ee = obj1.getEe();
+			// publication = obj1.getPub();
+			// url = obj1.getUrl();
+			// pages = obj1.getPages();
+			// year = obj1.getYear();
+			// int i =0;
+			// for(i = 0 ; i< title.size();i++){
+			// 	System.out.print(title.get(i) +" "+ pages.get(i) +" "+ ee.get(i) +" "+ url.get(i) +" "+ publication.get(i) + " ");
+			// 	System.out.println(year.get(i));
+			// 	System.out.println();
+			// }
 			System.out.println("YOYO");
 
 		}
