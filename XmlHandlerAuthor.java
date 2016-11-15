@@ -18,6 +18,7 @@ public class XmlHandlerAuthor{
 				boolean checkAuth = false;
 				boolean checkString = false;
 				boolean checkTitle = false;
+				int counter =0;
 				public void startElement(String uri,String localName,String qname,Attributes att)throws SAXException{
 					if(qname.equals("www")){
 						checkCat = true;
@@ -27,18 +28,19 @@ public class XmlHandlerAuthor{
 					}
 					else if(qname.equals("title") && checkCat){
 						checkTitle = true;
-						checkAuth = false;
+						// checkAuth = false;
 					}
-					else{
-						checkCat = false;
-						checkAuth = false;
-						checkString = false;
-						checkTitle = false;
-					}
+					// else{
+					// 	checkCat = false;
+					// 	checkAuth = false;
+					// 	// checkString = false;
+					// 	checkTitle = false;
+					// }
 				}
 				public void characters(char chArray[],int start,int length)throws SAXException{
 					if(checkCat && checkAuth){
 						author.add(new String(chArray,start,length));
+						counter++;
 						// System.out.println("add");
 						// if(str.equals(new String(chArray,start,length))){
 						// 	checkString = true;
@@ -50,29 +52,33 @@ public class XmlHandlerAuthor{
 						// }
 						if(str.equals(new String(chArray,start,length))){
 							checkString = true;
-							System.out.println("Same");
+							System.out.println("same");
 						}
 
 					}
 					else if(checkTitle == true){
 						if(!(new String(chArray,start,length)).equals("Home Page")){
 							checkTitle = false;
-							author.removeAll(author);
+							checkString = false;
 						}
 					}
 				}
-				public void endElement(String uri,String localName,String qname,Attributes att){
+				public void endElement(String uri,String localName,String qname){
 					if(qname.equals("author")){
 						checkAuth = false;
 					}
 					else if(qname.equals("www")){
-						checkCat = false;
 						if(checkString == false){
-							author.removeAll(author);
-							System.out.println("Clear ArrayList due to string");
+							author.subList(author.size()-counter,author.size()).clear();
+							// System.out.println("Clear ArrayList due to string");
 						}
+						counter = 0;
+						checkCat = false;
 						checkString = false;
+						checkTitle = false;
+						// System.out.println("dfsnk");
 					}
+					// System.out.println("Bye");
 					// else if(qname.equals("title")){
 					// 	if(checkTitle == false){
 					// 		author.clear();

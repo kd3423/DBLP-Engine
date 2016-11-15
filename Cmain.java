@@ -21,8 +21,9 @@ class Cmain{
 				empt = true;
 			}
 			else{
-				for(String x : auth){
-					System.out.println(x);
+				int x;
+				for(x=0;x<10;x++){
+					System.out.println(auth.get(x));
 				}	
 			}
 			if(empt){
