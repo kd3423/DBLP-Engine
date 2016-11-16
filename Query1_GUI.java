@@ -1,6 +1,9 @@
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.net.MalformedURLException;
 
+import javax.swing.AbstractAction;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -9,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-public class Query1_GUI {
+public class Query1_GUI{
 	private JPanel query1_panel = new JPanel(null);
 	private JComboBox<String> drop = new JComboBox<String>();
 	private JLabel name = new JLabel("Name/Title tags");
@@ -24,8 +27,25 @@ public class Query1_GUI {
 	private JRadioButton sort_relevence = new JRadioButton("Sort by Relevence");
 	private JRadioButton sort_bt_year = new JRadioButton("Sort in between two years");
 	private ButtonGroup buttons = new ButtonGroup();
-	private JButton search  = new JButton("Search");
+	private JButton search  = new JButton(new AbstractAction("Search"){
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			String x = text_name.getText();
+			try {
+				Search search = new Search(x);
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	});
 	private JButton reset  = new JButton("Reset");
+	
 	public Query1_GUI(JPanel panel){
 		
 		query1_panel.setVisible(false);
