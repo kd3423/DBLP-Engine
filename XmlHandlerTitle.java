@@ -8,29 +8,18 @@ import javax.xml.parsers.SAXParserFactory;
 import java.io.*;
 import java.util.*;
 public class XmlHandlerTitle{
-	private ArrayList<String> title = new ArrayList<>();
-	private ArrayList<String> ee = new ArrayList<>();
-	private ArrayList<String> pages = new ArrayList<>();
-	private ArrayList<Integer> year = new ArrayList<>();
-	private ArrayList<String> url = new ArrayList<>();
-	private ArrayList<String> volume = new ArrayList<>();
-	private ArrayList<String> publication = new ArrayList<>(); 	
-	public void findTitle(ArrayList<String> auth){
+	// private ArrayList<String> title = new ArrayList<>();
+	private String ee;
+	private String pages;
+	private Integer year;
+	private String url;
+	private String volume;
+	private Integer publication;
+	public void findTitle(String title){
 		try{
 			SAXParserFactory fac = SAXParserFactory.newInstance();
 			SAXParser saxTheFile = fac.newSAXParser();
 			DefaultHandler defHandler = new DefaultHandler(){
-				
-				boolean titleCheck = false;
-				boolean eeCheck = false;
-				boolean pubCheck = false;
-				boolean volCheck = false;
-				boolean yearCheck = false;
-				boolean urlCheck = false;
-				boolean checkAuth = false;
-				boolean check = false;
-				boolean pagesCheck = false;
-				boolean checkforall = false;
 				public void startElement(String uri,String localName,String qname,Attributes att)throws SAXException{
 					if(qname.equals("author")){
 						checkAuth = true;
@@ -121,25 +110,25 @@ public class XmlHandlerTitle{
 			e.printStackTrace();
 		}
 	}
-	public ArrayList<String> getEe(){
+	public String getEe(){
 		return ee;
 	}
-	public ArrayList<String> getPages(){
+	public String getPages(){
 		return pages;
 	}
-	public ArrayList<Integer> getYear(){
+	public Integer getYear(){
 		return year;
 	}
-	public ArrayList<String> getUrl(){
+	public String getUrl(){
 		return url;
 	}
-	public ArrayList<String> getTitle(){
+	public String getTitle(){
 		return title;
 	}
-	public ArrayList<String> getVolume(){
+	public String getVolume(){
 		return volume;
 	}
-	public ArrayList<String> getPub(){
+	public Integer getPub(){
 		return publication;
 	}
 }
