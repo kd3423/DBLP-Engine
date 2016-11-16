@@ -21,9 +21,8 @@ class Cmain{
 				empt = true;
 			}
 			else{
-				int x;
-				for(x=0;x<10;x++){
-					System.out.println(auth.get(x));
+				for(String x : auth){
+					System.out.println(x);
 				}	
 			}
 			if(empt){
@@ -50,7 +49,6 @@ class Cmain{
 			// 	System.out.println(year.get(i));
 			// 	System.out.println();
 			// }
-			System.out.println("YOYO");
 
 		}
 		catch(Exception e){
