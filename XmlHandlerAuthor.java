@@ -15,11 +15,7 @@ public class XmlHandlerAuthor{
 			SAXParser saxTheFile = fac.newSAXParser();
 			DefaultHandler defHandler = new DefaultHandler(){
 				ArrayList<String> temp = new ArrayList<>();
-				boolean checkCat = false;
-				boolean checkAuth = false;
-				boolean checkString = false;
-				boolean checkTitle = false;
-				boolean check = false;
+				boolean checkCat = false,checkAuth = false,checkString = false,checkTitle = false,check = false;
 				public void startElement(String uri,String localName,String qname,Attributes att)throws SAXException{
 					if(qname.equals("www")){
 						checkCat = true;
@@ -37,7 +33,7 @@ public class XmlHandlerAuthor{
 					if(checkCat && checkAuth){
 						String auth = new String(chArray,start,length);
 						temp.add(auth);
-						if(str.equals(auth)){
+						if(str.equalsIgnoreCase(auth)){
 							checkString = true;
 						}
 

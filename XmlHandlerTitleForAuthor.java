@@ -8,14 +8,7 @@ import javax.xml.parsers.SAXParserFactory;
 import java.io.*;
 import java.util.*;
 public class XmlHandlerTitleForAuthor{
-	private ArrayList<String> author = new ArrayList<>();
-	// private ArrayList<String> title = new ArrayList<>();
-	// private ArrayList<String> ee = new ArrayList<>();
-	// private ArrayList<String> pages = new ArrayList<>();
-	// private ArrayList<Integer> year = new ArrayList<>();
-	// private ArrayList<String> url = new ArrayList<>();
-	// private ArrayList<String> volume = new ArrayList<>();
-	// private ArrayList<String> publication = new ArrayList<>(); 	
+	private ArrayList<String> author = new ArrayList<>();	
 	public void findTitle(ArrayList<String> auth){
 		try{
 			SAXParserFactory fac = SAXParserFactory.newInstance();
@@ -58,7 +51,7 @@ public class XmlHandlerTitleForAuthor{
 						String temp = new String(chArray,start,length); 
 						author.add(temp);
 						for(String x : auth){
-							if(x.equals(temp)){
+							if(x.equalsIgnoreCase(temp)){
 								checkforall = true;
 							}
 						}
@@ -94,6 +87,7 @@ public class XmlHandlerTitleForAuthor{
 					}
 					else if(qname.equals("url")){
 						urlCheck = false;
+						write(author,title,publication,year,pages,ee,url);
 					}
 					else if(qname.equals("publication")){
 						pubCheck = false;
