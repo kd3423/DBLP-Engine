@@ -48,7 +48,7 @@ public class XmlHandlerAuthor{
 						}
 					}
 				}
-				public void endElement(String uri,String localName,String qname){
+				public void endElement(String uri,String localName,String qname)throws SAXException{
 					if(qname.equals("author")){
 						checkAuth = false;
 					}

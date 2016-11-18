@@ -22,22 +22,34 @@ public class XmlHandlerTitleForAuthor{
 			SAXParser saxTheFile = fac.newSAXParser();
 			DefaultHandler defHandler = new DefaultHandler(){
 				String title,pages,ee,url,volume,year,publication;
-				boolean titleCheck = false,eeCheck = false;
-				boolean pubCheck = false;
-				boolean volCheck = false;
-				boolean yearCheck = false;
-				boolean urlCheck = false;
-				boolean checkAuth = false;
-				boolean check = false;
-				boolean pagesCheck = false;
-				boolean checkforall = false;
-				boolean checkCat = true;
+				boolean titleCheck = false,eeCheck = false,pubCheck = false,volCheck = false,yearCheck = false,urlCheck = false,checkAuth = false,check = false,pagesCheck = false,checkforall = false,checkCat = true;
 				public void startElement(String uri,String localName,String qname,Attributes att)throws SAXException{
 					if(qname.equals("www")){
 						checkCat = false;
 					}
 					else if(qname.equals("author")){
 						checkAuth = true;
+					}
+					else if(qname.equals("title")){
+						titleCheck = true;
+					}
+					else if(qname.equals("year")){
+						yearCheck = true;
+					}
+					else if(qname.equals("url")){
+						urlCheck = true;
+					}
+					else if(qname.equals("ee")){
+						eeCheck = true;
+					}
+					else if(qname.equals("pages")){
+						pagesCheck = true;
+					}
+					else if(qname.equals("volume")){
+						volCheck = true;
+					}
+					else if(qname.equals("publication")){
+						pubCheck = true;
 					}
 
 				}
@@ -73,7 +85,7 @@ public class XmlHandlerTitleForAuthor{
 						publication = new String(chArray,start,length);
 					}
 				}
-				public void endElement(String uri,String localName,String qname){
+				public void endElement(String uri,String localName,String qname)throws SAXException{
 					if(qname.equals("title")){
 						titleCheck = false;
 					}
@@ -94,6 +106,9 @@ public class XmlHandlerTitleForAuthor{
 					}
 					else if(qname.equals("volume")){
 						volCheck = false;
+					}
+					else if(qname.equals("author")){
+						checkAuth = false;
 					}
 				}
 			};
