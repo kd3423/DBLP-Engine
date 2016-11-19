@@ -28,7 +28,18 @@ class Cmain{
 			if(empt){
 				System.out.println("No such author found");
 			}
-			
+			XmlHandlerTitleForAuthor obj1 = new XmlHandlerTitleForAuthor();
+			obj1.fillFile(auth);
+			// try{
+			// 	br = new BufferedReader(new FileReader("input.txt"));
+			// 	while ((line = br.readLine()) != null)
+			// 	{	
+			// 	}
+			// }
+			// catch (IOException e)
+			// {
+			// 	e.printStackTrace();
+			// }
 			// obj1.findTitle(auth);
 			// ArrayList<String> title = new ArrayList<>();
 			// ArrayList<String> publication = new ArrayList<>();

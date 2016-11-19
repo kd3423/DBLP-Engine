@@ -9,7 +9,7 @@ import java.io.*;
 import java.util.*;
 public class XmlHandlerTitleForAuthor{
 	private ArrayList<String> author = new ArrayList<>();	
-	public void findTitle(ArrayList<String> auth){
+	public void fillFile(ArrayList<String> auth){
 		try{
 			SAXParserFactory fac = SAXParserFactory.newInstance();
 			SAXParser saxTheFile = fac.newSAXParser();
@@ -87,7 +87,13 @@ public class XmlHandlerTitleForAuthor{
 					}
 					else if(qname.equals("url")){
 						urlCheck = false;
-						write(author,title,publication,year,pages,ee,url);
+						if(!checkforall){
+							author.clear();
+						}
+						else{
+							write(author,title,url,ee,year,publication,pages,volume);
+							checkforall = false;				
+						}
 					}
 					else if(qname.equals("publication")){
 						pubCheck = false;
@@ -115,7 +121,8 @@ public class XmlHandlerTitleForAuthor{
 	private void write(ArrayList<String> author,String title , String url,String ee,String year, String publication,String pages,String volume){
 		try{
 			PrintWriter write = new PrintWriter( new BufferedWriter( new FileWriter ( "Ref.txt",true) ) );
-			write.print(author + "," + title + "," + publication + "," + year + "," + pages + "," + ee + "," + url);
+			System.out.println(author + "," + title + "," + publication + "," + year + "," + pages + ","+ volume +"," + ee + "," + url);
+			write.print(author + "," + title + "," + publication + "," + year + "," + pages + ","+ volume +"," + ee + "," + url);
 		}
 		catch (IOException e)
 		{
