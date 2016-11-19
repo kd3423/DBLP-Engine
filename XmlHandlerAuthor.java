@@ -35,10 +35,6 @@ public class XmlHandlerAuthor{
 					if(checkCat && checkAuth){
 						String auth = new String(chArray,start,length);
 						temp.add(auth);
-						// if(str.equalsIgnoreCase(auth)){
-						// 	checkString = true;
-						// }
-
 					}
 					else if(checkTitle){
 						if((new String(chArray,start,length)).equals("Home Page")){
