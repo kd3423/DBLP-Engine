@@ -9,17 +9,19 @@ import java.io.*;
 import java.util.*;
 public class XmlHandlerAuthor{
 	private ArrayList<String> author = new ArrayList<>();	
-	public void findAuth(String str){
+	public void findAuth(){
 		try{
 			SAXParserFactory fac = SAXParserFactory.newInstance();
 			SAXParser saxTheFile = fac.newSAXParser();
 			DefaultHandler defHandler = new DefaultHandler(){
 				ArrayList<String> temp = new ArrayList<>();
-				boolean checkCat = false,checkAuth = false,checkString = false,checkTitle = false,check = false;
+				int counter = 0;
+				String snum;
+				boolean checkCat = false,checkAuth = false,checkString = true,checkTitle = false,check = false;
 				public void startElement(String uri,String localName,String qname,Attributes att)throws SAXException{
 					if(qname.equals("www")){
 						checkCat = true;
-						checkString = false;
+						// checkString = false;
 						checkTitle = false;
 					}
 					else if(qname.equals("author") && checkCat){
@@ -33,9 +35,9 @@ public class XmlHandlerAuthor{
 					if(checkCat && checkAuth){
 						String auth = new String(chArray,start,length);
 						temp.add(auth);
-						if(str.equalsIgnoreCase(auth)){
-							checkString = true;
-						}
+						// if(str.equalsIgnoreCase(auth)){
+						// 	checkString = true;
+						// }
 
 					}
 					else if(checkTitle){
@@ -51,7 +53,12 @@ public class XmlHandlerAuthor{
 					else if(qname.equals("www")){
 						if(checkString && check){
 							author.addAll(temp);
+							counter = counter + 1;
+							snum = Integer.toString(counter);
+							writer(snum,author);
 							check = false;
+							author.clear();
+							temp.clear();
 						}
 						else if(checkString == false || check == false){
 							temp.clear();
@@ -65,6 +72,18 @@ public class XmlHandlerAuthor{
 			saxTheFile.parse("/home/karan/Desktop/Java/Xml/dblp.xml",defHandler);
 		}
 		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	private void writer(String snum,ArrayList<String> author){
+		try{
+			PrintWriter write = new PrintWriter( new BufferedWriter( new FileWriter ( "author.txt",true) ) );
+			write.println(snum +","+author);
+			write.flush();
+			write.close();
+		}
+		catch(IOException e)
+		{
 			e.printStackTrace();
 		}
 	}

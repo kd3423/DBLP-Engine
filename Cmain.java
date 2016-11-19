@@ -14,22 +14,22 @@ class Cmain{
 			System.setProperty("jdk.xml.entityExpansionLimit", "0");
 			XmlHandlerAuthor obj = new XmlHandlerAuthor();
 			// XmlHandlerTitle obj1 = new XmlHandlerTitle();
-			obj.findAuth("Chin-Chen Chang");
-			ArrayList<String> auth = new ArrayList<>();
-			auth = obj.getAuth();
-			if(auth.isEmpty()){
-				empt = true;
-			}
-			else{
-				for(String x : auth){
-					System.out.println(x);
-				}	
-			}
-			if(empt){
-				System.out.println("No such author found");
-			}
-			XmlHandlerTitleForAuthor obj1 = new XmlHandlerTitleForAuthor();
-			obj1.fillFile(auth);
+			obj.findAuth();
+			// ArrayList<String> auth = new ArrayList<>();
+			// auth = obj.getAuth();
+			// if(auth.isEmpty()){
+			// 	empt = true;
+			// }
+			// else{
+			// 	for(String x : auth){
+			// 		System.out.println(x);
+			// 	}	
+			// }
+			// if(empt){
+			// 	System.out.println("No such author found");
+			// }
+			// XmlHandlerTitleForAuthor obj1 = new XmlHandlerTitleForAuthor();
+			// obj1.fillFile(auth);
 			// try{
 			// 	br = new BufferedReader(new FileReader("input.txt"));
 			// 	while ((line = br.readLine()) != null)
