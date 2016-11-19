@@ -14,8 +14,9 @@ public class XmlHandlerTitleForAuthor{
 			SAXParserFactory fac = SAXParserFactory.newInstance();
 			SAXParser saxTheFile = fac.newSAXParser();
 			DefaultHandler defHandler = new DefaultHandler(){
-				String title,pages,ee,url,volume,year,publication;
-				boolean titleCheck = false,eeCheck = false,pubCheck = false,volCheck = false,yearCheck = false,urlCheck = false,checkAuth = false,check = false,pagesCheck = false,checkforall = false,checkCat = true;
+				int counter = 0;
+				String title,pages,url,volume,year,snum;
+				boolean titleCheck = false,volCheck = false,yearCheck = false,urlCheck = false,checkAuth = false,check = false,pagesCheck = false,checkforall = false,checkCat = true;
 				public void startElement(String uri,String localName,String qname,Attributes att)throws SAXException{
 					if(qname.equals("www")){
 						checkCat = false;
@@ -32,17 +33,11 @@ public class XmlHandlerTitleForAuthor{
 					else if(qname.equals("url")){
 						urlCheck = true;
 					}
-					else if(qname.equals("ee")){
-						eeCheck = true;
-					}
 					else if(qname.equals("pages")){
 						pagesCheck = true;
 					}
 					else if(qname.equals("volume")){
 						volCheck = true;
-					}
-					else if(qname.equals("publication")){
-						pubCheck = true;
 					}
 
 				}
@@ -59,9 +54,6 @@ public class XmlHandlerTitleForAuthor{
 					else if(titleCheck && checkCat && checkforall){
 						title = new String(chArray,start,length);
 					}
-					else if(eeCheck && checkCat && checkforall){
-						ee = new String(chArray,start,length);
-					}
 					else if(volCheck && checkCat && checkforall){
 						volume = new String(chArray,start,length);
 					}
@@ -74,16 +66,10 @@ public class XmlHandlerTitleForAuthor{
 					else if(yearCheck && checkCat && checkforall){
 						year = new String(chArray,start,length);
 					}
-					else if(pubCheck && checkCat && checkforall){
-						publication = new String(chArray,start,length);
-					}
 				}
 				public void endElement(String uri,String localName,String qname)throws SAXException{
 					if(qname.equals("title")){
 						titleCheck = false;
-					}
-					else if(qname.equals("ee")){
-						eeCheck = false;
 					}
 					else if(qname.equals("url")){
 						urlCheck = false;
@@ -91,12 +77,11 @@ public class XmlHandlerTitleForAuthor{
 							author.clear();
 						}
 						else{
-							write(author,title,url,ee,year,publication,pages,volume);
+							counter = counter + 1;
+							snum = Integer.toString(counter);
+							writer(snum,author,title,url,year,pages,volume);
 							checkforall = false;				
 						}
-					}
-					else if(qname.equals("publication")){
-						pubCheck = false;
 					}
 					else if(qname.equals("year")){
 						yearCheck = false;
@@ -118,11 +103,13 @@ public class XmlHandlerTitleForAuthor{
 			e.printStackTrace();
 		}
 	}
-	private void write(ArrayList<String> author,String title , String url,String ee,String year, String publication,String pages,String volume){
+	private void writer(String snum, ArrayList<String> author,String title , String url,String year,String pages,String volume){
 		try{
 			PrintWriter write = new PrintWriter( new BufferedWriter( new FileWriter ( "Ref.txt",true) ) );
-			System.out.println(author + "," + title + "," + publication + "," + year + "," + pages + ","+ volume +"," + ee + "," + url);
-			write.print(author + "," + title + "," + publication + "," + year + "," + pages + ","+ volume +"," + ee + "," + url);
+			// System.out.println(snum + "," + author + "," + title + "," + year + "," + pages + ","+ volume +"," + url);
+			write.print( snum +","+author + "," + title + "," + pages + "," + year + ","+ volume+ "," + url + "\n");
+			write.flush();
+			write.close();
 		}
 		catch (IOException e)
 		{
