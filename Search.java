@@ -18,16 +18,38 @@ public class Search{
 		XmlHandlerAuthor xml_author = new XmlHandlerAuthor();
 		xml_author.setName(x);
 		Thread t = new Thread(xml_author);
-		t.start();
-		JFrame load = new JFrame("Loading");
+		JFrame load = new JFrame();
 		load.setSize(300, 100);
 		load.setVisible(true);
-		load.setDefaultCloseOperation(2);
 		load.setLocationRelativeTo(null);
-		ImageIcon loading = new ImageIcon("ajax-loader.gif");
+		ImageIcon loading = new ImageIcon("load.png");
 	    load.add(new JLabel(loading, JLabel.CENTER));
-		
-		//load.setVisible(false);
+	    SwingWorker<Void,Void> worker = new SwingWorker<Void,Void>(){
+
+			@Override
+			protected Void doInBackground() throws Exception {
+				t.start();
+				
+				return null;
+			}
+			protected void done(){
+				try {
+					t.join();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				load.setVisible(false);
+			}
+	    	
+	    };
+	    worker.execute();
+	    try{
+	    	worker.get();
+	    }
+	    catch (Exception e1) {
+	        e1.printStackTrace();
+	    }
 		
 	}
 }
