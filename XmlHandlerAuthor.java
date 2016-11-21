@@ -11,6 +11,7 @@ public class XmlHandlerAuthor{
 	private ArrayList<String> author = new ArrayList<>();	
 	public void findAuth(){
 		try{
+			System.setProperty("jdk.xml.entityExpansionLimit", "0");
 			SAXParserFactory fac = SAXParserFactory.newInstance();
 			SAXParser saxTheFile = fac.newSAXParser();
 			DefaultHandler defHandler = new DefaultHandler(){
@@ -76,9 +77,9 @@ public class XmlHandlerAuthor{
 			String x="";
 			PrintWriter write = new PrintWriter( new BufferedWriter( new FileWriter ( "author.txt",true) ) );
 			for(String e: author){
-				x = x + ","+e;
+				x = x + "#"+e;
 			}
-			write.println(snum +x);
+			write.println(x);
 			write.flush();
 			write.close();
 		}

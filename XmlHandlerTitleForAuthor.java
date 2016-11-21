@@ -7,10 +7,14 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.*;
 import java.util.*;
-public class XmlHandlerTitleForAuthor{
+public class XmlHandlerTitleForAuthor implements Runnable{
+	private ArrayList<String> auth;
 	private ArrayList<String> author = new ArrayList<>();	
-	public void fillFile(ArrayList<String> auth){
+	public void fillFile(){
 		try{
+			System.setProperty("jdk.xml.entityExpansionLimit", "0");
+			PrintWriter write = new PrintWriter( new BufferedWriter( new FileWriter ( "Ref.txt") ) );
+			write.close();
 			SAXParserFactory fac = SAXParserFactory.newInstance();
 			SAXParser saxTheFile = fac.newSAXParser();
 			DefaultHandler defHandler = new DefaultHandler(){
@@ -97,7 +101,7 @@ public class XmlHandlerTitleForAuthor{
 					}
 				}
 			};
-			saxTheFile.parse("/home/karan/Desktop/Java/Xml/dblp.xml",defHandler);
+			saxTheFile.parse("dblp.xml",defHandler);
 		}
 		catch(Exception e){
 			e.printStackTrace();
@@ -106,8 +110,13 @@ public class XmlHandlerTitleForAuthor{
 	private void writer(String snum, ArrayList<String> author,String title , String url,String year,String pages,String volume){
 		try{
 			PrintWriter write = new PrintWriter( new BufferedWriter( new FileWriter ( "Ref.txt",true) ) );
+			String z = "";
 			// System.out.println(snum + "," + author + "," + title + "," + year + "," + pages + ","+ volume +"," + url);
-			write.print( snum +","+author + "," + title + "," + pages + "," + year + ","+ volume+ "," + url + "\n");
+			for(String e : author){
+				z = z + e;
+				z = z + " | ";
+			}
+			write.print( snum +"#"+ z + "#" + title + "#" + pages + "#" + year + "#"+ volume+ "#" + url + "\n");
 			write.flush();
 			write.close();
 		}
@@ -116,4 +125,11 @@ public class XmlHandlerTitleForAuthor{
 			e.printStackTrace();
 		}
 	}
+public void setAuthor(ArrayList<String> z){
+	auth = z;
+}
+@Override
+public void run() {
+	fillFile();
+}
 }
