@@ -65,7 +65,7 @@ public class XmlHandlerAuthor{
 					}
 				}
 			};
-			saxTheFile.parse("/home/karan/Desktop/Java/Xml/dblp.xml",defHandler);
+			saxTheFile.parse("dblp.xml",defHandler);
 		}
 		catch(Exception e){
 			e.printStackTrace();
@@ -73,8 +73,12 @@ public class XmlHandlerAuthor{
 	}
 	private void writer(String snum,ArrayList<String> author){
 		try{
+			String x="";
 			PrintWriter write = new PrintWriter( new BufferedWriter( new FileWriter ( "author.txt",true) ) );
-			write.println(snum +","+author);
+			for(String e: author){
+				x = x + ","+e;
+			}
+			write.println(snum +x);
 			write.flush();
 			write.close();
 		}
