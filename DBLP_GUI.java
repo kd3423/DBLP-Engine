@@ -2,6 +2,10 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -21,9 +25,12 @@ public class DBLP_GUI extends JFrame{
 	private JPanel panel2 = new JPanel(null);
 	private JButton next = new JButton("Next->>");
 	private JButton prev = new JButton("<<-Prev");
-	String[] test1;
-	String[][] test2;
-	
+	private int k =0 ;
+	private Object[][] data;
+	private Object[] columnNames = {"Sno","Author","Title","Pages","Year","Volume","URL"};
+	private JTable table;
+	private JScrollPane pane;
+	private int count=0;
 	private ArrayList<String> author;
 	private ArrayList<String> title;
 	private ArrayList<String> genre;
@@ -39,21 +46,12 @@ public class DBLP_GUI extends JFrame{
 		Dropdown();
 		
 		//Panel
-		final Object[][] data = {
-			    {"Mary", "Campione", "Snowboarding", "5"},
-			    {"Alison", "Huml", "Rowing", "3"},
-			    {"Kathy", "Walrath", "Chasing toddlers", "2"},
-			    {"Mark", "Andrews", "Speed reading", "20"},
-			    {"Angela", "Lih", "Teaching high school", "4"}
-			    };
-			    final Object[] columnNames = {"Author", 
-			                              "title",
-			                              "genre",
-			                              "price"};
-		JTable table = new JTable(data, columnNames);
-		JScrollPane pane = new JScrollPane(table);
+		data =  reader();
+		table = new JTable(data, columnNames);
+		pane = new JScrollPane(table);
 		pane.setBounds(0,0,525,350);
 		panel2.add(pane);
+		
 		prev.setBounds(300,450,100, 30);
 		prev.setBackground(Color.white);
 		next.setBounds(650,450,100, 30);
@@ -67,6 +65,25 @@ public class DBLP_GUI extends JFrame{
 		panel.add(prev);
 		panel.add(next);
 		panel.add(dropdown);
+		next.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				k=k+20;
+				if(k<=count){
+					
+					update();
+				}
+				else if(k > count){
+					k=k-20;
+				}
+				
+			}
+		});
+		prev.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				if(k != 0) k=k-20;
+				update();
+			}
+		});
 		
 		
 		//Frame
@@ -126,5 +143,37 @@ public class DBLP_GUI extends JFrame{
 	}
 	public static void main(String[] args){
 		new DBLP_GUI();
+	}
+	public Object[][] reader(){
+		Object[][] data = new Object[20][7];
+	try{
+		BufferedReader read = new BufferedReader(new FileReader("Ref.txt"));
+    	for(int i = 0;i<k;i++){
+    		String x[] = read.readLine().split(",");
+    	}
+    	for(int i = 0;i<20;i++){
+    		String call;
+			if((call = read.readLine())!= null){
+    			String x[] = call.split(",");
+    			if(count<Integer.parseInt(x[0]))count = Integer.parseInt(x[0]);
+    			data[i] = x;
+    		}
+    	}
+    	read.close();
+	}
+	catch(Exception e)
+	{
+		e.printStackTrace();
+	}
+	return data;
+	}
+	public void update(){
+		panel2.remove(pane);
+		data = reader();
+		table = new JTable(data, columnNames);
+		pane = new JScrollPane(table);
+		pane.setBounds(0,0,525,350);
+		panel2.add(pane);
+		panel2.repaint();
 	}
 }
