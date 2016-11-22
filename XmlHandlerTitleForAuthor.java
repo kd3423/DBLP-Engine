@@ -1,8 +1,6 @@
 import org.xml.sax.Attributes; //org.xml.sax package defines all the interfaces used for the SAX parser
 import org.xml.sax.helpers.DefaultHandler; // DefaultHandler class that will handle the SAX events that the parser generates
 import org.xml.sax.SAXException;
-import org.xml.sax.XMLReader;
-import org.xml.sax.helpers.XMLReaderFactory;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.*;
@@ -111,7 +109,6 @@ public class XmlHandlerTitleForAuthor implements Runnable{
 		try{
 			PrintWriter write = new PrintWriter( new BufferedWriter( new FileWriter ( "Ref.txt",true) ) );
 			String z = "";
-			// System.out.println(snum + "," + author + "," + title + "," + year + "," + pages + ","+ volume +"," + url);
 			for(String e : author){
 				z = z + e;
 				z = z + " | ";
@@ -125,11 +122,47 @@ public class XmlHandlerTitleForAuthor implements Runnable{
 			e.printStackTrace();
 		}
 	}
+	public void sort(){
+		try{
+			List<ArrayList<String>> csvLines = new ArrayList<ArrayList<String>>();
+
+			Comparator<ArrayList<String>> comp = new Comparator<ArrayList<String>>() {
+			    public int compare(ArrayList<String> csvLine1, ArrayList<String> csvLine2) {
+			    	int x = Integer.valueOf(csvLine1.get(4)).compareTo(Integer.valueOf(csvLine2.get(4)));
+			    	
+			        return -x;
+			    }
+			};
+			
+			BufferedReader read = new BufferedReader(new FileReader("Ref.txt"));
+	    	String call;
+			while((call = read.readLine())!= null){
+			ArrayList<String> temp = new ArrayList<String>();
+			String[] x = call.split("#");
+			for(int i = 0;i<x.length;i++){
+				temp.add(x[i]);
+			}
+			csvLines.add(temp);
+			}
+	    	read.close();
+	    	Collections.sort(csvLines,comp);
+	    	PrintWriter write = new PrintWriter( new BufferedWriter( new FileWriter ( "Ref.txt") ) );
+	    	for(int i = 0;i<csvLines.size();i++){
+	    		write.print(csvLines.get(i).get(0)+"#"+csvLines.get(i).get(1)+ "#" +csvLines.get(i).get(2)+ "#" +csvLines.get(i).get(3)+ "#" + csvLines.get(i).get(4) + "#"+ csvLines.get(i).get(5)+ "#" + csvLines.get(i).get(6)+ "\n");
+	    		write.flush();
+	    	}
+			write.close();
+		}	catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		}
 public void setAuthor(ArrayList<String> z){
 	auth = z;
 }
 @Override
 public void run() {
 	fillFile();
+	sort();
 }
 }

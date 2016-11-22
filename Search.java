@@ -1,20 +1,19 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 import javax.swing.*;
 
 public class Search{
 	private ArrayList<String> author = new ArrayList<String>();
-	private ArrayList<String> title = new ArrayList<String>();
-	private ArrayList<Integer> publication = new ArrayList<Integer>();
-	private ArrayList<Integer> year = new ArrayList<Integer>();
-	
-	
 	public Search(String x) throws InterruptedException, IOException{
 		
 		XmlHandlerTitleForAuthor xml_title = new XmlHandlerTitleForAuthor();
@@ -32,7 +31,6 @@ public class Search{
 			@Override
 			protected Void doInBackground() throws Exception {
 				t.start();
-				
 				return null;
 			}
 			protected void done(){
@@ -72,9 +70,11 @@ public class Search{
 						
 				}
 			}
+			read.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		
 		return author;
 		
 	}
