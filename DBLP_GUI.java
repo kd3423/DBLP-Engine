@@ -1,19 +1,11 @@
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -38,10 +30,6 @@ public class DBLP_GUI extends JFrame{
 	private JTable table;
 	private JScrollPane pane;
 	private int count=0;
-	private ArrayList<String> author;
-	private ArrayList<String> title;
-	private ArrayList<String> genre;
-	private ArrayList<String> price;
 	private JButton reset  = new JButton("Reset");
 	private JButton search  = new JButton(new AbstractAction("Search"){
 
