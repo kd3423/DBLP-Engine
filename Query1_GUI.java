@@ -1,16 +1,6 @@
 import java.awt.Color;
 import java.awt.Font;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
 import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -92,48 +82,5 @@ public class Query1_GUI{
 		if(!(text_name.getText().equals(""))){
 			new Search(text_name.getText());
 		}
-//		if(sort_date.isSelected()){
-//			sort();
-//		}
-//		
-	}
-	public void sort(){
-	try{
-		List<ArrayList<String>> csvLines = new ArrayList<ArrayList<String>>();
-
-		Comparator<ArrayList<String>> comp = new Comparator<ArrayList<String>>() {
-		    public int compare(ArrayList<String> csvLine1, ArrayList<String> csvLine2) {
-		    	int x = Integer.valueOf(csvLine1.get(4)).compareTo(Integer.valueOf(csvLine2.get(4)));
-		    	
-		        return -x;
-		    }
-		};
-		
-		BufferedReader read = new BufferedReader(new FileReader("Ref.txt"));
-    	String call;
-		while((call = read.readLine())!= null){
-		ArrayList<String> temp = new ArrayList<String>();
-		String[] x = call.split("#");
-		for(int i = 0;i<x.length;i++){
-			temp.add(x[i]);
-		}
-		csvLines.add(temp);
-		}
-    	read.close();
-    	Collections.sort(csvLines,comp);
-    	for(ArrayList<String> e : csvLines){
-    		System.out.println(e);
-    	}
-    	PrintWriter write = new PrintWriter( new BufferedWriter( new FileWriter ( "Ref.txt") ) );
-    	for(int i = 0;i<csvLines.size();i++){
-    		write.print(csvLines.get(i).get(0)+"#"+csvLines.get(i).get(1)+ "#" +csvLines.get(i).get(2)+ "#" +csvLines.get(i).get(3)+ "#" + csvLines.get(i).get(4) + "#"+ csvLines.get(i).get(5)+ "#" + csvLines.get(i).get(6)+ "\n");
-    		write.flush();
-    	}
-		write.close();
-	}	catch(Exception e)
-	{
-		e.printStackTrace();
-	}
-	}
-	
+	}	
 }

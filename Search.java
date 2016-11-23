@@ -1,14 +1,10 @@
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.*;
 
@@ -20,11 +16,11 @@ public class Search{
 		author = getAuthor(x);
 		xml_title.setAuthor(author);;
 		Thread t = new Thread(xml_title);
-		JFrame load = new JFrame();
+		JFrame load = new JFrame("Loading");
 		load.setSize(300, 100);
 		load.setVisible(true);
 		load.setLocationRelativeTo(null);
-		ImageIcon loading = new ImageIcon("load.png");
+		ImageIcon loading = new ImageIcon("ajax-loader.gif");
 	    load.add(new JLabel(loading, JLabel.CENTER));
 	    SwingWorker<Void,Void> worker = new SwingWorker<Void,Void>(){
 	    	
@@ -34,12 +30,14 @@ public class Search{
 				return null;
 			}
 			protected void done(){
-				try {
-					t.join();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-				load.setVisible(false);
+				Timer timer = new Timer();
+				timer.schedule(new TimerTask(){
+					@Override
+					public void run() {
+						load.setVisible(false);
+					}
+				}, 20000);
+				
 			}
 	    	
 	    };
