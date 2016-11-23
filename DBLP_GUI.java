@@ -6,6 +6,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -38,6 +41,13 @@ public class DBLP_GUI extends JFrame{
 				if(dropdown.getSelectedItem().equals("Query 1")){
 					try {
 						query1.query1_search();
+						Timer timer = new Timer();
+						timer.schedule(new TimerTask(){
+							@Override
+							public void run() {
+								update();
+							}
+						}, 20000);
 					} catch (InterruptedException | IOException e) {
 						e.printStackTrace();
 					}
@@ -46,11 +56,7 @@ public class DBLP_GUI extends JFrame{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			finally{
-				update();
 			}
-		}
-		
 	});
 
 	public DBLP_GUI() throws IOException{
@@ -98,14 +104,13 @@ public class DBLP_GUI extends JFrame{
 		next.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				k=k+20;
+				System.out.println(k);
 				if(k<=count){
-					
 					update();
 				}
 				else if(k > count){
 					k=k-20;
 				}
-				
 			}
 		});
 		prev.addActionListener(new ActionListener(){
@@ -114,8 +119,6 @@ public class DBLP_GUI extends JFrame{
 				update();
 			}
 		});
-		
-		
 		//Frame
 		setSize(800, 500);
 		setLocationRelativeTo(null);
@@ -192,7 +195,6 @@ public class DBLP_GUI extends JFrame{
 	public void update(){
 		panel2.remove(pane);
 		data = reader();
-		
 		table = new JTable(data, columnNames);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		pane = new JScrollPane(table);
