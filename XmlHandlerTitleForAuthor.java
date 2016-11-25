@@ -41,7 +41,6 @@ public class XmlHandlerTitleForAuthor implements Runnable{
 					else if(qname.equals("volume")){
 						volCheck = true;
 					}
-
 				}
 				public void characters(char chArray[],int start,int length)throws SAXException{
 					if(checkAuth && checkCat){
@@ -125,15 +124,12 @@ public class XmlHandlerTitleForAuthor implements Runnable{
 	public void sort(){
 		try{
 			List<ArrayList<String>> csvLines = new ArrayList<ArrayList<String>>();
-
 			Comparator<ArrayList<String>> comp = new Comparator<ArrayList<String>>() {
 			    public int compare(ArrayList<String> csvLine1, ArrayList<String> csvLine2) {
 			    	int x = Integer.valueOf(csvLine1.get(4)).compareTo(Integer.valueOf(csvLine2.get(4)));
-			    	
 			        return -x;
 			    }
 			};
-			
 			BufferedReader read = new BufferedReader(new FileReader("Ref.txt"));
 	    	String call;
 			while((call = read.readLine())!= null){

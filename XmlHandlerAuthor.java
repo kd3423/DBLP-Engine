@@ -5,7 +5,7 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.*;
 import java.util.*;
-public class XmlHandlerAuthor{
+public class XmlHandlerAuthor implements Runnable{
 	private ArrayList<String> author = new ArrayList<>();	
 	public void findAuth(){
 		try{
@@ -20,7 +20,6 @@ public class XmlHandlerAuthor{
 				public void startElement(String uri,String localName,String qname,Attributes att)throws SAXException{
 					if(qname.equals("www")){
 						checkCat = true;
-						// checkString = false;
 						checkTitle = false;
 					}
 					else if(qname.equals("author") && checkCat){
@@ -88,5 +87,9 @@ public class XmlHandlerAuthor{
 	}
 	public ArrayList<String> getAuth(){
 		return author;
+	}
+	@Override
+	public void run() {
+	findAuth();		
 	}
 }
