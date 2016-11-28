@@ -6,6 +6,7 @@ import javax.xml.parsers.SAXParserFactory;
 import java.io.*;
 import java.util.*;
 public class XmlHandlerAuthor implements Runnable{
+	String join;
 	private ArrayList<String> author = new ArrayList<>();	
 	public volatile int working;
 	public void findAuth(){
@@ -26,6 +27,7 @@ public class XmlHandlerAuthor implements Runnable{
 					}
 					else if(qname.equals("author") && checkCat){
 						checkAuth = true;
+						join="";
 					}
 					else if(qname.equals("title") && checkCat){
 						checkTitle = true;
@@ -34,7 +36,8 @@ public class XmlHandlerAuthor implements Runnable{
 				public void characters(char chArray[],int start,int length)throws SAXException{
 					if(checkCat && checkAuth){
 						String auth = new String(chArray,start,length);
-						temp.add(auth);
+						join = join+auth;
+						
 					}
 					else if(checkTitle){
 						if((new String(chArray,start,length)).equals("Home Page")){
@@ -45,6 +48,7 @@ public class XmlHandlerAuthor implements Runnable{
 				public void endElement(String uri,String localName,String qname)throws SAXException{
 					if(qname.equals("author")){
 						checkAuth = false;
+						temp.add(join);
 					}
 					else if(qname.equals("www")){
 						if(checkString && check){

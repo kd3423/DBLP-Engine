@@ -9,6 +9,7 @@ public class XmlHandlerTitleForAuthor implements Runnable{
 	private ArrayList<String> auth;
 	private ArrayList<String> author = new ArrayList<>();	
 	public volatile int working;
+	private String join;
 	public void fillFile(){
 		try{
 			working = 0;
@@ -27,6 +28,7 @@ public class XmlHandlerTitleForAuthor implements Runnable{
 					}
 					else if(qname.equals("author")){
 						checkAuth = true;
+						join = "";
 					}
 					else if(qname.equals("title")){
 						titleCheck = true;
@@ -47,9 +49,9 @@ public class XmlHandlerTitleForAuthor implements Runnable{
 				public void characters(char chArray[],int start,int length)throws SAXException{
 					if(checkAuth && checkCat){
 						String temp = new String(chArray,start,length); 
-						author.add(temp);
+						join = join + temp;
 						for(String x : auth){
-							if(x.equalsIgnoreCase(temp)){
+							if(x.equalsIgnoreCase(join)){
 								checkforall = true;
 							}
 						}
@@ -97,6 +99,7 @@ public class XmlHandlerTitleForAuthor implements Runnable{
 					}
 					else if(qname.equals("author")){
 						checkAuth = false;
+						author.add(join);
 					}
 				}
 			};

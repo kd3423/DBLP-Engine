@@ -28,8 +28,13 @@ public class Query1_GUI{
 	private JRadioButton sort_year= new JRadioButton("Sort by Year");
 	private JRadioButton sort_relevence = new JRadioButton("Sort by Relevence");
 	private ButtonGroup buttons = new ButtonGroup();
+	private JFrame error = new JFrame("Error Searching");
 	public int cache;
 	public Query1_GUI(JPanel panel){
+		error.setSize(300, 100);
+		error.setVisible(false);
+		error.setLocationRelativeTo(null);
+	    error.add(new JLabel(new ImageIcon("error.png"), JLabel.CENTER));
 		query1_panel.setVisible(false);
 		query1_panel.setBounds(0,125,250,270);
 		drop.setBounds(25,20,200,30);
@@ -99,11 +104,8 @@ public class Query1_GUI{
 				}},1000,1000);
 			}
 			else{
-				JFrame error = new JFrame("Error Searching");
-				error.setSize(300, 100);
 				error.setVisible(true);
-				error.setLocationRelativeTo(null);
-			    error.add(new JLabel(new ImageIcon("error.png"), JLabel.CENTER));
+				cache = 1;
 			}
 		}
 		else if(drop.getSelectedItem().equals("Search by Title")){	
@@ -134,6 +136,10 @@ public class Query1_GUI{
 							e.printStackTrace();
 						}
 				}},1000,1000);
+			}
+			else{
+				error.setVisible(true);
+				cache = 1;
 			}
 		}
 	}
