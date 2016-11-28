@@ -49,7 +49,7 @@ public class DBLP_GUI extends JFrame{
 						timer.schedule(new TimerTask(){
 							public void run() {
 								counter();
-								update();
+								update(data,columnNames,true);
 							}
 						}, 23500);
 					} catch (InterruptedException | IOException e) {
@@ -99,7 +99,7 @@ public class DBLP_GUI extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 				k=k+20;
 				if(k<=count){
-					update();
+					update(data,columnNames,true);
 				}
 				else if(k > count){
 					k=k-20;
@@ -110,7 +110,7 @@ public class DBLP_GUI extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 				if(k != 0){
 					k=k-20;
-					update();
+					update(data,columnNames,true);
 				}
 			}
 		});
@@ -142,6 +142,7 @@ public class DBLP_GUI extends JFrame{
 				}
 				else if(((JComboBox<String>) e.getSource()).getSelectedItem().equals("Query 2")){
 					query2();
+					
 				}
 				else if(((JComboBox<String>) e.getSource()).getSelectedItem().equals("Query 3")){
 					query3();
@@ -150,11 +151,15 @@ public class DBLP_GUI extends JFrame{
 	}
 	
 	void query1(){
+		update(data,columnNames,true);
 		query1.query1_add();
 		query2.query2_remove();
 		query3.query3_remove();
 	}
 	void query2(){
+		Object [] columnNames = {"No of Publications","Authors"};
+		Object[][] data = new Object[20][2];
+		update(data,columnNames,false);
 		query2.query2_add();
 		query1.query1_remove();
 		query3.query3_remove();
@@ -180,8 +185,7 @@ public class DBLP_GUI extends JFrame{
 			e.printStackTrace();
 		}
 	}
-	public Object[][] reader(){
-		Object[][] data = new Object[20][7];
+	public Object[][] reader(Object[][] data){
 		try{
 			BufferedReader read = new BufferedReader(new FileReader("sort.txt"));
 			for(int i = 0;i<k;i++){
@@ -200,12 +204,14 @@ public class DBLP_GUI extends JFrame{
 		}
 		return data;
 	}
-	public void update(){
+	public void update(Object[][] data,Object[] columnNames,boolean x){
 		no.setText("No. of results:"+count);
 		panel2.remove(pane);
-		data = reader();
+		data = reader(data);
 		table = new JTable(data, columnNames);
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		if(x){
+			table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		}
 		pane = new JScrollPane(table);
 		pane.setBounds(0,0,525,360);
 		panel2.add(pane);
