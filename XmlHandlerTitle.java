@@ -1,22 +1,27 @@
 import org.xml.sax.Attributes; //org.xml.sax package defines all the interfaces used for the SAX parser
 import org.xml.sax.helpers.DefaultHandler; // DefaultHandler class that will handle the SAX events that the parser generates
 import org.xml.sax.SAXException;
-import org.xml.sax.XMLReader;
-import org.xml.sax.helpers.XMLReaderFactory;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.*;
 import java.util.*;
-public class XmlHandlerTitle{
+public class XmlHandlerTitle implements Runnable{
 	private ArrayList<String> author = new ArrayList<>();	
-	public void findTitle(String str){
+	private String str;
+	public XmlHandlerTitle(String x){
+		this.str = x;
+	}
+	public void findTitle(){
 		try{
+			System.setProperty("jdk.xml.entityExpansionLimit", "0");
+			PrintWriter write = new PrintWriter( new BufferedWriter( new FileWriter ( "Ref.txt") ) );
+			write.close();
 			SAXParserFactory fac = SAXParserFactory.newInstance();
 			SAXParser saxTheFile = fac.newSAXParser();
 			DefaultHandler defHandler = new DefaultHandler(){
 				String title,pages,url,volume,year,snum;
 				int counter=0;
-				boolean titleCheck = false,relcheck=false,volCheck = false,yearCheck = false,urlCheck = false,checkAuth = false,check = false,pagesCheck = false,checkforall = false,checkCat = true;
+				boolean titleCheck = false,relcheck=false,volCheck = false,yearCheck = false,urlCheck = false,checkAuth = false,pagesCheck = false,checkCat = true;
 				public void startElement(String uri,String localName,String qname,Attributes att)throws SAXException{
 					if(qname.equals("www")){
 						checkCat = false;
@@ -87,7 +92,7 @@ public class XmlHandlerTitle{
 						if(relcheck){
 							snum = Integer.toString(counter);
 							counter = 0;
-							write(snum,author,title,url,year,pages,volume);
+							writer(snum,author,title,url,year,pages,volume);
 							relcheck = false;
 						}
 						author.clear();
@@ -106,16 +111,21 @@ public class XmlHandlerTitle{
 					}
 				}
 			};
-			saxTheFile.parse("/home/karan/Desktop/Java/Xml/dblp.xml",defHandler);
+			saxTheFile.parse("dblp.xml",defHandler);
 		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
 	}
-	private void write(String snum,ArrayList<String> author,String title , String url,String year,String pages,String volume){
+	private void writer(String snum, ArrayList<String> author,String title , String url,String year,String pages,String volume){
 		try{
-			PrintWriter write = new PrintWriter( new BufferedWriter( new FileWriter ( "TitleSearch.txt",true) ) );
-			write.print(snum +","+author + "," + title + "," + pages + "," + year + ","+ volume+ "," + url + "\n");
+			PrintWriter write = new PrintWriter( new BufferedWriter( new FileWriter ("Ref.txt",true) ) );
+			String z = "";
+			for(String e : author){
+				z = z + e;
+				z = z + " | ";
+			}
+			write.print( snum +"#"+ z + "#" + title + "#" + pages + "#" + year + "#"+ volume+ "#" + url + "\n");
 			write.flush();
 			write.close();
 		}
@@ -123,5 +133,42 @@ public class XmlHandlerTitle{
 		{
 			e.printStackTrace();
 		}
+	}
+	public void sort(){
+		try{
+			List<ArrayList<String>> csvLines = new ArrayList<ArrayList<String>>();
+			Comparator<ArrayList<String>> comp = new Comparator<ArrayList<String>>() {
+			    public int compare(ArrayList<String> csvLine1, ArrayList<String> csvLine2) {
+			    	int x = Integer.valueOf(csvLine1.get(4)).compareTo(Integer.valueOf(csvLine2.get(4)));
+			        return -x;
+			    }
+			};
+			BufferedReader read = new BufferedReader(new FileReader("Ref.txt"));
+	    	String call;
+			while((call = read.readLine())!= null){
+			ArrayList<String> temp = new ArrayList<String>();
+			String[] x = call.split("#");
+			for(int i = 0;i<x.length;i++){
+				temp.add(x[i]);
+			}
+			csvLines.add(temp);
+			}
+	    	read.close();
+	    	Collections.sort(csvLines,comp);
+	    	PrintWriter write = new PrintWriter( new BufferedWriter( new FileWriter ( "Ref.txt") ) );
+	    	for(int i = 0;i<csvLines.size();i++){
+	    		write.print((i+1)+"#"+csvLines.get(i).get(1)+ "#" +csvLines.get(i).get(2)+ "#" +csvLines.get(i).get(3)+ "#" + csvLines.get(i).get(4) + "#"+ csvLines.get(i).get(5)+ "#" + csvLines.get(i).get(6)+ "\n");
+	    		write.flush();
+	    	}
+			write.close();
+		}	catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		}
+	@Override
+	public void run() {
+		findTitle();
+		sort();
 	}
 }

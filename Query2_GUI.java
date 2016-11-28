@@ -8,7 +8,6 @@ public class Query2_GUI {
 	private JLabel publication = new JLabel("No of Publications");
 	private JTextField text_publication = new JTextField();
 	public Query2_GUI(JPanel panel){
-		
 		query2_panel.setVisible(false);
 		query2_panel.setBounds(0,125,250,270);
 		publication.setBounds(30,65,175,30);
@@ -17,13 +16,15 @@ public class Query2_GUI {
 		query2_panel.add(publication);
 		query2_panel.add(text_publication);
 		panel.add(query2_panel);
-		panel.repaint();
 	}
 	public void query2_remove(){
 		query2_panel.setVisible(false);
 	}
 	public void query2_add(){
 		query2_panel.setVisible(true);
+	}
+	public void query2_reset(){
+		text_publication.setText("");
 	}
 	
 }

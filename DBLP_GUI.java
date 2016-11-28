@@ -17,11 +17,14 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 public class DBLP_GUI extends JFrame{
+	private int count=0;
 	private JPanel panel = new JPanel(null);
 	private JLabel label = new JLabel("DBLP Query Engine");
+	private JLabel no = new JLabel("No. of results:"+count);
 	private JComboBox<String> dropdown = new JComboBox<String>();
 	private Query1_GUI query1;
 	private Query2_GUI query2;
+	private Query3_GUI query3;
 	private JPanel panel2 = new JPanel(null);
 	private JButton next = new JButton("Next->>");
 	private JButton prev = new JButton("<<-Prev");
@@ -30,26 +33,25 @@ public class DBLP_GUI extends JFrame{
 	private Object[] columnNames = {"Sno","Author","Title","Pages","Year","Volume","URL"};
 	private JTable table;
 	private JScrollPane pane;
-	private int count=0;
 	private JButton reset  = new JButton(new AbstractAction("Reset"){
-		@Override
 		public void actionPerformed(ActionEvent e) {
-			reset();
+			query1.query1_reset();
+			query2.query2_reset();
+			query3.query3_reset();
 		}
 	});
 	private JButton search  = new JButton(new AbstractAction("Search"){
-		@Override
 		public void actionPerformed(ActionEvent arg0) {
 				if(dropdown.getSelectedItem().equals("Query 1")){
 					try {
 						query1.query1_search();
 						Timer timer = new Timer();
 						timer.schedule(new TimerTask(){
-							@Override
 							public void run() {
+								counter();
 								update();
 							}
-						}, 20100);
+						}, 23500);
 					} catch (InterruptedException | IOException e) {
 						e.printStackTrace();
 					}
@@ -70,6 +72,8 @@ public class DBLP_GUI extends JFrame{
 		pane.setBounds(0,0,525,360);
 		panel2.add(pane);
 		prev.setBounds(300,450,100, 30);
+		no.setFont(new Font("Courier New",Font.PLAIN,15));
+		no.setBounds(450,450,150,30);
 		prev.setBackground(Color.white);
 		next.setBounds(650,450,100, 30);
 		next.setBackground(Color.white);
@@ -77,8 +81,8 @@ public class DBLP_GUI extends JFrame{
 		query1 = new Query1_GUI(panel);
 		query1.query1_add();
 		query2 = new Query2_GUI(panel);
+		query3 = new Query3_GUI(panel);
 		panel2.setBounds(260,80,525,360);
-		reset();
 		panel.add(panel2);
 		panel.add(label);
 		panel.add(prev);
@@ -86,6 +90,7 @@ public class DBLP_GUI extends JFrame{
 		panel.add(dropdown);
 		panel.add(search);
 		panel.add(reset);
+		panel.add(no);
 		reset.setBounds(150,400,100,30);
 		reset.setBackground(Color.white);
 		search.setBounds(20,400,100,30); 
@@ -103,8 +108,10 @@ public class DBLP_GUI extends JFrame{
 		});
 		prev.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				if(k != 0) k=k-20;
-				update();
+				if(k != 0){
+					k=k-20;
+					update();
+				}
 			}
 		});
 		setSize(800, 500);
@@ -119,7 +126,7 @@ public class DBLP_GUI extends JFrame{
 			Thread x = new Thread(xml_author);
 			x.start();
 			Loading loader = new Loading(40);
-			loader.run();
+			loader.start();
 		}
 	}
 	void Dropdown(){		
@@ -145,30 +152,45 @@ public class DBLP_GUI extends JFrame{
 	void query1(){
 		query1.query1_add();
 		query2.query2_remove();
+		query3.query3_remove();
 	}
 	void query2(){
 		query2.query2_add();
 		query1.query1_remove();
+		query3.query3_remove();
 	}
 	void query3(){
 		query1.query1_remove();
+		query2.query2_remove();
+		query3.query3_add();
 	}
 	public static void main(String[] args) throws IOException{
 		new DBLP_GUI();
+	}
+	public void counter(){
+		int i = 0;
+		try {
+			BufferedReader read = new BufferedReader(new FileReader("sort.txt"));
+			while((read.readLine())!= null){
+				i++;
+			}
+			count = i;
+			read.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	public Object[][] reader(){
 		Object[][] data = new Object[20][7];
 		try{
 			BufferedReader read = new BufferedReader(new FileReader("sort.txt"));
 			for(int i = 0;i<k;i++){
-				String x[] = read.readLine().split("#");
+				read.readLine().split("#");
 			}
 			for(int i = 0;i<20;i++){
 				String call;
 				if((call = read.readLine())!= null){
-					String x[] = call.split("#");
-					if(count<Integer.parseInt(x[0]))count = Integer.parseInt(x[0]);
-					data[i] = x;
+					data[i] = call.split("#");
 				}
 			}
 			read.close();
@@ -179,6 +201,7 @@ public class DBLP_GUI extends JFrame{
 		return data;
 	}
 	public void update(){
+		no.setText("No. of results:"+count);
 		panel2.remove(pane);
 		data = reader();
 		table = new JTable(data, columnNames);
@@ -187,8 +210,5 @@ public class DBLP_GUI extends JFrame{
 		pane.setBounds(0,0,525,360);
 		panel2.add(pane);
 		panel2.repaint();
-	}
-	public void reset(){
-		query1.query1_reset();
 	}
 }

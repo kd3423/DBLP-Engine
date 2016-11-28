@@ -17,8 +17,8 @@ public class Search{
 		xml_title.setAuthor(author);;
 		Thread t = new Thread(xml_title);
 		t.start();
-		Loading load = new Loading(20);
-		load.run();
+		Loading load = new Loading(23);
+		load.start();
 	}
 	private ArrayList<String> getAuthor(String x) throws IOException{
 		ArrayList<String> author =new ArrayList<String>();

@@ -10,7 +10,7 @@ public class Loading{
 	public Loading(int x){
 		this.x = x*1000;
 	}
-	public void run(){
+	public void start(){
 		JFrame load = new JFrame("Loading");
 		load.setSize(300, 100);
 		load.setVisible(true);
@@ -21,7 +21,7 @@ public class Loading{
 		timer.schedule(new TimerTask(){
 			@Override
 			public void run() {
-				load.setVisible(false);
+				load.dispose();
 			}
 		}, x);
 	}

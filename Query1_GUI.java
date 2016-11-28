@@ -10,7 +10,6 @@ import java.util.TimerTask;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -23,18 +22,16 @@ public class Query1_GUI{
 	private JLabel year = new JLabel("Since Year");
 	private JLabel range = new JLabel("Custom Range            -");
 	private JTextField text_name = new JTextField();
-	private JTextField text_year = new JFormattedTextField();
-	private JTextField text_range1 = new JFormattedTextField();
-	private JTextField text_range2 = new JFormattedTextField();
-	private JRadioButton sort_date= new JRadioButton("Sort by Date");
-	private JRadioButton sort_year = new JRadioButton("Sort by Since Year");
+	private JTextField text_year = new JTextField();
+	private JTextField text_range1 = new JTextField();
+	private JTextField text_range2 = new JTextField();
+	private JRadioButton sort_year= new JRadioButton("Sort by Year");
 	private JRadioButton sort_relevence = new JRadioButton("Sort by Relevence");
-	private JRadioButton sort_bt_year = new JRadioButton("Sort in between two years");
 	private ButtonGroup buttons = new ButtonGroup();
 	public Query1_GUI(JPanel panel){
 		query1_panel.setVisible(false);
 		query1_panel.setBounds(0,125,250,270);
-		drop.setBounds(25,20,175,30);
+		drop.setBounds(25,20,200,30);
 		drop.setBackground(Color.white);
 		name.setBounds(30,65,175,30);
 		name.setFont(new Font("Courier New", Font.PLAIN, 15));
@@ -46,17 +43,13 @@ public class Query1_GUI{
 		range.setFont(new Font("Courier New", Font.PLAIN, 15));
 		text_range1.setBounds(150,135,45,30);
 		text_range2.setBounds(205,135,45,30);
-		sort_date.setBounds(20,180,150,20);
-		sort_year.setBounds(20,200,200,20);
+		sort_year.setBounds(20,180,150,20);
 		sort_relevence.setBounds(20,220,200,20);
-		sort_bt_year.setBounds(20,240,220,20);	
 		drop.addItem("Search by Author Name");
 		drop.addItem("Search by Title");
-		buttons.add(sort_bt_year);
-		buttons.add(sort_date);
-		sort_date.setSelected(true);
-		buttons.add(sort_relevence);
 		buttons.add(sort_year);
+		sort_year.setSelected(true);
+		buttons.add(sort_relevence);
 		query1_panel.add(drop);
 		query1_panel.add(name);
 		query1_panel.add(year);
@@ -65,10 +58,8 @@ public class Query1_GUI{
 		query1_panel.add(text_year);
 		query1_panel.add(text_range1);
 		query1_panel.add(text_range2);
-		query1_panel.add(sort_date);
 		query1_panel.add(sort_year);
 		query1_panel.add(sort_relevence);
-		query1_panel.add(sort_bt_year);
 		panel.add(query1_panel);
 		panel.repaint();
 	}
@@ -80,19 +71,14 @@ public class Query1_GUI{
 	}
 	public void query1_search() throws InterruptedException, IOException{
 		int x;
-		if(!(text_name.equals(""))){
-			if(sort_year.isSelected() && !(text_year.getText().equals(""))) x = 2;
-			else if(sort_date.isSelected()) x = 1;
-			else if(sort_bt_year.isSelected() && !(text_range1.getText().equals("")) && !(text_range2.getText().equals("")))x = 4;
-			else{
-				x = 0;
-				JFrame error = new JFrame("Error Searching");
-				error.setSize(300, 100);
-				error.setVisible(true);
-				error.setLocationRelativeTo(null);
-			    error.add(new JLabel(new ImageIcon("error.png"), JLabel.CENTER));
-			}
-			if(x != 0){
+		if(drop.getSelectedItem().equals("Search by Author Name")){
+			if(!(text_name.getText().equals(""))){
+				if(!(text_year.getText().equals(""))) x = 2;
+				else if(!(text_range1.getText().equals("")) && !(text_range2.getText().equals("")))x = 4;
+				else if(sort_year.isSelected()) x = 1;
+				else{
+					x = 0;
+				}
 				new Search(text_name.getText());
 				Timer timer = new Timer();
 				timer.schedule(new TimerTask(){
@@ -103,7 +89,39 @@ public class Query1_GUI{
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
-					}}, 20000);
+				}}, 23000);
+			}
+			else{
+				JFrame error = new JFrame("Error Searching");
+				error.setSize(300, 100);
+				error.setVisible(true);
+				error.setLocationRelativeTo(null);
+			    error.add(new JLabel(new ImageIcon("error.png"), JLabel.CENTER));
+			}
+		}
+		else if(drop.getSelectedItem().equals("Search by Title")){	
+			if(!(text_name.getText().equals(""))){
+				if(!(text_year.getText().equals(""))) x = 2;
+				else if(!(text_range1.getText().equals("")) && !(text_range2.getText().equals("")))x = 4;
+				else if(sort_year.isSelected()) x = 1;
+				else{
+					x = 0;
+				}
+				XmlHandlerTitle title = new XmlHandlerTitle(text_name.getText());
+				Thread t = new Thread(title);
+				t.start();
+				Loading loader = new Loading(23);
+				loader.start();;
+				Timer timer = new Timer();
+				timer.schedule(new TimerTask(){
+					@Override
+					public void run() {
+						try {
+							SortSelect(x);
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				}}, 23000);
 			}
 		}
 	}
@@ -116,19 +134,22 @@ public class Query1_GUI{
 			String[] z = call.split("#");
 			if(x == 1){
 				write.write(i +"#"+ z[1] + "#" + z[2] + "#" + z[3] + "#" + z[4] + "#"+ z[5] + "#" + z[6] + "\n");
+				write.flush();
 				i++;
 			}
-			if(x == 2){
+			else if(x == 2){
 				int year = Integer.parseInt(text_year.getText());
 				if(year <= Integer.parseInt(z[4])){
 					write.write(i+"#"+ z[1] + "#" + z[2] + "#" + z[3] + "#" + z[4] + "#"+ z[5] + "#" + z[6] + "\n");
+					write.flush();
 					i++;
 				}
 			}
-			if(x == 4){
+			else if(x == 4){
 				int year1 = Integer.parseInt(text_range1.getText()),year2 = Integer.parseInt(text_range2.getText());
 				if(year1 <= Integer.parseInt(z[4]) && Integer.parseInt(z[4]) <= year2){
 					write.write(i +"#"+ z[1] + "#" + z[2] + "#" + z[3] + "#" + z[4] + "#"+ z[5] + "#" + z[6] + "\n");
+					write.flush();
 					i++;
 				}
 			}
@@ -141,6 +162,6 @@ public class Query1_GUI{
 		text_range1.setText("");
 		text_range2.setText("");
 		text_year.setText("");
-		sort_date.setSelected(true);
+		sort_year.setSelected(true);
 	}
 }
