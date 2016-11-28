@@ -33,6 +33,8 @@ public class DBLP_GUI extends JFrame{
 	private Object[] columnNames = {"Sno","Author","Title","Pages","Year","Volume","URL"};
 	private JTable table;
 	private JScrollPane pane;
+	private int flag = 0;
+	private Loading load = new Loading();
 	private JButton reset  = new JButton(new AbstractAction("Reset"){
 		public void actionPerformed(ActionEvent e) {
 			query1.query1_reset();
@@ -44,14 +46,25 @@ public class DBLP_GUI extends JFrame{
 		public void actionPerformed(ActionEvent arg0) {
 				if(dropdown.getSelectedItem().equals("Query 1")){
 					try {
-						query1.query1_search();
-						Timer timer = new Timer();
-						timer.schedule(new TimerTask(){
-							public void run() {
-								counter();
-								update(data,columnNames,true);
-							}
-						}, 23500);
+						if(flag == 0){
+							flag = 1;
+							k = 0;
+							load.start();
+							query1.query1_search();
+							Timer timer = new Timer();
+							timer.schedule(new TimerTask(){
+								public void run() {
+									if(query1.cache == 1){
+										counter();
+										update();
+										load.stop();
+										flag = 0;
+										timer.cancel();
+									}
+								}
+							}, 1000,1000);
+						}
+						
 					} catch (InterruptedException | IOException e) {
 						e.printStackTrace();
 					}
@@ -73,7 +86,7 @@ public class DBLP_GUI extends JFrame{
 		panel2.add(pane);
 		prev.setBounds(300,450,100, 30);
 		no.setFont(new Font("Courier New",Font.PLAIN,15));
-		no.setBounds(450,450,150,30);
+		no.setBounds(450,450,200,30);
 		prev.setBackground(Color.white);
 		next.setBounds(650,450,100, 30);
 		next.setBackground(Color.white);
@@ -99,7 +112,7 @@ public class DBLP_GUI extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 				k=k+20;
 				if(k<=count){
-					update(data,columnNames,true);
+					update();
 				}
 				else if(k > count){
 					k=k-20;
@@ -110,7 +123,7 @@ public class DBLP_GUI extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 				if(k != 0){
 					k=k-20;
-					update(data,columnNames,true);
+					update();
 				}
 			}
 		});
@@ -125,8 +138,16 @@ public class DBLP_GUI extends JFrame{
 			XmlHandlerAuthor xml_author = new XmlHandlerAuthor();
 			Thread x = new Thread(xml_author);
 			x.start();
-			Loading loader = new Loading(40);
-			loader.start();
+			load.start();
+			Timer timer = new Timer();
+			timer.schedule(new TimerTask(){
+				public void run() {
+					if(xml_author.working == 1){
+						load.stop();
+						timer.cancel();
+					}
+				}
+			}, 1000,1000);
 		}
 	}
 	void Dropdown(){		
@@ -142,7 +163,6 @@ public class DBLP_GUI extends JFrame{
 				}
 				else if(((JComboBox<String>) e.getSource()).getSelectedItem().equals("Query 2")){
 					query2();
-					
 				}
 				else if(((JComboBox<String>) e.getSource()).getSelectedItem().equals("Query 3")){
 					query3();
@@ -151,15 +171,11 @@ public class DBLP_GUI extends JFrame{
 	}
 	
 	void query1(){
-		update(data,columnNames,true);
 		query1.query1_add();
 		query2.query2_remove();
 		query3.query3_remove();
 	}
 	void query2(){
-		Object [] columnNames = {"No of Publications","Authors"};
-		Object[][] data = new Object[20][2];
-		update(data,columnNames,false);
 		query2.query2_add();
 		query1.query1_remove();
 		query3.query3_remove();
@@ -185,16 +201,17 @@ public class DBLP_GUI extends JFrame{
 			e.printStackTrace();
 		}
 	}
-	public Object[][] reader(Object[][] data){
+	public Object[][] reader(){
+		Object[][] data = new Object[20][7];
 		try{
 			BufferedReader read = new BufferedReader(new FileReader("sort.txt"));
 			for(int i = 0;i<k;i++){
-				read.readLine().split("#");
+				read.readLine().split("~");
 			}
 			for(int i = 0;i<20;i++){
 				String call;
 				if((call = read.readLine())!= null){
-					data[i] = call.split("#");
+					data[i] = call.split("~");
 				}
 			}
 			read.close();
@@ -204,14 +221,12 @@ public class DBLP_GUI extends JFrame{
 		}
 		return data;
 	}
-	public void update(Object[][] data,Object[] columnNames,boolean x){
+	public void update(){
 		no.setText("No. of results:"+count);
 		panel2.remove(pane);
-		data = reader(data);
+		data = reader();
 		table = new JTable(data, columnNames);
-		if(x){
-			table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		}
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		pane = new JScrollPane(table);
 		pane.setBounds(0,0,525,360);
 		panel2.add(pane);

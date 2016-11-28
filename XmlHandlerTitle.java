@@ -8,11 +8,15 @@ import java.util.*;
 public class XmlHandlerTitle implements Runnable{
 	private ArrayList<String> author = new ArrayList<>();	
 	private String str;
-	public XmlHandlerTitle(String x){
+	private int type;
+	public volatile int working;
+	public XmlHandlerTitle(String x,int y){
 		this.str = x;
+		this.type = y;
 	}
 	public void findTitle(){
 		try{
+			working = 0;
 			System.setProperty("jdk.xml.entityExpansionLimit", "0");
 			PrintWriter write = new PrintWriter( new BufferedWriter( new FileWriter ( "Ref.txt") ) );
 			write.close();
@@ -60,6 +64,7 @@ public class XmlHandlerTitle implements Runnable{
 								String titleArray [] = title.split(" ");
 								int j;
 								for(j=0;j<titleArray.length;j++){
+									titleArray[j] = titleArray[j].replace(".",""); 
 									if(titleArray[j].equalsIgnoreCase(tempArray[i])){
 										counter++;
 									}
@@ -125,7 +130,7 @@ public class XmlHandlerTitle implements Runnable{
 				z = z + e;
 				z = z + " | ";
 			}
-			write.print( snum +"#"+ z + "#" + title + "#" + pages + "#" + year + "#"+ volume+ "#" + url + "\n");
+			write.print( snum +"~"+ z + "~" + title + "~" + pages + "~" + year + "~"+ volume+ "~" + url + "\n");
 			write.flush();
 			write.close();
 		}
@@ -139,7 +144,7 @@ public class XmlHandlerTitle implements Runnable{
 			List<ArrayList<String>> csvLines = new ArrayList<ArrayList<String>>();
 			Comparator<ArrayList<String>> comp = new Comparator<ArrayList<String>>() {
 			    public int compare(ArrayList<String> csvLine1, ArrayList<String> csvLine2) {
-			    	int x = Integer.valueOf(csvLine1.get(4)).compareTo(Integer.valueOf(csvLine2.get(4)));
+			    	int x = Integer.valueOf(csvLine1.get(type)).compareTo(Integer.valueOf(csvLine2.get(type)));
 			        return -x;
 			    }
 			};
@@ -147,7 +152,7 @@ public class XmlHandlerTitle implements Runnable{
 	    	String call;
 			while((call = read.readLine())!= null){
 			ArrayList<String> temp = new ArrayList<String>();
-			String[] x = call.split("#");
+			String[] x = call.split("~");
 			for(int i = 0;i<x.length;i++){
 				temp.add(x[i]);
 			}
@@ -157,18 +162,22 @@ public class XmlHandlerTitle implements Runnable{
 	    	Collections.sort(csvLines,comp);
 	    	PrintWriter write = new PrintWriter( new BufferedWriter( new FileWriter ( "Ref.txt") ) );
 	    	for(int i = 0;i<csvLines.size();i++){
-	    		write.print((i+1)+"#"+csvLines.get(i).get(1)+ "#" +csvLines.get(i).get(2)+ "#" +csvLines.get(i).get(3)+ "#" + csvLines.get(i).get(4) + "#"+ csvLines.get(i).get(5)+ "#" + csvLines.get(i).get(6)+ "\n");
+	    		write.print(csvLines.get(i).get(0)+"~"+csvLines.get(i).get(1)+ "~" +csvLines.get(i).get(2)+ "~" +csvLines.get(i).get(3)+ "~" + csvLines.get(i).get(4) + "~"+ csvLines.get(i).get(5)+ "~" + csvLines.get(i).get(6)+ "\n");
 	    		write.flush();
 	    	}
 			write.close();
-		}	catch(Exception e)
-		{
+			}	
+			catch(Exception e){
 			e.printStackTrace();
-		}
+			}
+			finally{
+				
+			}
 		}
 	@Override
 	public void run() {
 		findTitle();
 		sort();
+		working = 1;
 	}
 }

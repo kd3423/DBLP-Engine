@@ -8,8 +8,10 @@ import java.util.*;
 public class XmlHandlerTitleForAuthor implements Runnable{
 	private ArrayList<String> auth;
 	private ArrayList<String> author = new ArrayList<>();	
+	public volatile int working;
 	public void fillFile(){
 		try{
+			working = 0;
 			System.setProperty("jdk.xml.entityExpansionLimit", "0");
 			PrintWriter write = new PrintWriter( new BufferedWriter( new FileWriter ( "Ref.txt") ) );
 			write.close();
@@ -112,7 +114,7 @@ public class XmlHandlerTitleForAuthor implements Runnable{
 				z = z + e;
 				z = z + " | ";
 			}
-			write.print( snum +"#"+ z + "#" + title + "#" + pages + "#" + year + "#"+ volume+ "#" + url + "\n");
+			write.print( snum +"~"+ z + "~" + title + "~" + pages + "~" + year + "~"+ volume+ "~" + url + "\n");
 			write.flush();
 			write.close();
 		}
@@ -134,7 +136,7 @@ public class XmlHandlerTitleForAuthor implements Runnable{
 	    	String call;
 			while((call = read.readLine())!= null){
 			ArrayList<String> temp = new ArrayList<String>();
-			String[] x = call.split("#");
+			String[] x = call.split("~");
 			for(int i = 0;i<x.length;i++){
 				temp.add(x[i]);
 			}
@@ -144,13 +146,16 @@ public class XmlHandlerTitleForAuthor implements Runnable{
 	    	Collections.sort(csvLines,comp);
 	    	PrintWriter write = new PrintWriter( new BufferedWriter( new FileWriter ( "Ref.txt") ) );
 	    	for(int i = 0;i<csvLines.size();i++){
-	    		write.print((i+1)+"#"+csvLines.get(i).get(1)+ "#" +csvLines.get(i).get(2)+ "#" +csvLines.get(i).get(3)+ "#" + csvLines.get(i).get(4) + "#"+ csvLines.get(i).get(5)+ "#" + csvLines.get(i).get(6)+ "\n");
+	    		write.print((i+1)+"~"+csvLines.get(i).get(1)+ "~" +csvLines.get(i).get(2)+ "~" +csvLines.get(i).get(3)+ "~" + csvLines.get(i).get(4) + "~"+ csvLines.get(i).get(5)+ "~" + csvLines.get(i).get(6)+ "\n");
 	    		write.flush();
 	    	}
 			write.close();
 		}	catch(Exception e)
 		{
 			e.printStackTrace();
+		}
+		finally{
+			working = 1;
 		}
 		}
 public void setAuthor(ArrayList<String> z){

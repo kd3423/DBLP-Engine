@@ -1,8 +1,6 @@
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -11,14 +9,23 @@ import java.util.TimerTask;
 import javax.swing.*;
 public class Search{
 	private ArrayList<String> author = new ArrayList<String>();
+	public volatile int working;
 	public Search(String x) throws InterruptedException, IOException{
+		working  = 0;
 		XmlHandlerTitleForAuthor xml_title = new XmlHandlerTitleForAuthor();
 		author = getAuthor(x);
 		xml_title.setAuthor(author);;
 		Thread t = new Thread(xml_title);
 		t.start();
-		Loading load = new Loading(23);
-		load.start();
+		Timer timer = new Timer();
+		timer.schedule(new TimerTask(){
+			public void run() {	
+				if(xml_title.working == 1){
+					working = xml_title.working;
+					timer.cancel();
+				}
+			}
+		},1000,1000);
 	}
 	private ArrayList<String> getAuthor(String x) throws IOException{
 		ArrayList<String> author =new ArrayList<String>();
@@ -29,11 +36,18 @@ public class Search{
 			while((call = read.readLine())!= null && flag == 0){
 				String[] z = call.split("#");
 				for(String e: z){
-					if(e.equals(x)){
+					String[] k = e.split(" ");
+					for(String m:k){
+						if(m.equalsIgnoreCase(x)){
+							for(String q: z){
+								author.add(q);
+							}
+						}
+					}
+					if(e.equalsIgnoreCase(x)){
 						for(String q: z){
 							author.add(q);
 						}
-						flag = 1;
 					}
 				}
 			}
@@ -44,3 +58,4 @@ public class Search{
 		return author;
 	}
 }
+

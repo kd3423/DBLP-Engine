@@ -7,8 +7,10 @@ import java.io.*;
 import java.util.*;
 public class XmlHandlerAuthor implements Runnable{
 	private ArrayList<String> author = new ArrayList<>();	
+	public volatile int working;
 	public void findAuth(){
 		try{
+			working = 0;
 			System.setProperty("jdk.xml.entityExpansionLimit", "0");
 			SAXParserFactory fac = SAXParserFactory.newInstance();
 			SAXParser saxTheFile = fac.newSAXParser();
@@ -67,6 +69,9 @@ public class XmlHandlerAuthor implements Runnable{
 		}
 		catch(Exception e){
 			e.printStackTrace();
+		}
+		finally{
+			working = 1;
 		}
 	}
 	private void writer(String snum,ArrayList<String> author){

@@ -28,6 +28,7 @@ public class Query1_GUI{
 	private JRadioButton sort_year= new JRadioButton("Sort by Year");
 	private JRadioButton sort_relevence = new JRadioButton("Sort by Relevence");
 	private ButtonGroup buttons = new ButtonGroup();
+	public int cache;
 	public Query1_GUI(JPanel panel){
 		query1_panel.setVisible(false);
 		query1_panel.setBounds(0,125,250,270);
@@ -71,6 +72,7 @@ public class Query1_GUI{
 	}
 	public void query1_search() throws InterruptedException, IOException{
 		int x;
+		cache = 0;
 		if(drop.getSelectedItem().equals("Search by Author Name")){
 			if(!(text_name.getText().equals(""))){
 				if(!(text_year.getText().equals(""))) x = 2;
@@ -79,17 +81,22 @@ public class Query1_GUI{
 				else{
 					x = 0;
 				}
-				new Search(text_name.getText());
+				Search temp = new Search(text_name.getText());
 				Timer timer = new Timer();
 				timer.schedule(new TimerTask(){
 					@Override
 					public void run() {
 						try {
-							SortSelect(x);
+							if(temp.working == 1){
+								SortSelect(x);
+								cache = 1;
+								timer.cancel();
+							}
+							
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
-				}}, 23000);
+				}},1000,1000);
 			}
 			else{
 				JFrame error = new JFrame("Error Searching");
@@ -101,27 +108,32 @@ public class Query1_GUI{
 		}
 		else if(drop.getSelectedItem().equals("Search by Title")){	
 			if(!(text_name.getText().equals(""))){
+				int temp = 4;
 				if(!(text_year.getText().equals(""))) x = 2;
 				else if(!(text_range1.getText().equals("")) && !(text_range2.getText().equals("")))x = 4;
 				else if(sort_year.isSelected()) x = 1;
+				else if(sort_relevence.isSelected()){temp = 0;x=1;}
 				else{
 					x = 0;
 				}
-				XmlHandlerTitle title = new XmlHandlerTitle(text_name.getText());
+				XmlHandlerTitle title = new XmlHandlerTitle(text_name.getText(),temp);
 				Thread t = new Thread(title);
 				t.start();
-				Loading loader = new Loading(23);
-				loader.start();;
 				Timer timer = new Timer();
 				timer.schedule(new TimerTask(){
 					@Override
 					public void run() {
 						try {
-							SortSelect(x);
+							if(title.working == 1){
+								SortSelect(x);
+								cache = 1;
+								timer.cancel();
+							}
+							
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
-				}}, 23000);
+				}},1000,1000);
 			}
 		}
 	}
@@ -131,24 +143,27 @@ public class Query1_GUI{
 		String call;
 		int i = 1;
 		while((call = read.readLine())!= null){
-			String[] z = call.split("#");
+			String[] z = call.split("~");
 			if(x == 1){
-				write.write(i +"#"+ z[1] + "#" + z[2] + "#" + z[3] + "#" + z[4] + "#"+ z[5] + "#" + z[6] + "\n");
+				write.write(i +"~"+ z[1] + "~" + z[2] + "~" + z[3] + "~" + z[4] + "~"+ z[5] + "~" + z[6] + "\n");
 				write.flush();
 				i++;
 			}
 			else if(x == 2){
 				int year = Integer.parseInt(text_year.getText());
 				if(year <= Integer.parseInt(z[4])){
-					write.write(i+"#"+ z[1] + "#" + z[2] + "#" + z[3] + "#" + z[4] + "#"+ z[5] + "#" + z[6] + "\n");
+					write.write(i +"~"+ z[1] + "~" + z[2] + "~" + z[3] + "~" + z[4] + "~"+ z[5] + "~" + z[6] + "\n");
 					write.flush();
 					i++;
 				}
 			}
+			else if(x == 3){
+				
+			}
 			else if(x == 4){
 				int year1 = Integer.parseInt(text_range1.getText()),year2 = Integer.parseInt(text_range2.getText());
 				if(year1 <= Integer.parseInt(z[4]) && Integer.parseInt(z[4]) <= year2){
-					write.write(i +"#"+ z[1] + "#" + z[2] + "#" + z[3] + "#" + z[4] + "#"+ z[5] + "#" + z[6] + "\n");
+					write.write(i +"~"+ z[1] + "~" + z[2] + "~" + z[3] + "~" + z[4] + "~"+ z[5] + "~" + z[6] + "\n");
 					write.flush();
 					i++;
 				}
