@@ -36,7 +36,7 @@ public class XmlHandlerAuthor implements Runnable{
 				public void characters(char chArray[],int start,int length)throws SAXException{
 					if(checkCat && checkAuth){
 						String auth = new String(chArray,start,length);
-						join = join+auth;
+						join = join + auth;
 						
 					}
 					else if(checkTitle){
@@ -49,6 +49,7 @@ public class XmlHandlerAuthor implements Runnable{
 					if(qname.equals("author")){
 						checkAuth = false;
 						temp.add(join);
+						System.out.println(join);
 					}
 					else if(qname.equals("www")){
 						if(checkString && check){
@@ -99,6 +100,6 @@ public class XmlHandlerAuthor implements Runnable{
 	}
 	@Override
 	public void run() {
-	findAuth();		
+		findAuth();		
 	}
 }

@@ -42,11 +42,12 @@ public class DBLP_GUI extends JFrame{
 	});
 	private JButton search  = new JButton(new AbstractAction("Search"){
 		public void actionPerformed(ActionEvent arg0) {
+			Timer timer = new Timer();
 				if(dropdown.getSelectedItem().equals("Query 1")){
 					try {
 						if(flag == 0){
 							flag = 1;k = 0;load.start();query1.query1_search();
-							Timer timer = new Timer();
+							
 							timer.schedule(new TimerTask(){
 								public void run() {
 									if(query1.cache == 1){
@@ -55,7 +56,23 @@ public class DBLP_GUI extends JFrame{
 								}
 							}, 1000,1000);
 						}
-						
+					} catch (InterruptedException | IOException e) {
+						e.printStackTrace();
+					}
+				}
+				else if(dropdown.getSelectedItem().equals("Query 3")){
+					try {
+						if(flag == 0){
+							flag = 1;k = 0;load.start();query3.query3_search();
+							
+							timer.schedule(new TimerTask(){
+								public void run() {
+									if(query3.cache == 1){
+										counter();update();load.stop();flag = 0;timer.cancel();
+									}
+								}
+							}, 1000,1000);
+						}
 					} catch (InterruptedException | IOException e) {
 						e.printStackTrace();
 					}

@@ -9,7 +9,7 @@ public class XmlHandlerTitle implements Runnable{
 	private ArrayList<String> author = new ArrayList<>();	
 	private String str;
 	private int type;
-	private String join;
+	private String join1,join2;
 	public volatile int working;
 	public XmlHandlerTitle(String x,int y){
 		this.str = x;
@@ -33,10 +33,11 @@ public class XmlHandlerTitle implements Runnable{
 					}
 					else if(qname.equals("author") || qname.equals("editor")){
 						checkAuth = true;
-						join = "";
+						join1 = "";
 					}
 					else if(qname.equals("title")){
 						titleCheck = true;
+						join2 = "";
 					}
 					else if(qname.equals("year")){
 						yearCheck = true;
@@ -57,27 +58,11 @@ public class XmlHandlerTitle implements Runnable{
 				public void characters(char chArray[],int start,int length)throws SAXException{
 					if(checkAuth && checkCat){
 						String temp = new String(chArray,start,length); 
-						join = join+temp;
+						join1 = join1+temp;
 					}
 					else if(titleCheck && checkCat){
 						title = new String(chArray,start,length);
-						String tempArray[] = str.split(" ");
-						int i= 0;
-						for(i=0;i<tempArray.length;i++){
-							if(tempArray[i].length() >= 4){
-								String titleArray [] = title.split(" ");
-								int j;
-								for(j=0;j<titleArray.length;j++){
-									titleArray[j] = titleArray[j].replace(".",""); 
-									if(titleArray[j].equalsIgnoreCase(tempArray[i])){
-										counter++;
-									}
-								}
-							}
-							if(counter > 0){
-								relcheck = true;
-							}
-						}
+						join2 = join2 + title;
 					}
 					else if(volCheck && checkCat){
 						volume = new String(chArray,start,length);
@@ -98,13 +83,28 @@ public class XmlHandlerTitle implements Runnable{
 				public void endElement(String uri,String localName,String qname)throws SAXException{
 					if(qname.equals("title")){
 						titleCheck = false;
+						String tempArray[] = str.split(" ");
+						for(int i=0;i<tempArray.length;i++){
+							if(tempArray[i].length() >= 4){
+								String titleArray [] = join2.split(" ");
+								for(int j=0;j<titleArray.length;j++){
+									titleArray[j] = titleArray[j].replace(".",""); 
+									if(titleArray[j].equalsIgnoreCase(tempArray[i])){
+										counter++;
+									}
+								}
+							}
+							if(counter > 0){
+								relcheck = true;
+							}
+						}
 					}
 					else if(qname.equals("url")){
 						urlCheck = false;
 						if(relcheck){
 							snum = Integer.toString(counter);
 							counter = 0;
-							writer(snum,author,title,url,year,pages,volume,journal);
+							writer(snum,author,join2,url,year,pages,volume,journal);
 							relcheck = false;
 						}
 						author.clear();
@@ -123,7 +123,7 @@ public class XmlHandlerTitle implements Runnable{
 					}
 					else if(qname.equals("author") || qname.equals("editor")){
 						checkAuth = false;
-						author.add(join);
+						author.add(join1);
 					}
 				}
 			};
