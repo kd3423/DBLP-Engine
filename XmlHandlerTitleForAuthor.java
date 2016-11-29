@@ -9,7 +9,7 @@ public class XmlHandlerTitleForAuthor implements Runnable{
 	private ArrayList<String> auth;
 	private ArrayList<String> author = new ArrayList<>();	
 	public volatile int working;
-	private String join;
+	private String join,join1;
 	public void fillFile(){
 		try{
 			working = 0;
@@ -32,6 +32,7 @@ public class XmlHandlerTitleForAuthor implements Runnable{
 					}
 					else if(qname.equals("title")){
 						titleCheck = true;
+						join1 = "";
 					}
 					else if(qname.equals("year")){
 						yearCheck = true;
@@ -61,6 +62,7 @@ public class XmlHandlerTitleForAuthor implements Runnable{
 					}
 					else if(titleCheck && checkCat && checkforall){
 						title = new String(chArray,start,length);
+						join1 = join1 + title;
 					}
 					else if(volCheck && checkCat && checkforall){
 						volume = new String(chArray,start,length);
@@ -90,7 +92,7 @@ public class XmlHandlerTitleForAuthor implements Runnable{
 						else{
 							counter = counter + 1;
 							snum = Integer.toString(counter);
-							writer(snum,author,title,url,year,pages,volume,journal);
+							writer(snum,author,join1	,url,year,pages,volume,journal);
 							checkforall = false;				
 						}
 					}

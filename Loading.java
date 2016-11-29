@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 public class Loading{
 	JFrame load = new JFrame();
 	public Loading(){
-		load.setSize(300, 100);
+		load.setSize(300, 200);
 		load.setLocationRelativeTo(null);
 		ImageIcon loading = new ImageIcon("ajax-loader.gif");
 	    load.add(new JLabel(loading, JLabel.CENTER));
