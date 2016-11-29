@@ -1,0 +1,274 @@
+\hypertarget{classXmlHandlerTitleForAuthor}{\section{Xml\-Handler\-Title\-For\-Author Class Reference}
+\label{classXmlHandlerTitleForAuthor}\index{Xml\-Handler\-Title\-For\-Author@{Xml\-Handler\-Title\-For\-Author}}
+}
+
+
+Inheritance diagram for Xml\-Handler\-Title\-For\-Author\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{classXmlHandlerTitleForAuthor__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Xml\-Handler\-Title\-For\-Author\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{classXmlHandlerTitleForAuthor__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classXmlHandlerTitleForAuthor_af3adb501262a2822c56421f032877597}{fill\-File} ()
+\item 
+void \hyperlink{classXmlHandlerTitleForAuthor_ad366f324811314fadaf71266bab44d04}{sort} ()
+\item 
+void \hyperlink{classXmlHandlerTitleForAuthor_a97c8021ffd31638997b241891eb1c4ea}{set\-Author} (Array\-List$<$ String $>$ z)
+\item 
+void \hyperlink{classXmlHandlerTitleForAuthor_a8b6efd5dcc022fde5321b9ea8ba94215}{run} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+volatile int \hyperlink{classXmlHandlerTitleForAuthor_aacfb0b6097f6d67493b600563cc91ec7}{working}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 8 of file Xml\-Handler\-Title\-For\-Author.\-java.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classXmlHandlerTitleForAuthor_af3adb501262a2822c56421f032877597}{\index{Xml\-Handler\-Title\-For\-Author@{Xml\-Handler\-Title\-For\-Author}!fill\-File@{fill\-File}}
+\index{fill\-File@{fill\-File}!XmlHandlerTitleForAuthor@{Xml\-Handler\-Title\-For\-Author}}
+\subsubsection[{fill\-File}]{\setlength{\rightskip}{0pt plus 5cm}void Xml\-Handler\-Title\-For\-Author.\-fill\-File (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerTitleForAuthor_af3adb501262a2822c56421f032877597}
+
+
+Definition at line 13 of file Xml\-Handler\-Title\-For\-Author.\-java.
+
+
+\begin{DoxyCode}
+13                           \{
+14         \textcolor{keywordflow}{try}\{
+15             \hyperlink{classXmlHandlerTitleForAuthor_aacfb0b6097f6d67493b600563cc91ec7}{working} = 0;
+16             System.setProperty(\textcolor{stringliteral}{"jdk.xml.entityExpansionLimit"}, \textcolor{stringliteral}{"0"});
+17             PrintWriter write = \textcolor{keyword}{new} PrintWriter( \textcolor{keyword}{new} BufferedWriter( \textcolor{keyword}{new} FileWriter ( \textcolor{stringliteral}{"Ref.txt"}) ) );
+18             write.close();
+19             SAXParserFactory fac = SAXParserFactory.newInstance();
+20             SAXParser saxTheFile = fac.newSAXParser();
+21             DefaultHandler defHandler = \textcolor{keyword}{new} DefaultHandler()\{
+22                 \textcolor{keywordtype}{int} counter = 0;
+23                 String title,pages,url,volume,year,snum,journal;
+24                 \textcolor{keywordtype}{boolean} titleCheck = \textcolor{keyword}{false},volCheck = \textcolor{keyword}{false},yearCheck = \textcolor{keyword}{false},urlCheck = \textcolor{keyword}{false},checkAuth = \textcolor{keyword}{
+      false},pagesCheck = \textcolor{keyword}{false},checkforall = \textcolor{keyword}{false},journalCheck = \textcolor{keyword}{false},checkCat = \textcolor{keyword}{true};
+25                 \textcolor{keyword}{public} \textcolor{keywordtype}{void} startElement(String uri,String localName,String qname,Attributes att)\textcolor{keywordflow}{throws} 
+      SAXException\{
+26                     \textcolor{keywordflow}{if}(qname.equals(\textcolor{stringliteral}{"www"}))\{
+27                         checkCat = \textcolor{keyword}{false};
+28                     \}
+29                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(qname.equals(\textcolor{stringliteral}{"author"}))\{
+30                         checkAuth = \textcolor{keyword}{true};
+31                         join = \textcolor{stringliteral}{""};
+32                     \}
+33                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(qname.equals(\textcolor{stringliteral}{"title"}))\{
+34                         titleCheck = \textcolor{keyword}{true};
+35                     \}
+36                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(qname.equals(\textcolor{stringliteral}{"year"}))\{
+37                         yearCheck = \textcolor{keyword}{true};
+38                     \}
+39                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(qname.equals(\textcolor{stringliteral}{"url"}))\{
+40                         urlCheck = \textcolor{keyword}{true};
+41                     \}
+42                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(qname.equals(\textcolor{stringliteral}{"pages"}))\{
+43                         pagesCheck = \textcolor{keyword}{true};
+44                     \}
+45                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(qname.equals(\textcolor{stringliteral}{"volume"}))\{
+46                         volCheck = \textcolor{keyword}{true};
+47                     \}
+48                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(qname.equals(\textcolor{stringliteral}{"journal"}) || qname.equals(\textcolor{stringliteral}{"booktitle"}))\{
+49                         journalCheck = \textcolor{keyword}{true};
+50                     \}
+51                 \}
+52                 \textcolor{keyword}{public} \textcolor{keywordtype}{void} characters(\textcolor{keywordtype}{char} chArray[],\textcolor{keywordtype}{int} start,\textcolor{keywordtype}{int} length)\textcolor{keywordflow}{throws} SAXException\{
+53                     \textcolor{keywordflow}{if}(checkAuth && checkCat)\{
+54                         String temp = \textcolor{keyword}{new} String(chArray,start,length); 
+55                         join = join + temp;
+56                         \textcolor{keywordflow}{for}(String x : auth)\{
+57                             \textcolor{keywordflow}{if}(x.equalsIgnoreCase(join))\{
+58                                 checkforall = \textcolor{keyword}{true};
+59                             \}
+60                         \}
+61                     \}
+62                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(titleCheck && checkCat && checkforall)\{
+63                         title = \textcolor{keyword}{new} String(chArray,start,length);
+64                     \}
+65                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(volCheck && checkCat && checkforall)\{
+66                         volume = \textcolor{keyword}{new} String(chArray,start,length);
+67                     \}
+68                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(pagesCheck && checkCat && checkforall)\{
+69                         pages = \textcolor{keyword}{new} String(chArray,start,length);
+70                     \}
+71                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(urlCheck && checkCat && checkforall)\{
+72                         url = \textcolor{keyword}{new} String(chArray,start,length);
+73                     \}
+74                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(yearCheck && checkCat && checkforall)\{
+75                         year = \textcolor{keyword}{new} String(chArray,start,length);
+76                     \}
+77                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(journalCheck && checkCat && checkforall)\{
+78                         journal = \textcolor{keyword}{new} String(chArray,start,length);
+79                     \}
+80                 \}
+81                 \textcolor{keyword}{public} \textcolor{keywordtype}{void} endElement(String uri,String localName,String qname)\textcolor{keywordflow}{throws} SAXException\{
+82                     \textcolor{keywordflow}{if}(qname.equals(\textcolor{stringliteral}{"title"}))\{
+83                         titleCheck = \textcolor{keyword}{false};
+84                     \}
+85                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(qname.equals(\textcolor{stringliteral}{"url"}))\{
+86                         urlCheck = \textcolor{keyword}{false};
+87                         \textcolor{keywordflow}{if}(!checkforall)\{
+88                             author.clear();
+89                         \}
+90                         \textcolor{keywordflow}{else}\{
+91                             counter = counter + 1;
+92                             snum = Integer.toString(counter);
+93                             writer(snum,author,title,url,year,pages,volume,journal);
+94                             checkforall = \textcolor{keyword}{false};                
+95                         \}
+96                     \}
+97                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(qname.equals(\textcolor{stringliteral}{"year"}))\{
+98                         yearCheck = \textcolor{keyword}{false};
+99                     \}
+100                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(qname.equals(\textcolor{stringliteral}{"pages"}))\{
+101                         pagesCheck = \textcolor{keyword}{false};
+102                     \}
+103                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(qname.equals(\textcolor{stringliteral}{"volume"}))\{
+104                         volCheck = \textcolor{keyword}{false};
+105                     \}
+106                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(qname.equals(\textcolor{stringliteral}{"journal"}) || qname.equals(\textcolor{stringliteral}{"booktitle"}))\{
+107                         journalCheck = \textcolor{keyword}{false};
+108                     \}
+109                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(qname.equals(\textcolor{stringliteral}{"author"}))\{
+110                         checkAuth = \textcolor{keyword}{false};
+111                         author.add(join);
+112                     \}
+113                 \}
+114             \};
+115             saxTheFile.parse(\textcolor{stringliteral}{"dblp.xml"},defHandler);
+116         \}
+117         \textcolor{keywordflow}{catch}(Exception e)\{
+118             e.printStackTrace();
+119         \}
+120     \}
+\end{DoxyCode}
+\hypertarget{classXmlHandlerTitleForAuthor_a8b6efd5dcc022fde5321b9ea8ba94215}{\index{Xml\-Handler\-Title\-For\-Author@{Xml\-Handler\-Title\-For\-Author}!run@{run}}
+\index{run@{run}!XmlHandlerTitleForAuthor@{Xml\-Handler\-Title\-For\-Author}}
+\subsubsection[{run}]{\setlength{\rightskip}{0pt plus 5cm}void Xml\-Handler\-Title\-For\-Author.\-run (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerTitleForAuthor_a8b6efd5dcc022fde5321b9ea8ba94215}
+
+
+Definition at line 177 of file Xml\-Handler\-Title\-For\-Author.\-java.
+
+
+\begin{DoxyCode}
+177                   \{
+178     \hyperlink{classXmlHandlerTitleForAuthor_af3adb501262a2822c56421f032877597}{fillFile}();
+179     \hyperlink{classXmlHandlerTitleForAuthor_ad366f324811314fadaf71266bab44d04}{sort}();
+180 \}
+\end{DoxyCode}
+\hypertarget{classXmlHandlerTitleForAuthor_a97c8021ffd31638997b241891eb1c4ea}{\index{Xml\-Handler\-Title\-For\-Author@{Xml\-Handler\-Title\-For\-Author}!set\-Author@{set\-Author}}
+\index{set\-Author@{set\-Author}!XmlHandlerTitleForAuthor@{Xml\-Handler\-Title\-For\-Author}}
+\subsubsection[{set\-Author}]{\setlength{\rightskip}{0pt plus 5cm}void Xml\-Handler\-Title\-For\-Author.\-set\-Author (
+\begin{DoxyParamCaption}
+\item[{Array\-List$<$ String $>$}]{z}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerTitleForAuthor_a97c8021ffd31638997b241891eb1c4ea}
+
+
+Definition at line 173 of file Xml\-Handler\-Title\-For\-Author.\-java.
+
+
+\begin{DoxyCode}
+173                                           \{
+174     auth = z;
+175 \}
+\end{DoxyCode}
+\hypertarget{classXmlHandlerTitleForAuthor_ad366f324811314fadaf71266bab44d04}{\index{Xml\-Handler\-Title\-For\-Author@{Xml\-Handler\-Title\-For\-Author}!sort@{sort}}
+\index{sort@{sort}!XmlHandlerTitleForAuthor@{Xml\-Handler\-Title\-For\-Author}}
+\subsubsection[{sort}]{\setlength{\rightskip}{0pt plus 5cm}void Xml\-Handler\-Title\-For\-Author.\-sort (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerTitleForAuthor_ad366f324811314fadaf71266bab44d04}
+
+
+Definition at line 138 of file Xml\-Handler\-Title\-For\-Author.\-java.
+
+
+\begin{DoxyCode}
+138                       \{
+139         \textcolor{keywordflow}{try}\{
+140             List<ArrayList<String>> csvLines = \textcolor{keyword}{new} ArrayList<ArrayList<String>>();
+141             Comparator<ArrayList<String>> comp = \textcolor{keyword}{new} Comparator<ArrayList<String>>() \{
+142                 \textcolor{keyword}{public} \textcolor{keywordtype}{int} compare(ArrayList<String> csvLine1, ArrayList<String> csvLine2) \{
+143                     \textcolor{keywordtype}{int} x = Integer.valueOf(csvLine1.get(4)).compareTo(Integer.valueOf(csvLine2.get(4)));
+144                     \textcolor{keywordflow}{return} -x;
+145                 \}
+146             \};
+147             BufferedReader read = \textcolor{keyword}{new} BufferedReader(\textcolor{keyword}{new} FileReader(\textcolor{stringliteral}{"Ref.txt"}));
+148             String call;
+149             \textcolor{keywordflow}{while}((call = read.readLine())!= null)\{
+150             ArrayList<String> temp = \textcolor{keyword}{new} ArrayList<String>();
+151             String[] x = call.split(\textcolor{stringliteral}{"~"});
+152             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0;i<x.length;i++)\{
+153                 temp.add(x[i]);
+154             \}
+155             csvLines.add(temp);
+156             \}
+157             read.close();
+158             Collections.sort(csvLines,comp);
+159             PrintWriter write = \textcolor{keyword}{new} PrintWriter( \textcolor{keyword}{new} BufferedWriter( \textcolor{keyword}{new} FileWriter ( \textcolor{stringliteral}{"Ref.txt"}) ) );
+160             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0;i<csvLines.size();i++)\{
+161                 write.print((i+1)+\textcolor{stringliteral}{"~"}+csvLines.get(i).get(1)+ \textcolor{stringliteral}{"~"} +csvLines.get(i).get(2)+ \textcolor{stringliteral}{"~"} +csvLines.
+      get(i).get(3)+ \textcolor{stringliteral}{"~"} + csvLines.get(i).get(4) + \textcolor{stringliteral}{"~"}+ csvLines.get(i).get(5)+ \textcolor{stringliteral}{"~"} + csvLines.get(i).get(6)+ \textcolor{stringliteral}{"~"} +
+       csvLines.get(i).get(7) +\textcolor{stringliteral}{"\(\backslash\)n"});
+162                 write.flush();
+163             \}
+164             write.close();
+165         \}   \textcolor{keywordflow}{catch}(Exception e)
+166         \{
+167             e.printStackTrace();
+168         \}
+169         \textcolor{keywordflow}{finally}\{
+170             \hyperlink{classXmlHandlerTitleForAuthor_aacfb0b6097f6d67493b600563cc91ec7}{working} = 1;
+171         \}
+172         \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classXmlHandlerTitleForAuthor_aacfb0b6097f6d67493b600563cc91ec7}{\index{Xml\-Handler\-Title\-For\-Author@{Xml\-Handler\-Title\-For\-Author}!working@{working}}
+\index{working@{working}!XmlHandlerTitleForAuthor@{Xml\-Handler\-Title\-For\-Author}}
+\subsubsection[{working}]{\setlength{\rightskip}{0pt plus 5cm}volatile int Xml\-Handler\-Title\-For\-Author.\-working}}\label{classXmlHandlerTitleForAuthor_aacfb0b6097f6d67493b600563cc91ec7}
+
+
+Definition at line 11 of file Xml\-Handler\-Title\-For\-Author.\-java.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{XmlHandlerTitleForAuthor_8java}{Xml\-Handler\-Title\-For\-Author.\-java}\end{DoxyCompactItemize}

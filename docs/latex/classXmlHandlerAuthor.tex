@@ -1,0 +1,758 @@
+\hypertarget{classXmlHandlerAuthor}{\section{Xml\-Handler\-Author Class Reference}
+\label{classXmlHandlerAuthor}\index{Xml\-Handler\-Author@{Xml\-Handler\-Author}}
+}
+
+
+Inheritance diagram for Xml\-Handler\-Author\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{classXmlHandlerAuthor__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Xml\-Handler\-Author\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{classXmlHandlerAuthor__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classXmlHandlerAuthor_a860da9fa6849b4dd8f362953faf14bcd}{find} (String str)
+\item 
+void \hyperlink{classXmlHandlerAuthor_ac509e27b7db234c3a8e6b537c05b0788}{set\-Category} (String cat)
+\item 
+void \hyperlink{classXmlHandlerAuthor_ae6dc18dbbb71e72db582f0964c655d74}{set\-Ee} (String e\-E)
+\item 
+void \hyperlink{classXmlHandlerAuthor_a34ffa560bb70eac46df935f5cdca6bcf}{set\-Pages} (String pag)
+\item 
+void \hyperlink{classXmlHandlerAuthor_a74cb8d94ee14ab382253abc5a38d6b8e}{set\-Year} (int y)
+\item 
+void \hyperlink{classXmlHandlerAuthor_a6137e5065cb6e2050ef6b9d1a2a50e48}{set\-Url} (String ur)
+\item 
+void \hyperlink{classXmlHandlerAuthor_afe6d790275f8d30f0ab3527b1aea934b}{set\-Title} (String t)
+\item 
+void \hyperlink{classXmlHandlerAuthor_a0635610c34233b096c4f47b5746a8d1c}{set\-Author} (String auth)
+\item 
+void \hyperlink{classXmlHandlerAuthor_a1e0a5b957fd643726ff122517e2d81c1}{set\-Volume} (String vol)
+\item 
+void \hyperlink{classXmlHandlerAuthor_acb7a439c54a29c688fc36190a529581f}{set\-Pub} (int x)
+\item 
+void \hyperlink{classXmlHandlerAuthor_ab9c56f83a382d3c70a0d3eb65e02272c}{search} (String str)
+\item 
+void \hyperlink{classXmlHandlerAuthor_adac17a195135fb961bb4a8b932138152}{start\-Element} (String uri, String local\-Name, String qname, Attributes attributes)  throws S\-A\-X\-Exception
+\item 
+void \hyperlink{classXmlHandlerAuthor_ad97c3844a098280d675ac0e703ac4e27}{characters} (char ch\-Array\mbox{[}$\,$\mbox{]}, int start, int length)
+\item 
+void \hyperlink{classXmlHandlerAuthor_ae6175824e08db40f2862bd06297d6847}{end\-Element} (String uri, String local\-Name, String qname)  throws S\-A\-X\-Exception
+\item 
+String \hyperlink{classXmlHandlerAuthor_a6f0222c5f34364a6c1d0906237cdf45a}{get\-Author} ()
+\item 
+String \hyperlink{classXmlHandlerAuthor_a6a6fd1aaef0587d30cff05dfa53da3c3}{get\-Title} ()
+\item 
+int \hyperlink{classXmlHandlerAuthor_a579ee55f6cf287873e1588943ab920f5}{get\-Year} ()
+\item 
+String \hyperlink{classXmlHandlerAuthor_acb036e9cc36cf8e042165ec28bfd6443}{get\-Pages} ()
+\item 
+String \hyperlink{classXmlHandlerAuthor_a6f3d4b439bce3ce234cfaa88a94d79ba}{get\-Volume} ()
+\item 
+String \hyperlink{classXmlHandlerAuthor_abbd48876dd5f44b21cbd716328b356a7}{get\-Journal} ()
+\item 
+String \hyperlink{classXmlHandlerAuthor_ae72e80845a09b05b609558a643c8d2d3}{get\-Url} ()
+\item 
+int \hyperlink{classXmlHandlerAuthor_aaef6b78de7e1405878268e8203807e5d}{get\-Number} ()
+\item 
+void \hyperlink{classXmlHandlerAuthor_a07d49493bfa706aabe10fe0f7927aa15}{find\-Auth} ()
+\item 
+Array\-List$<$ String $>$ \hyperlink{classXmlHandlerAuthor_a02f6252baeefc0e7b3458af0a1cde62a}{get\-Auth} ()
+\item 
+void \hyperlink{classXmlHandlerAuthor_a94447769489224e0cace8278d0fddeb2}{run} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+volatile int \hyperlink{classXmlHandlerAuthor_a3b5ed01d09eb68532c727613932065a8}{working}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 9 of file Xml\-Handler.\-java.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classXmlHandlerAuthor_ad97c3844a098280d675ac0e703ac4e27}{\index{Xml\-Handler\-Author@{Xml\-Handler\-Author}!characters@{characters}}
+\index{characters@{characters}!XmlHandlerAuthor@{Xml\-Handler\-Author}}
+\subsubsection[{characters}]{\setlength{\rightskip}{0pt plus 5cm}void Xml\-Handler\-Author.\-characters (
+\begin{DoxyParamCaption}
+\item[{char}]{ch\-Array\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{start, }
+\item[{int}]{length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerAuthor_ad97c3844a098280d675ac0e703ac4e27}
+
+
+Definition at line 223 of file Xml\-Handler.\-java.
+
+
+\begin{DoxyCode}
+223                                                                    \{
+224         System.out.println(\textcolor{keyword}{new} String(chArray,start,length));
+225             \textcolor{comment}{// if(flag == 0)\{}
+226             \textcolor{comment}{//  author\_Name = new String (chArray,start,length);}
+227             \textcolor{comment}{//  if(author\_Name.equals(author\_title))\{}
+228             \textcolor{comment}{//      System.out.println("Author : " + author\_Name);}
+229             \textcolor{comment}{//      flag = 1;}
+230             \textcolor{comment}{//  \}}
+231             \textcolor{comment}{// \}}
+232             \textcolor{comment}{// else if(flag == 1 && !(title.isEmpty()))\{}
+233             \textcolor{comment}{//  title\_String = new String(chArray,start,length);}
+234             \textcolor{comment}{//  System.out.println("Title : " + title\_String);}
+235             \textcolor{comment}{// \}}
+236             \textcolor{comment}{// else if(flag == 1 && !(pages.isEmpty()))\{}
+237             \textcolor{comment}{//  pages\_String = new String(chArray,start,length);}
+238             \textcolor{comment}{//  System.out.println("Pages :" + pages\_String);}
+239             \textcolor{comment}{// \}}
+240             \textcolor{comment}{// else if(flag == 1 && !(year.isEmpty()))\{}
+241             \textcolor{comment}{//  year\_String = new String(chArray,start,length);}
+242             \textcolor{comment}{//  System.out.println("Year :" + year\_String);}
+243             \textcolor{comment}{// \}}
+244             \textcolor{comment}{// else if(flag == 1 && !(volume.isEmpty()))\{}
+245             \textcolor{comment}{//  volume\_String = new String(chArray,start,length);}
+246             \textcolor{comment}{//  System.out.println("Volume : " + volume\_String);}
+247             \textcolor{comment}{// \}}
+248             \textcolor{comment}{// else if(flag == 1 && !(journal.isEmpty()))\{}
+249             \textcolor{comment}{//  journal\_String = new String(chArray,start,length);}
+250             \textcolor{comment}{//  System.out.println("Journal : " + journal\_String);}
+251             \textcolor{comment}{// \}}
+252             \textcolor{comment}{// else if(flag == 1 && !(number.isEmpty()))\{}
+253             \textcolor{comment}{//  number\_String = new String(chArray,start,length);}
+254             \textcolor{comment}{//  System.out.println("Number :" + number\_String);}
+255             \textcolor{comment}{// \}}
+256             \textcolor{comment}{// else if(flag == 1 && !(url.isEmpty()))\{}
+257             \textcolor{comment}{//  url\_String = new String(chArray,start,length);}
+258             \textcolor{comment}{//  System.out.println("Url : " + url\_String);}
+259             \textcolor{comment}{// \}}
+260             \textcolor{comment}{// else if(flag == 1 && !(ee.isEmpty()))\{}
+261             \textcolor{comment}{//  ee\_String = new String(chArray,start,length);}
+262             \textcolor{comment}{//  System.out.println("ee : " + ee\_String);}
+263             \textcolor{comment}{//  flag = 0;}
+264             \textcolor{comment}{// \}}
+265     \}
+\end{DoxyCode}
+\hypertarget{classXmlHandlerAuthor_ae6175824e08db40f2862bd06297d6847}{\index{Xml\-Handler\-Author@{Xml\-Handler\-Author}!end\-Element@{end\-Element}}
+\index{end\-Element@{end\-Element}!XmlHandlerAuthor@{Xml\-Handler\-Author}}
+\subsubsection[{end\-Element}]{\setlength{\rightskip}{0pt plus 5cm}void Xml\-Handler\-Author.\-end\-Element (
+\begin{DoxyParamCaption}
+\item[{String}]{uri, }
+\item[{String}]{local\-Name, }
+\item[{String}]{qname}
+\end{DoxyParamCaption}
+) throws S\-A\-X\-Exception\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerAuthor_ae6175824e08db40f2862bd06297d6847}
+
+
+Definition at line 266 of file Xml\-Handler.\-java.
+
+
+\begin{DoxyCode}
+266                                                                                          \{
+267         \textcolor{keywordflow}{try}\{
+268             \textcolor{comment}{// if(qname.equals("author"))\{}
+269             \textcolor{comment}{//      author = new String();}
+270             \textcolor{comment}{// \}}
+271             \textcolor{comment}{// else if(qname.equals("title"))\{}
+272             \textcolor{comment}{//  title = new String();}
+273             \textcolor{comment}{// \}}
+274             \textcolor{comment}{// else if(qname.equals("pages"))\{}
+275             \textcolor{comment}{//  pages = new String();}
+276             \textcolor{comment}{// \}}
+277             \textcolor{comment}{// else if(qname.equals("year"))\{}
+278             \textcolor{comment}{//  year = new String();}
+279             \textcolor{comment}{// \}}
+280             \textcolor{comment}{// else if(qname.equals("volume"))\{}
+281             \textcolor{comment}{//  volume = new String();}
+282             \textcolor{comment}{// \}}
+283             \textcolor{comment}{// else if(qname.equals("journal"))\{}
+284             \textcolor{comment}{//  journal = new String();}
+285             \textcolor{comment}{// \}}
+286             \textcolor{comment}{// else if(qname.equals("number"))\{}
+287             \textcolor{comment}{//  number = new String();}
+288             \textcolor{comment}{// \}}
+289             \textcolor{comment}{// else if(qname.equals("url"))\{}
+290             \textcolor{comment}{//  url = new String();}
+291             \textcolor{comment}{// \}}
+292             \textcolor{comment}{// else if(qname.equals("ee"))\{}
+293             \textcolor{comment}{//  ee = new String();}
+294             \textcolor{comment}{// \}}
+295             System.out.println(qname);
+296         \}
+297         \textcolor{keywordflow}{catch}(Exception e)\{
+298             e.printStackTrace();
+299         \}
+300     \}
+\end{DoxyCode}
+\hypertarget{classXmlHandlerAuthor_a860da9fa6849b4dd8f362953faf14bcd}{\index{Xml\-Handler\-Author@{Xml\-Handler\-Author}!find@{find}}
+\index{find@{find}!XmlHandlerAuthor@{Xml\-Handler\-Author}}
+\subsubsection[{find}]{\setlength{\rightskip}{0pt plus 5cm}void Xml\-Handler\-Author.\-find (
+\begin{DoxyParamCaption}
+\item[{String}]{str}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerAuthor_a860da9fa6849b4dd8f362953faf14bcd}
+
+
+Definition at line 14 of file Xml\-Handler.\-java.
+
+
+\begin{DoxyCode}
+14                                 \{
+15         \textcolor{keywordflow}{try}\{
+16             SAXParserFactory fac = SAXParserFactory.newInstance();
+17             SAXParser saxTheFile = factory.new SAXParser();
+18             DefaultHandler defHandler = \textcolor{keyword}{new} DefaultHandler()\{
+19                 
+20                 \textcolor{comment}{// boolean checkAuth = false;}
+21                 \textcolor{comment}{// boolean checkVal = false;}
+22                 \textcolor{comment}{// boolean checkCat = false;}
+23                 \textcolor{comment}{// boolean checkEe = false;}
+24                 \textcolor{comment}{// boolean checkUrl = false;}
+25                 \textcolor{comment}{// boolean checkPages = false;}
+26                 \textcolor{comment}{// boolean checkVolume = false;}
+27                 \textcolor{comment}{// boolean checkNumber = false;}
+28                 \textcolor{comment}{// boolean checkYear = false;}
+29                 \textcolor{comment}{// boolean checkTitle = false;}
+30                 \textcolor{keywordtype}{boolean} checkCat = \textcolor{keyword}{false};
+31                 \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classXmlHandlerAuthor_adac17a195135fb961bb4a8b932138152}{startElement}(String uri,String localName,String qname,Attributes 
+      att)\textcolor{keywordflow}{throws} SAXException\{
+32                     \textcolor{keywordflow}{if}(qname.equals(\textcolor{stringliteral}{"www"}))\{
+33                         \textcolor{comment}{// setCategory(qname);}
+34                         checkCat = \textcolor{keyword}{true};
+35                     \}
+36                 \}
+37                 \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classXmlHandlerAuthor_ad97c3844a098280d675ac0e703ac4e27}{characters}(\textcolor{keywordtype}{char} chArray[],\textcolor{keywordtype}{int} start,\textcolor{keywordtype}{int} length)\textcolor{keywordflow}{throws} SAXException\{
+38                     \textcolor{keywordflow}{if}(checkCat)\{
+39                         
+40                     \}
+41                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(checkString)\{
+42                         \textcolor{keywordflow}{if}(str.equals(\textcolor{keyword}{new} String(chArray,start,length)))\{
+43                             checkVal = \textcolor{keyword}{true};
+44                         \}
+45                     \}
+46                 \}
+47                 \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classXmlHandlerAuthor_ae6175824e08db40f2862bd06297d6847}{endElement}(String uri,String localName,String qname,Attributes att)\{
+48                     
+49                 \}
+50             \}
+51         \}
+52         \textcolor{keywordflow}{catch}(Exception e)\{
+53             e.printStackTrace();
+54         \}
+55     \}
+\end{DoxyCode}
+\hypertarget{classXmlHandlerAuthor_a07d49493bfa706aabe10fe0f7927aa15}{\index{Xml\-Handler\-Author@{Xml\-Handler\-Author}!find\-Auth@{find\-Auth}}
+\index{find\-Auth@{find\-Auth}!XmlHandlerAuthor@{Xml\-Handler\-Author}}
+\subsubsection[{find\-Auth}]{\setlength{\rightskip}{0pt plus 5cm}void Xml\-Handler\-Author.\-find\-Auth (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerAuthor_a07d49493bfa706aabe10fe0f7927aa15}
+
+
+Definition at line 12 of file Xml\-Handler\-Author.\-java.
+
+
+\begin{DoxyCode}
+12                           \{
+13         \textcolor{keywordflow}{try}\{
+14             \hyperlink{classXmlHandlerAuthor_a3b5ed01d09eb68532c727613932065a8}{working} = 0;
+15             System.setProperty(\textcolor{stringliteral}{"jdk.xml.entityExpansionLimit"}, \textcolor{stringliteral}{"0"});
+16             SAXParserFactory fac = SAXParserFactory.newInstance();
+17             SAXParser saxTheFile = fac.newSAXParser();
+18             DefaultHandler defHandler = \textcolor{keyword}{new} DefaultHandler()\{
+19                 ArrayList<String> temp = \textcolor{keyword}{new} ArrayList<>();
+20                 \textcolor{keywordtype}{int} counter = 0;
+21                 String snum;
+22                 \textcolor{keywordtype}{boolean} checkCat = \textcolor{keyword}{false},checkAuth = \textcolor{keyword}{false},checkString = \textcolor{keyword}{true},checkTitle = \textcolor{keyword}{false},check = \textcolor{keyword}{
+      false};
+23                 \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classXmlHandlerAuthor_adac17a195135fb961bb4a8b932138152}{startElement}(String uri,String localName,String qname,Attributes 
+      att)\textcolor{keywordflow}{throws} SAXException\{
+24                     \textcolor{keywordflow}{if}(qname.equals(\textcolor{stringliteral}{"www"}))\{
+25                         checkCat = \textcolor{keyword}{true};
+26                         checkTitle = \textcolor{keyword}{false};
+27                     \}
+28                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(qname.equals(\textcolor{stringliteral}{"author"}) && checkCat)\{
+29                         checkAuth = \textcolor{keyword}{true};
+30                         join=\textcolor{stringliteral}{""};
+31                     \}
+32                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(qname.equals(\textcolor{stringliteral}{"title"}) && checkCat)\{
+33                         checkTitle = \textcolor{keyword}{true};
+34                     \}
+35                 \}
+36                 \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classXmlHandlerAuthor_ad97c3844a098280d675ac0e703ac4e27}{characters}(\textcolor{keywordtype}{char} chArray[],\textcolor{keywordtype}{int} start,\textcolor{keywordtype}{int} length)\textcolor{keywordflow}{throws} SAXException\{
+37                     \textcolor{keywordflow}{if}(checkCat && checkAuth)\{
+38                         String auth = \textcolor{keyword}{new} String(chArray,start,length);
+39                         join = join+auth;
+40                         
+41                     \}
+42                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(checkTitle)\{
+43                         \textcolor{keywordflow}{if}((\textcolor{keyword}{new} String(chArray,start,length)).equals(\textcolor{stringliteral}{"Home Page"}))\{
+44                             check = \textcolor{keyword}{true};
+45                         \}
+46                     \}
+47                 \}
+48                 \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classXmlHandlerAuthor_ae6175824e08db40f2862bd06297d6847}{endElement}(String uri,String localName,String qname)\textcolor{keywordflow}{throws} 
+      SAXException\{
+49                     \textcolor{keywordflow}{if}(qname.equals(\textcolor{stringliteral}{"author"}))\{
+50                         checkAuth = \textcolor{keyword}{false};
+51                         temp.add(join);
+52                     \}
+53                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(qname.equals(\textcolor{stringliteral}{"www"}))\{
+54                         \textcolor{keywordflow}{if}(checkString && check)\{
+55                             author.addAll(temp);
+56                             counter = counter + 1;
+57                             snum = Integer.toString(counter);
+58                             writer(snum,author);
+59                             check = \textcolor{keyword}{false};
+60                             author.clear();
+61                             temp.clear();
+62                         \}
+63                         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(checkString == \textcolor{keyword}{false} || check == \textcolor{keyword}{false})\{
+64                             temp.clear();
+65                             check = \textcolor{keyword}{false};
+66                         \}
+67                         check = \textcolor{keyword}{false};
+68                         checkCat = \textcolor{keyword}{false};
+69                     \}
+70                 \}
+71             \};
+72             saxTheFile.parse(\textcolor{stringliteral}{"dblp.xml"},defHandler);
+73         \}
+74         \textcolor{keywordflow}{catch}(Exception e)\{
+75             e.printStackTrace();
+76         \}
+77         \textcolor{keywordflow}{finally}\{
+78             \hyperlink{classXmlHandlerAuthor_a3b5ed01d09eb68532c727613932065a8}{working} = 1;
+79         \}
+80     \}
+\end{DoxyCode}
+\hypertarget{classXmlHandlerAuthor_a02f6252baeefc0e7b3458af0a1cde62a}{\index{Xml\-Handler\-Author@{Xml\-Handler\-Author}!get\-Auth@{get\-Auth}}
+\index{get\-Auth@{get\-Auth}!XmlHandlerAuthor@{Xml\-Handler\-Author}}
+\subsubsection[{get\-Auth}]{\setlength{\rightskip}{0pt plus 5cm}Array\-List$<$String$>$ Xml\-Handler\-Author.\-get\-Auth (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerAuthor_a02f6252baeefc0e7b3458af0a1cde62a}
+
+
+Definition at line 97 of file Xml\-Handler\-Author.\-java.
+
+
+\begin{DoxyCode}
+97                                       \{
+98         \textcolor{keywordflow}{return} author;
+99     \}
+\end{DoxyCode}
+\hypertarget{classXmlHandlerAuthor_a6f0222c5f34364a6c1d0906237cdf45a}{\index{Xml\-Handler\-Author@{Xml\-Handler\-Author}!get\-Author@{get\-Author}}
+\index{get\-Author@{get\-Author}!XmlHandlerAuthor@{Xml\-Handler\-Author}}
+\subsubsection[{get\-Author}]{\setlength{\rightskip}{0pt plus 5cm}String Xml\-Handler\-Author.\-get\-Author (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerAuthor_a6f0222c5f34364a6c1d0906237cdf45a}
+
+
+Definition at line 301 of file Xml\-Handler.\-java.
+
+
+\begin{DoxyCode}
+301                              \{
+302         \textcolor{keywordflow}{return} author\_Name;
+303     \}
+\end{DoxyCode}
+\hypertarget{classXmlHandlerAuthor_abbd48876dd5f44b21cbd716328b356a7}{\index{Xml\-Handler\-Author@{Xml\-Handler\-Author}!get\-Journal@{get\-Journal}}
+\index{get\-Journal@{get\-Journal}!XmlHandlerAuthor@{Xml\-Handler\-Author}}
+\subsubsection[{get\-Journal}]{\setlength{\rightskip}{0pt plus 5cm}String Xml\-Handler\-Author.\-get\-Journal (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerAuthor_abbd48876dd5f44b21cbd716328b356a7}
+
+
+Definition at line 317 of file Xml\-Handler.\-java.
+
+
+\begin{DoxyCode}
+317                               \{
+318         \textcolor{keywordflow}{return} journal\_String;
+319     \}
+\end{DoxyCode}
+\hypertarget{classXmlHandlerAuthor_aaef6b78de7e1405878268e8203807e5d}{\index{Xml\-Handler\-Author@{Xml\-Handler\-Author}!get\-Number@{get\-Number}}
+\index{get\-Number@{get\-Number}!XmlHandlerAuthor@{Xml\-Handler\-Author}}
+\subsubsection[{get\-Number}]{\setlength{\rightskip}{0pt plus 5cm}int Xml\-Handler\-Author.\-get\-Number (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerAuthor_aaef6b78de7e1405878268e8203807e5d}
+
+
+Definition at line 323 of file Xml\-Handler.\-java.
+
+
+\begin{DoxyCode}
+323                           \{
+324         \textcolor{keywordtype}{int} x = Integer.parseInt(number\_String);
+325         \textcolor{keywordflow}{return} x;
+326     \}
+\end{DoxyCode}
+\hypertarget{classXmlHandlerAuthor_acb036e9cc36cf8e042165ec28bfd6443}{\index{Xml\-Handler\-Author@{Xml\-Handler\-Author}!get\-Pages@{get\-Pages}}
+\index{get\-Pages@{get\-Pages}!XmlHandlerAuthor@{Xml\-Handler\-Author}}
+\subsubsection[{get\-Pages}]{\setlength{\rightskip}{0pt plus 5cm}String Xml\-Handler\-Author.\-get\-Pages (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerAuthor_acb036e9cc36cf8e042165ec28bfd6443}
+
+
+Definition at line 311 of file Xml\-Handler.\-java.
+
+
+\begin{DoxyCode}
+311                             \{
+312         \textcolor{keywordflow}{return} pages\_String;
+313     \}
+\end{DoxyCode}
+\hypertarget{classXmlHandlerAuthor_a6a6fd1aaef0587d30cff05dfa53da3c3}{\index{Xml\-Handler\-Author@{Xml\-Handler\-Author}!get\-Title@{get\-Title}}
+\index{get\-Title@{get\-Title}!XmlHandlerAuthor@{Xml\-Handler\-Author}}
+\subsubsection[{get\-Title}]{\setlength{\rightskip}{0pt plus 5cm}String Xml\-Handler\-Author.\-get\-Title (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerAuthor_a6a6fd1aaef0587d30cff05dfa53da3c3}
+
+
+Definition at line 304 of file Xml\-Handler.\-java.
+
+
+\begin{DoxyCode}
+304                             \{
+305         \textcolor{keywordflow}{return} title\_String;
+306     \}
+\end{DoxyCode}
+\hypertarget{classXmlHandlerAuthor_ae72e80845a09b05b609558a643c8d2d3}{\index{Xml\-Handler\-Author@{Xml\-Handler\-Author}!get\-Url@{get\-Url}}
+\index{get\-Url@{get\-Url}!XmlHandlerAuthor@{Xml\-Handler\-Author}}
+\subsubsection[{get\-Url}]{\setlength{\rightskip}{0pt plus 5cm}String Xml\-Handler\-Author.\-get\-Url (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerAuthor_ae72e80845a09b05b609558a643c8d2d3}
+
+
+Definition at line 320 of file Xml\-Handler.\-java.
+
+
+\begin{DoxyCode}
+320                           \{
+321         \textcolor{keywordflow}{return} url\_String;
+322     \}
+\end{DoxyCode}
+\hypertarget{classXmlHandlerAuthor_a6f3d4b439bce3ce234cfaa88a94d79ba}{\index{Xml\-Handler\-Author@{Xml\-Handler\-Author}!get\-Volume@{get\-Volume}}
+\index{get\-Volume@{get\-Volume}!XmlHandlerAuthor@{Xml\-Handler\-Author}}
+\subsubsection[{get\-Volume}]{\setlength{\rightskip}{0pt plus 5cm}String Xml\-Handler\-Author.\-get\-Volume (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerAuthor_a6f3d4b439bce3ce234cfaa88a94d79ba}
+
+
+Definition at line 314 of file Xml\-Handler.\-java.
+
+
+\begin{DoxyCode}
+314                              \{
+315         \textcolor{keywordflow}{return} volume\_String;
+316     \}
+\end{DoxyCode}
+\hypertarget{classXmlHandlerAuthor_a579ee55f6cf287873e1588943ab920f5}{\index{Xml\-Handler\-Author@{Xml\-Handler\-Author}!get\-Year@{get\-Year}}
+\index{get\-Year@{get\-Year}!XmlHandlerAuthor@{Xml\-Handler\-Author}}
+\subsubsection[{get\-Year}]{\setlength{\rightskip}{0pt plus 5cm}int Xml\-Handler\-Author.\-get\-Year (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerAuthor_a579ee55f6cf287873e1588943ab920f5}
+
+
+Definition at line 307 of file Xml\-Handler.\-java.
+
+
+\begin{DoxyCode}
+307                         \{
+308         \textcolor{keywordtype}{int} y = Integer.parseInt(year\_String);
+309         \textcolor{keywordflow}{return} y;
+310     \}
+\end{DoxyCode}
+\hypertarget{classXmlHandlerAuthor_a94447769489224e0cace8278d0fddeb2}{\index{Xml\-Handler\-Author@{Xml\-Handler\-Author}!run@{run}}
+\index{run@{run}!XmlHandlerAuthor@{Xml\-Handler\-Author}}
+\subsubsection[{run}]{\setlength{\rightskip}{0pt plus 5cm}void Xml\-Handler\-Author.\-run (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerAuthor_a94447769489224e0cace8278d0fddeb2}
+
+
+Definition at line 101 of file Xml\-Handler\-Author.\-java.
+
+
+\begin{DoxyCode}
+101                       \{
+102     \hyperlink{classXmlHandlerAuthor_a07d49493bfa706aabe10fe0f7927aa15}{findAuth}();     
+103     \}
+\end{DoxyCode}
+\hypertarget{classXmlHandlerAuthor_ab9c56f83a382d3c70a0d3eb65e02272c}{\index{Xml\-Handler\-Author@{Xml\-Handler\-Author}!search@{search}}
+\index{search@{search}!XmlHandlerAuthor@{Xml\-Handler\-Author}}
+\subsubsection[{search}]{\setlength{\rightskip}{0pt plus 5cm}void Xml\-Handler\-Author.\-search (
+\begin{DoxyParamCaption}
+\item[{String}]{str}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerAuthor_ab9c56f83a382d3c70a0d3eb65e02272c}
+
+
+Definition at line 182 of file Xml\-Handler.\-java.
+
+
+\begin{DoxyCode}
+182                                   \{
+183         author\_title = str;
+184         strLength = author\_title.length();
+185     \}
+\end{DoxyCode}
+\hypertarget{classXmlHandlerAuthor_a0635610c34233b096c4f47b5746a8d1c}{\index{Xml\-Handler\-Author@{Xml\-Handler\-Author}!set\-Author@{set\-Author}}
+\index{set\-Author@{set\-Author}!XmlHandlerAuthor@{Xml\-Handler\-Author}}
+\subsubsection[{set\-Author}]{\setlength{\rightskip}{0pt plus 5cm}void Xml\-Handler\-Author.\-set\-Author (
+\begin{DoxyParamCaption}
+\item[{String}]{auth}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerAuthor_a0635610c34233b096c4f47b5746a8d1c}
+
+
+Definition at line 74 of file Xml\-Handler.\-java.
+
+
+\begin{DoxyCode}
+74                                       \{
+75         author = auth;
+76     \}
+\end{DoxyCode}
+\hypertarget{classXmlHandlerAuthor_ac509e27b7db234c3a8e6b537c05b0788}{\index{Xml\-Handler\-Author@{Xml\-Handler\-Author}!set\-Category@{set\-Category}}
+\index{set\-Category@{set\-Category}!XmlHandlerAuthor@{Xml\-Handler\-Author}}
+\subsubsection[{set\-Category}]{\setlength{\rightskip}{0pt plus 5cm}void Xml\-Handler\-Author.\-set\-Category (
+\begin{DoxyParamCaption}
+\item[{String}]{cat}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerAuthor_ac509e27b7db234c3a8e6b537c05b0788}
+
+
+Definition at line 56 of file Xml\-Handler.\-java.
+
+
+\begin{DoxyCode}
+56                                        \{
+57         category = cat;
+58     \}
+\end{DoxyCode}
+\hypertarget{classXmlHandlerAuthor_ae6dc18dbbb71e72db582f0964c655d74}{\index{Xml\-Handler\-Author@{Xml\-Handler\-Author}!set\-Ee@{set\-Ee}}
+\index{set\-Ee@{set\-Ee}!XmlHandlerAuthor@{Xml\-Handler\-Author}}
+\subsubsection[{set\-Ee}]{\setlength{\rightskip}{0pt plus 5cm}void Xml\-Handler\-Author.\-set\-Ee (
+\begin{DoxyParamCaption}
+\item[{String}]{e\-E}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerAuthor_ae6dc18dbbb71e72db582f0964c655d74}
+
+
+Definition at line 59 of file Xml\-Handler.\-java.
+
+
+\begin{DoxyCode}
+59                                 \{
+60         ee = eE;
+61     \}
+\end{DoxyCode}
+\hypertarget{classXmlHandlerAuthor_a34ffa560bb70eac46df935f5cdca6bcf}{\index{Xml\-Handler\-Author@{Xml\-Handler\-Author}!set\-Pages@{set\-Pages}}
+\index{set\-Pages@{set\-Pages}!XmlHandlerAuthor@{Xml\-Handler\-Author}}
+\subsubsection[{set\-Pages}]{\setlength{\rightskip}{0pt plus 5cm}void Xml\-Handler\-Author.\-set\-Pages (
+\begin{DoxyParamCaption}
+\item[{String}]{pag}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerAuthor_a34ffa560bb70eac46df935f5cdca6bcf}
+
+
+Definition at line 62 of file Xml\-Handler.\-java.
+
+
+\begin{DoxyCode}
+62                                     \{
+63         pages = pag;
+64     \}
+\end{DoxyCode}
+\hypertarget{classXmlHandlerAuthor_acb7a439c54a29c688fc36190a529581f}{\index{Xml\-Handler\-Author@{Xml\-Handler\-Author}!set\-Pub@{set\-Pub}}
+\index{set\-Pub@{set\-Pub}!XmlHandlerAuthor@{Xml\-Handler\-Author}}
+\subsubsection[{set\-Pub}]{\setlength{\rightskip}{0pt plus 5cm}void Xml\-Handler\-Author.\-set\-Pub (
+\begin{DoxyParamCaption}
+\item[{int}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerAuthor_acb7a439c54a29c688fc36190a529581f}
+
+
+Definition at line 80 of file Xml\-Handler.\-java.
+
+
+\begin{DoxyCode}
+80                              \{
+81         publication = x;
+82     \}
+\end{DoxyCode}
+\hypertarget{classXmlHandlerAuthor_afe6d790275f8d30f0ab3527b1aea934b}{\index{Xml\-Handler\-Author@{Xml\-Handler\-Author}!set\-Title@{set\-Title}}
+\index{set\-Title@{set\-Title}!XmlHandlerAuthor@{Xml\-Handler\-Author}}
+\subsubsection[{set\-Title}]{\setlength{\rightskip}{0pt plus 5cm}void Xml\-Handler\-Author.\-set\-Title (
+\begin{DoxyParamCaption}
+\item[{String}]{t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerAuthor_afe6d790275f8d30f0ab3527b1aea934b}
+
+
+Definition at line 71 of file Xml\-Handler.\-java.
+
+
+\begin{DoxyCode}
+71                                   \{
+72         title = t;
+73     \}
+\end{DoxyCode}
+\hypertarget{classXmlHandlerAuthor_a6137e5065cb6e2050ef6b9d1a2a50e48}{\index{Xml\-Handler\-Author@{Xml\-Handler\-Author}!set\-Url@{set\-Url}}
+\index{set\-Url@{set\-Url}!XmlHandlerAuthor@{Xml\-Handler\-Author}}
+\subsubsection[{set\-Url}]{\setlength{\rightskip}{0pt plus 5cm}void Xml\-Handler\-Author.\-set\-Url (
+\begin{DoxyParamCaption}
+\item[{String}]{ur}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerAuthor_a6137e5065cb6e2050ef6b9d1a2a50e48}
+
+
+Definition at line 68 of file Xml\-Handler.\-java.
+
+
+\begin{DoxyCode}
+68                                  \{
+69         url = ur;
+70     \}
+\end{DoxyCode}
+\hypertarget{classXmlHandlerAuthor_a1e0a5b957fd643726ff122517e2d81c1}{\index{Xml\-Handler\-Author@{Xml\-Handler\-Author}!set\-Volume@{set\-Volume}}
+\index{set\-Volume@{set\-Volume}!XmlHandlerAuthor@{Xml\-Handler\-Author}}
+\subsubsection[{set\-Volume}]{\setlength{\rightskip}{0pt plus 5cm}void Xml\-Handler\-Author.\-set\-Volume (
+\begin{DoxyParamCaption}
+\item[{String}]{vol}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerAuthor_a1e0a5b957fd643726ff122517e2d81c1}
+
+
+Definition at line 77 of file Xml\-Handler.\-java.
+
+
+\begin{DoxyCode}
+77                                      \{
+78         volume = vol;
+79     \}
+\end{DoxyCode}
+\hypertarget{classXmlHandlerAuthor_a74cb8d94ee14ab382253abc5a38d6b8e}{\index{Xml\-Handler\-Author@{Xml\-Handler\-Author}!set\-Year@{set\-Year}}
+\index{set\-Year@{set\-Year}!XmlHandlerAuthor@{Xml\-Handler\-Author}}
+\subsubsection[{set\-Year}]{\setlength{\rightskip}{0pt plus 5cm}void Xml\-Handler\-Author.\-set\-Year (
+\begin{DoxyParamCaption}
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerAuthor_a74cb8d94ee14ab382253abc5a38d6b8e}
+
+
+Definition at line 65 of file Xml\-Handler.\-java.
+
+
+\begin{DoxyCode}
+65                               \{
+66         year = y;
+67     \}
+\end{DoxyCode}
+\hypertarget{classXmlHandlerAuthor_adac17a195135fb961bb4a8b932138152}{\index{Xml\-Handler\-Author@{Xml\-Handler\-Author}!start\-Element@{start\-Element}}
+\index{start\-Element@{start\-Element}!XmlHandlerAuthor@{Xml\-Handler\-Author}}
+\subsubsection[{start\-Element}]{\setlength{\rightskip}{0pt plus 5cm}void Xml\-Handler\-Author.\-start\-Element (
+\begin{DoxyParamCaption}
+\item[{String}]{uri, }
+\item[{String}]{local\-Name, }
+\item[{String}]{qname, }
+\item[{Attributes}]{attributes}
+\end{DoxyParamCaption}
+) throws S\-A\-X\-Exception\hspace{0.3cm}{\ttfamily [inline]}}}\label{classXmlHandlerAuthor_adac17a195135fb961bb4a8b932138152}
+
+
+Definition at line 186 of file Xml\-Handler.\-java.
+
+
+\begin{DoxyCode}
+186                                                                                                            
+               \{
+187         \textcolor{keywordflow}{try}\{
+188             System.out.println(qname);
+189             \textcolor{comment}{// if(!author\_title.isEmpty())\{}
+190             \textcolor{comment}{//  if(qname.equals("author"))\{}
+191             \textcolor{comment}{//      author = qname;}
+192             \textcolor{comment}{//  \}}
+193             \textcolor{comment}{//  else if(qname.equals("title"))\{}
+194             \textcolor{comment}{//      title = qname;}
+195             \textcolor{comment}{//  \}}
+196             \textcolor{comment}{//  else if(qname.equals("pages"))\{}
+197             \textcolor{comment}{//      pages = qname;}
+198             \textcolor{comment}{//  \}}
+199             \textcolor{comment}{//  else if(qname.equals("year"))\{}
+200             \textcolor{comment}{//      year = qname;}
+201             \textcolor{comment}{//  \}}
+202             \textcolor{comment}{//  else if(qname.equals("volume"))\{}
+203             \textcolor{comment}{//      volume = qname;}
+204             \textcolor{comment}{//  \}}
+205             \textcolor{comment}{//  else if(qname.equals("journal"))\{}
+206             \textcolor{comment}{//      journal = qname;}
+207             \textcolor{comment}{//  \}}
+208             \textcolor{comment}{//  else if(qname.equals("number"))\{}
+209             \textcolor{comment}{//      number = qname;}
+210             \textcolor{comment}{//  \}}
+211             \textcolor{comment}{//  else if(qname.equals("url"))\{}
+212             \textcolor{comment}{//      url = qname;}
+213             \textcolor{comment}{//  \}}
+214             \textcolor{comment}{//  else if(qname.equals("ee"))\{}
+215             \textcolor{comment}{//      ee = qname;}
+216             \textcolor{comment}{//  \}}
+217             \textcolor{comment}{// \}}
+218         \}
+219         \textcolor{keywordflow}{catch}(Exception e)\{
+220             e.printStackTrace();
+221         \}
+222     \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classXmlHandlerAuthor_a3b5ed01d09eb68532c727613932065a8}{\index{Xml\-Handler\-Author@{Xml\-Handler\-Author}!working@{working}}
+\index{working@{working}!XmlHandlerAuthor@{Xml\-Handler\-Author}}
+\subsubsection[{working}]{\setlength{\rightskip}{0pt plus 5cm}volatile int Xml\-Handler\-Author.\-working}}\label{classXmlHandlerAuthor_a3b5ed01d09eb68532c727613932065a8}
+
+
+Definition at line 11 of file Xml\-Handler\-Author.\-java.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{XmlHandler_8java}{Xml\-Handler.\-java}\item 
+\hyperlink{XmlHandlerAuthor_8java}{Xml\-Handler\-Author.\-java}\end{DoxyCompactItemize}

@@ -1,0 +1,97 @@
+\hypertarget{classLoading}{\section{Loading Class Reference}
+\label{classLoading}\index{Loading@{Loading}}
+}
+
+
+Collaboration diagram for Loading\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=130pt]{classLoading__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classLoading_a9f9d2da89a7f351415b04901926692b8}{Loading} ()
+\item 
+void \hyperlink{classLoading_a33fd1d03525ddbdfa8666ad97f390e3d}{start} ()
+\item 
+void \hyperlink{classLoading_a2b393401cd9bcb3073264ce7f50bc0b4}{stop} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 9 of file Loading.\-java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classLoading_a9f9d2da89a7f351415b04901926692b8}{\index{Loading@{Loading}!Loading@{Loading}}
+\index{Loading@{Loading}!Loading@{Loading}}
+\subsubsection[{Loading}]{\setlength{\rightskip}{0pt plus 5cm}Loading.\-Loading (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLoading_a9f9d2da89a7f351415b04901926692b8}
+
+
+Definition at line 11 of file Loading.\-java.
+
+
+\begin{DoxyCode}
+11                     \{
+12         load.setSize(300, 100);
+13         load.setLocationRelativeTo(null);
+14         ImageIcon loading = \textcolor{keyword}{new} ImageIcon(\textcolor{stringliteral}{"ajax-loader.gif"});
+15         load.add(\textcolor{keyword}{new} JLabel(loading, JLabel.CENTER));
+16         load.setDefaultCloseOperation(JFrame.DO\_NOTHING\_ON\_CLOSE);
+17         load.setResizable(\textcolor{keyword}{false});;
+18         load.setUndecorated(\textcolor{keyword}{true});
+19     \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classLoading_a33fd1d03525ddbdfa8666ad97f390e3d}{\index{Loading@{Loading}!start@{start}}
+\index{start@{start}!Loading@{Loading}}
+\subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}void Loading.\-start (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLoading_a33fd1d03525ddbdfa8666ad97f390e3d}
+
+
+Definition at line 20 of file Loading.\-java.
+
+
+\begin{DoxyCode}
+20                        \{
+21         load.setVisible(\textcolor{keyword}{true});
+22     \}
+\end{DoxyCode}
+\hypertarget{classLoading_a2b393401cd9bcb3073264ce7f50bc0b4}{\index{Loading@{Loading}!stop@{stop}}
+\index{stop@{stop}!Loading@{Loading}}
+\subsubsection[{stop}]{\setlength{\rightskip}{0pt plus 5cm}void Loading.\-stop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLoading_a2b393401cd9bcb3073264ce7f50bc0b4}
+
+
+Definition at line 23 of file Loading.\-java.
+
+
+\begin{DoxyCode}
+23                       \{
+24         load.setVisible(\textcolor{keyword}{false});
+25     \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{Loading_8java}{Loading.\-java}\end{DoxyCompactItemize}
