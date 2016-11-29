@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import javax.swing.*;
 public class Search{
 	private ArrayList<String> author = new ArrayList<String>();
 	public volatile int working;

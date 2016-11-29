@@ -47,7 +47,6 @@ public class DBLP_GUI extends JFrame{
 					try {
 						if(flag == 0){
 							flag = 1;k = 0;load.start();query1.query1_search();
-							
 							timer.schedule(new TimerTask(){
 								public void run() {
 									if(query1.cache == 1){
@@ -64,7 +63,6 @@ public class DBLP_GUI extends JFrame{
 					try {
 						if(flag == 0){
 							flag = 1;k = 0;load.start();query3.query3_search();
-							
 							timer.schedule(new TimerTask(){
 								public void run() {
 									if(query3.cache == 1){
@@ -74,6 +72,22 @@ public class DBLP_GUI extends JFrame{
 							}, 1000,1000);
 						}
 					} catch (InterruptedException | IOException e) {
+						e.printStackTrace();
+					}
+				}
+				else if(dropdown.getSelectedItem().equals("Query 2")){
+					try {
+						if(flag == 0){
+							flag = 1;k = 0;load.start();query2.query2_search();
+							timer.schedule(new TimerTask(){
+								public void run() {
+									if(query2.cache == 1){
+										counter();update();load.stop();flag = 0;timer.cancel();
+									}
+								}
+							}, 1000,1000);
+						}
+					} catch (IOException e) {
 						e.printStackTrace();
 					}
 				}
@@ -167,7 +181,13 @@ public class DBLP_GUI extends JFrame{
 		}
 	}
 	public Object[][] reader(){
-		Object[][] data = new Object[20][8];
+		if((dropdown.getSelectedItem().equals("Query 2"))){
+			data = new Object[20][2];
+		}
+		else{
+			data = new Object[20][8];
+		}
+		
 		try{
 			BufferedReader read = new BufferedReader(new FileReader("sort.txt"));
 			for(int i = 0;i<k;i++){
@@ -190,8 +210,14 @@ public class DBLP_GUI extends JFrame{
 		no.setText("No. of results:"+count);
 		panel2.remove(pane);
 		data = reader();
-		table = new JTable(data, columnNames);
-		table.getColumnModel().getColumn(0).setPreferredWidth(10);table.getColumnModel().getColumn(4).setPreferredWidth(10);table.getColumnModel().getColumn(3).setPreferredWidth(10);table.getColumnModel().getColumn(5).setPreferredWidth(10);
+		if((dropdown.getSelectedItem().equals("Query 2"))){
+			Object[] columnNames = {"No of Publications","Authors"};
+			table = new JTable(data, columnNames);
+		}
+		else{
+			table = new JTable(data, columnNames);
+			table.getColumnModel().getColumn(0).setPreferredWidth(10);table.getColumnModel().getColumn(4).setPreferredWidth(10);table.getColumnModel().getColumn(3).setPreferredWidth(10);table.getColumnModel().getColumn(5).setPreferredWidth(10);
+		}
 		pane = new JScrollPane(table);pane.setBounds(0,0,925,343);panel2.add(pane);
 		panel2.repaint();
 	}
