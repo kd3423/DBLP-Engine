@@ -1,0 +1,70 @@
+\hypertarget{classSearch}{\section{Search Class Reference}
+\label{classSearch}\index{Search@{Search}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSearch_a44bd8a4b037953a006bf82ec075b16bd}{Search} (String x)  throws Interrupted\-Exception, I\-O\-Exception
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+volatile int \hyperlink{classSearch_a02e8edf97002a1cb7a0212339fd9f2df}{working}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 10 of file Search.\-java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classSearch_a44bd8a4b037953a006bf82ec075b16bd}{\index{Search@{Search}!Search@{Search}}
+\index{Search@{Search}!Search@{Search}}
+\subsubsection[{Search}]{\setlength{\rightskip}{0pt plus 5cm}Search.\-Search (
+\begin{DoxyParamCaption}
+\item[{String}]{x}
+\end{DoxyParamCaption}
+) throws Interrupted\-Exception, I\-O\-Exception\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSearch_a44bd8a4b037953a006bf82ec075b16bd}
+
+
+Definition at line 13 of file Search.\-java.
+
+
+\begin{DoxyCode}
+13                                                                     \{
+14         \hyperlink{classSearch_a02e8edf97002a1cb7a0212339fd9f2df}{working}  = 0;
+15         \hyperlink{classXmlHandlerTitleForAuthor}{XmlHandlerTitleForAuthor} xml\_title = \textcolor{keyword}{new} 
+      \hyperlink{classXmlHandlerTitleForAuthor}{XmlHandlerTitleForAuthor}();
+16         author = getAuthor(x);
+17         xml\_title.setAuthor(author);;
+18         Thread t = \textcolor{keyword}{new} Thread(xml\_title);
+19         t.start();
+20         Timer timer = \textcolor{keyword}{new} Timer();
+21         timer.schedule(\textcolor{keyword}{new} TimerTask()\{
+22             \textcolor{keyword}{public} \textcolor{keywordtype}{void} run() \{ 
+23                 \textcolor{keywordflow}{if}(xml\_title.\hyperlink{classXmlHandlerTitleForAuthor_aacfb0b6097f6d67493b600563cc91ec7}{working} == 1)\{
+24                     \hyperlink{classSearch_a02e8edf97002a1cb7a0212339fd9f2df}{working} = xml\_title.working;
+25                     timer.cancel();
+26                 \}
+27             \}
+28         \},1000,1000);
+29     \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classSearch_a02e8edf97002a1cb7a0212339fd9f2df}{\index{Search@{Search}!working@{working}}
+\index{working@{working}!Search@{Search}}
+\subsubsection[{working}]{\setlength{\rightskip}{0pt plus 5cm}volatile int Search.\-working}}\label{classSearch_a02e8edf97002a1cb7a0212339fd9f2df}
+
+
+Definition at line 12 of file Search.\-java.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{Search_8java}{Search.\-java}\end{DoxyCompactItemize}

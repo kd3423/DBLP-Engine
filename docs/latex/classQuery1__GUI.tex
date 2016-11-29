@@ -1,0 +1,240 @@
+\hypertarget{classQuery1__GUI}{\section{Query1\-\_\-\-G\-U\-I Class Reference}
+\label{classQuery1__GUI}\index{Query1\-\_\-\-G\-U\-I@{Query1\-\_\-\-G\-U\-I}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classQuery1__GUI_a719f8d96ff9ab4257520f2854a5fdec6}{Query1\-\_\-\-G\-U\-I} (J\-Panel panel)
+\item 
+void \hyperlink{classQuery1__GUI_a993de0231b4a0748b56c5bb271322c1d}{query1\-\_\-remove} ()
+\item 
+void \hyperlink{classQuery1__GUI_a84ec3720f7705330af34607bb7f9df97}{query1\-\_\-add} ()
+\item 
+void \hyperlink{classQuery1__GUI_a296041c237169f0aa259dff727d78c66}{query1\-\_\-search} ()  throws Interrupted\-Exception, I\-O\-Exception
+\item 
+void \hyperlink{classQuery1__GUI_a4f2a7928d9035191345d523ca6a61474}{query1\-\_\-reset} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classQuery1__GUI_aefa26438c30d278901bd04f6f83b57c0}{cache}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 18 of file Query1\-\_\-\-G\-U\-I.\-java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classQuery1__GUI_a719f8d96ff9ab4257520f2854a5fdec6}{\index{Query1\-\_\-\-G\-U\-I@{Query1\-\_\-\-G\-U\-I}!Query1\-\_\-\-G\-U\-I@{Query1\-\_\-\-G\-U\-I}}
+\index{Query1\-\_\-\-G\-U\-I@{Query1\-\_\-\-G\-U\-I}!Query1_GUI@{Query1\-\_\-\-G\-U\-I}}
+\subsubsection[{Query1\-\_\-\-G\-U\-I}]{\setlength{\rightskip}{0pt plus 5cm}Query1\-\_\-\-G\-U\-I.\-Query1\-\_\-\-G\-U\-I (
+\begin{DoxyParamCaption}
+\item[{J\-Panel}]{panel}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classQuery1__GUI_a719f8d96ff9ab4257520f2854a5fdec6}
+
+
+Definition at line 33 of file Query1\-\_\-\-G\-U\-I.\-java.
+
+
+\begin{DoxyCode}
+33                                    \{
+34         error.setSize(300, 100);
+35         error.setVisible(\textcolor{keyword}{false});
+36         error.setLocationRelativeTo(null);
+37         error.add(\textcolor{keyword}{new} JLabel(\textcolor{keyword}{new} ImageIcon(\textcolor{stringliteral}{"error.png"}), JLabel.CENTER));
+38         query1\_panel.setVisible(\textcolor{keyword}{false});
+39         query1\_panel.setBounds(0,125,250,270);
+40         drop.setBounds(25,20,200,30);
+41         drop.setBackground(Color.white);
+42         name.setBounds(30,65,175,30);
+43         name.setFont(\textcolor{keyword}{new} Font(\textcolor{stringliteral}{"Courier New"}, Font.PLAIN, 15));
+44         text\_name.setBounds(150,65,100,30);
+45         year.setBounds(30,100,150,30);
+46         year.setFont(\textcolor{keyword}{new} Font(\textcolor{stringliteral}{"Courier New"}, Font.PLAIN, 15));
+47         text\_year.setBounds(150,100,100,30);
+48         range.setBounds(30,135,175,30);
+49         range.setFont(\textcolor{keyword}{new} Font(\textcolor{stringliteral}{"Courier New"}, Font.PLAIN, 15));
+50         text\_range1.setBounds(150,135,45,30);
+51         text\_range2.setBounds(205,135,45,30);
+52         sort\_year.setBounds(20,180,150,20);
+53         sort\_relevence.setBounds(20,220,200,20);
+54         drop.addItem(\textcolor{stringliteral}{"Search by Author Name"});
+55         drop.addItem(\textcolor{stringliteral}{"Search by Title"});
+56         buttons.add(sort\_year);
+57         sort\_year.setSelected(\textcolor{keyword}{true});
+58         buttons.add(sort\_relevence);
+59         query1\_panel.add(drop);
+60         query1\_panel.add(name);
+61         query1\_panel.add(year);
+62         query1\_panel.add(range);
+63         query1\_panel.add(text\_name);
+64         query1\_panel.add(text\_year);
+65         query1\_panel.add(text\_range1);
+66         query1\_panel.add(text\_range2);
+67         query1\_panel.add(sort\_year);
+68         query1\_panel.add(sort\_relevence);
+69         panel.add(query1\_panel);
+70         panel.repaint();
+71     \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classQuery1__GUI_a84ec3720f7705330af34607bb7f9df97}{\index{Query1\-\_\-\-G\-U\-I@{Query1\-\_\-\-G\-U\-I}!query1\-\_\-add@{query1\-\_\-add}}
+\index{query1\-\_\-add@{query1\-\_\-add}!Query1_GUI@{Query1\-\_\-\-G\-U\-I}}
+\subsubsection[{query1\-\_\-add}]{\setlength{\rightskip}{0pt plus 5cm}void Query1\-\_\-\-G\-U\-I.\-query1\-\_\-add (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classQuery1__GUI_a84ec3720f7705330af34607bb7f9df97}
+
+
+Definition at line 75 of file Query1\-\_\-\-G\-U\-I.\-java.
+
+
+\begin{DoxyCode}
+75                             \{
+76         query1\_panel.setVisible(\textcolor{keyword}{true});
+77     \}
+\end{DoxyCode}
+\hypertarget{classQuery1__GUI_a993de0231b4a0748b56c5bb271322c1d}{\index{Query1\-\_\-\-G\-U\-I@{Query1\-\_\-\-G\-U\-I}!query1\-\_\-remove@{query1\-\_\-remove}}
+\index{query1\-\_\-remove@{query1\-\_\-remove}!Query1_GUI@{Query1\-\_\-\-G\-U\-I}}
+\subsubsection[{query1\-\_\-remove}]{\setlength{\rightskip}{0pt plus 5cm}void Query1\-\_\-\-G\-U\-I.\-query1\-\_\-remove (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classQuery1__GUI_a993de0231b4a0748b56c5bb271322c1d}
+
+
+Definition at line 72 of file Query1\-\_\-\-G\-U\-I.\-java.
+
+
+\begin{DoxyCode}
+72                                \{
+73         query1\_panel.setVisible(\textcolor{keyword}{false});
+74     \}
+\end{DoxyCode}
+\hypertarget{classQuery1__GUI_a4f2a7928d9035191345d523ca6a61474}{\index{Query1\-\_\-\-G\-U\-I@{Query1\-\_\-\-G\-U\-I}!query1\-\_\-reset@{query1\-\_\-reset}}
+\index{query1\-\_\-reset@{query1\-\_\-reset}!Query1_GUI@{Query1\-\_\-\-G\-U\-I}}
+\subsubsection[{query1\-\_\-reset}]{\setlength{\rightskip}{0pt plus 5cm}void Query1\-\_\-\-G\-U\-I.\-query1\-\_\-reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classQuery1__GUI_a4f2a7928d9035191345d523ca6a61474}
+
+
+Definition at line 178 of file Query1\-\_\-\-G\-U\-I.\-java.
+
+
+\begin{DoxyCode}
+178                               \{
+179         text\_name.setText(\textcolor{stringliteral}{""});
+180         text\_range1.setText(\textcolor{stringliteral}{""});
+181         text\_range2.setText(\textcolor{stringliteral}{""});
+182         text\_year.setText(\textcolor{stringliteral}{""});
+183         sort\_year.setSelected(\textcolor{keyword}{true});
+184     \}
+\end{DoxyCode}
+\hypertarget{classQuery1__GUI_a296041c237169f0aa259dff727d78c66}{\index{Query1\-\_\-\-G\-U\-I@{Query1\-\_\-\-G\-U\-I}!query1\-\_\-search@{query1\-\_\-search}}
+\index{query1\-\_\-search@{query1\-\_\-search}!Query1_GUI@{Query1\-\_\-\-G\-U\-I}}
+\subsubsection[{query1\-\_\-search}]{\setlength{\rightskip}{0pt plus 5cm}void Query1\-\_\-\-G\-U\-I.\-query1\-\_\-search (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) throws Interrupted\-Exception, I\-O\-Exception\hspace{0.3cm}{\ttfamily [inline]}}}\label{classQuery1__GUI_a296041c237169f0aa259dff727d78c66}
+
+
+Definition at line 78 of file Query1\-\_\-\-G\-U\-I.\-java.
+
+
+\begin{DoxyCode}
+78                                                                         \{
+79         \textcolor{keywordtype}{int} x;
+80         \hyperlink{classQuery1__GUI_aefa26438c30d278901bd04f6f83b57c0}{cache} = 0;
+81         \textcolor{keywordflow}{if}(drop.getSelectedItem().equals(\textcolor{stringliteral}{"Search by Author Name"}))\{
+82             \textcolor{keywordflow}{if}(!(text\_name.getText().equals(\textcolor{stringliteral}{""})))\{
+83                 \textcolor{keywordflow}{if}(!(text\_year.getText().equals(\textcolor{stringliteral}{""}))) x = 2;
+84                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(!(text\_range1.getText().equals(\textcolor{stringliteral}{""})) && !(text\_range2.getText().equals(\textcolor{stringliteral}{""})))x = 4;
+85                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(sort\_year.isSelected()) x = 1;
+86                 \textcolor{keywordflow}{else}\{
+87                     x = 0;
+88                 \}
+89                 \hyperlink{classSearch}{Search} temp = \textcolor{keyword}{new} \hyperlink{classSearch}{Search}(text\_name.getText());
+90                 Timer timer = \textcolor{keyword}{new} Timer();
+91                 timer.schedule(\textcolor{keyword}{new} TimerTask()\{
+92                     @Override
+93                     \textcolor{keyword}{public} \textcolor{keywordtype}{void} run() \{
+94                         \textcolor{keywordflow}{try} \{
+95                             \textcolor{keywordflow}{if}(temp.\hyperlink{classSearch_a02e8edf97002a1cb7a0212339fd9f2df}{working} == 1)\{
+96                                 SortSelect(x);
+97                                 \hyperlink{classQuery1__GUI_aefa26438c30d278901bd04f6f83b57c0}{cache} = 1;
+98                                 timer.cancel();
+99                             \}
+100                             
+101                         \} \textcolor{keywordflow}{catch} (IOException e) \{
+102                             e.printStackTrace();
+103                         \}
+104                 \}\},1000,1000);
+105             \}
+106             \textcolor{keywordflow}{else}\{
+107                 error.setVisible(\textcolor{keyword}{true});
+108                 \hyperlink{classQuery1__GUI_aefa26438c30d278901bd04f6f83b57c0}{cache} = 1;
+109             \}
+110         \}
+111         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(drop.getSelectedItem().equals(\textcolor{stringliteral}{"Search by Title"}))\{  
+112             \textcolor{keywordflow}{if}(!(text\_name.getText().equals(\textcolor{stringliteral}{""})))\{
+113                 \textcolor{keywordtype}{int} temp = 4;
+114                 \textcolor{keywordflow}{if}(!(text\_year.getText().equals(\textcolor{stringliteral}{""}))) x = 2;
+115                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(!(text\_range1.getText().equals(\textcolor{stringliteral}{""})) && !(text\_range2.getText().equals(\textcolor{stringliteral}{""})))x = 4;
+116                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(sort\_year.isSelected()) x = 1;
+117                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(sort\_relevence.isSelected())\{temp = 0;x=1;\}
+118                 \textcolor{keywordflow}{else}\{
+119                     x = 0;
+120                 \}
+121                 \hyperlink{classXmlHandlerTitle}{XmlHandlerTitle} title = \textcolor{keyword}{new} \hyperlink{classXmlHandlerTitle}{XmlHandlerTitle}(text\_name.getText
+      (),temp);
+122                 Thread t = \textcolor{keyword}{new} Thread(title);
+123                 t.start();
+124                 Timer timer = \textcolor{keyword}{new} Timer();
+125                 timer.schedule(\textcolor{keyword}{new} TimerTask()\{
+126                     @Override
+127                     \textcolor{keyword}{public} \textcolor{keywordtype}{void} run() \{
+128                         \textcolor{keywordflow}{try} \{
+129                             \textcolor{keywordflow}{if}(title.\hyperlink{classXmlHandlerTitle_a8430143db4f1036e5db03fbe7e3d451f}{working} == 1)\{
+130                                 SortSelect(x);
+131                                 \hyperlink{classQuery1__GUI_aefa26438c30d278901bd04f6f83b57c0}{cache} = 1;
+132                                 timer.cancel();
+133                             \}
+134                             
+135                         \} \textcolor{keywordflow}{catch} (IOException e) \{
+136                             e.printStackTrace();
+137                         \}
+138                 \}\},1000,1000);
+139             \}
+140             \textcolor{keywordflow}{else}\{
+141                 error.setVisible(\textcolor{keyword}{true});
+142                 \hyperlink{classQuery1__GUI_aefa26438c30d278901bd04f6f83b57c0}{cache} = 1;
+143             \}
+144         \}
+145     \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classQuery1__GUI_aefa26438c30d278901bd04f6f83b57c0}{\index{Query1\-\_\-\-G\-U\-I@{Query1\-\_\-\-G\-U\-I}!cache@{cache}}
+\index{cache@{cache}!Query1_GUI@{Query1\-\_\-\-G\-U\-I}}
+\subsubsection[{cache}]{\setlength{\rightskip}{0pt plus 5cm}int Query1\-\_\-\-G\-U\-I.\-cache}}\label{classQuery1__GUI_aefa26438c30d278901bd04f6f83b57c0}
+
+
+Definition at line 32 of file Query1\-\_\-\-G\-U\-I.\-java.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{Query1__GUI_8java}{Query1\-\_\-\-G\-U\-I.\-java}\end{DoxyCompactItemize}

@@ -1,0 +1,170 @@
+\hypertarget{classQuery3__GUI}{\section{Query3\-\_\-\-G\-U\-I Class Reference}
+\label{classQuery3__GUI}\index{Query3\-\_\-\-G\-U\-I@{Query3\-\_\-\-G\-U\-I}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classQuery3__GUI_a56170789543e9d2ed2b254d8b4bfb72c}{Query3\-\_\-\-G\-U\-I} (J\-Panel panel)
+\item 
+void \hyperlink{classQuery3__GUI_a63b8b44746b31e14d0c287fb7cf5a407}{query3\-\_\-remove} ()
+\item 
+void \hyperlink{classQuery3__GUI_a62d42f02d00a389220b3d837fe8fb914}{query3\-\_\-add} ()
+\item 
+void \hyperlink{classQuery3__GUI_ae28882c0291a82d66578cd8cbef24dcf}{query3\-\_\-reset} ()
+\item 
+double\mbox{[}$\,$\mbox{]} \hyperlink{classQuery3__GUI_a672b09c39e9d93a5ead04f254d160074}{holt\-\_\-alg} (double h, double y\-\_\-last, double y\-\_\-pred, double T\-\_\-pred, double alpha, double beta)
+\item 
+Array\-List$<$ Double $>$ \hyperlink{classQuery3__GUI_a5a3482ed71d3e567e47607ddb61028cc}{smoothing} (double\mbox{[}$\,$\mbox{]} t, double\mbox{[}$\,$\mbox{]} y, double alpha, double beta)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 8 of file Query3\-\_\-\-G\-U\-I.\-java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classQuery3__GUI_a56170789543e9d2ed2b254d8b4bfb72c}{\index{Query3\-\_\-\-G\-U\-I@{Query3\-\_\-\-G\-U\-I}!Query3\-\_\-\-G\-U\-I@{Query3\-\_\-\-G\-U\-I}}
+\index{Query3\-\_\-\-G\-U\-I@{Query3\-\_\-\-G\-U\-I}!Query3_GUI@{Query3\-\_\-\-G\-U\-I}}
+\subsubsection[{Query3\-\_\-\-G\-U\-I}]{\setlength{\rightskip}{0pt plus 5cm}Query3\-\_\-\-G\-U\-I.\-Query3\-\_\-\-G\-U\-I (
+\begin{DoxyParamCaption}
+\item[{J\-Panel}]{panel}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classQuery3__GUI_a56170789543e9d2ed2b254d8b4bfb72c}
+
+
+Definition at line 14 of file Query3\-\_\-\-G\-U\-I.\-java.
+
+
+\begin{DoxyCode}
+14                                    \{
+15         query3\_panel.setVisible(\textcolor{keyword}{false});
+16         query3\_panel.setBounds(0,125,250,270);
+17         name.setBounds(30,65,175,30);
+18         year.setBounds(30,100,175,30);
+19         name.setFont(\textcolor{keyword}{new} Font(\textcolor{stringliteral}{"Courier New"}, Font.PLAIN, 15));
+20         year.setFont(\textcolor{keyword}{new} Font(\textcolor{stringliteral}{"Courier New"}, Font.PLAIN, 15));
+21         text\_name.setBounds(140,65,100,30);
+22         text\_year.setBounds(170,100,70,30);
+23         query3\_panel.add(name);
+24         query3\_panel.add(year);
+25         query3\_panel.add(text\_name);
+26         query3\_panel.add(text\_year);
+27         panel.add(query3\_panel);
+28     \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classQuery3__GUI_a672b09c39e9d93a5ead04f254d160074}{\index{Query3\-\_\-\-G\-U\-I@{Query3\-\_\-\-G\-U\-I}!holt\-\_\-alg@{holt\-\_\-alg}}
+\index{holt\-\_\-alg@{holt\-\_\-alg}!Query3_GUI@{Query3\-\_\-\-G\-U\-I}}
+\subsubsection[{holt\-\_\-alg}]{\setlength{\rightskip}{0pt plus 5cm}double \mbox{[}$\,$\mbox{]} Query3\-\_\-\-G\-U\-I.\-holt\-\_\-alg (
+\begin{DoxyParamCaption}
+\item[{double}]{h, }
+\item[{double}]{y\-\_\-last, }
+\item[{double}]{y\-\_\-pred, }
+\item[{double}]{T\-\_\-pred, }
+\item[{double}]{alpha, }
+\item[{double}]{beta}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classQuery3__GUI_a672b09c39e9d93a5ead04f254d160074}
+
+
+Definition at line 39 of file Query3\-\_\-\-G\-U\-I.\-java.
+
+
+\begin{DoxyCode}
+39                                                                                                          \{
+40         \textcolor{keywordtype}{double} pred\_y\_new = alpha * y\_last + (1-alpha) * (y\_pred + T\_pred * h);
+41         \textcolor{keywordtype}{double} pred\_t\_new = beta * (pred\_y\_new - y\_pred)/h + (1-beta)*T\_pred;
+42         \textcolor{keywordtype}{double} [] temp = \textcolor{keyword}{new} \textcolor{keywordtype}{double}[2];
+43         temp[0] = pred\_y\_new;
+44         temp[1] = pred\_t\_new;
+45         \textcolor{keywordflow}{return} temp;
+46     \}
+\end{DoxyCode}
+\hypertarget{classQuery3__GUI_a62d42f02d00a389220b3d837fe8fb914}{\index{Query3\-\_\-\-G\-U\-I@{Query3\-\_\-\-G\-U\-I}!query3\-\_\-add@{query3\-\_\-add}}
+\index{query3\-\_\-add@{query3\-\_\-add}!Query3_GUI@{Query3\-\_\-\-G\-U\-I}}
+\subsubsection[{query3\-\_\-add}]{\setlength{\rightskip}{0pt plus 5cm}void Query3\-\_\-\-G\-U\-I.\-query3\-\_\-add (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classQuery3__GUI_a62d42f02d00a389220b3d837fe8fb914}
+
+
+Definition at line 32 of file Query3\-\_\-\-G\-U\-I.\-java.
+
+
+\begin{DoxyCode}
+32                             \{
+33         query3\_panel.setVisible(\textcolor{keyword}{true});
+34     \}
+\end{DoxyCode}
+\hypertarget{classQuery3__GUI_a63b8b44746b31e14d0c287fb7cf5a407}{\index{Query3\-\_\-\-G\-U\-I@{Query3\-\_\-\-G\-U\-I}!query3\-\_\-remove@{query3\-\_\-remove}}
+\index{query3\-\_\-remove@{query3\-\_\-remove}!Query3_GUI@{Query3\-\_\-\-G\-U\-I}}
+\subsubsection[{query3\-\_\-remove}]{\setlength{\rightskip}{0pt plus 5cm}void Query3\-\_\-\-G\-U\-I.\-query3\-\_\-remove (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classQuery3__GUI_a63b8b44746b31e14d0c287fb7cf5a407}
+
+
+Definition at line 29 of file Query3\-\_\-\-G\-U\-I.\-java.
+
+
+\begin{DoxyCode}
+29                                \{
+30         query3\_panel.setVisible(\textcolor{keyword}{false});
+31     \}
+\end{DoxyCode}
+\hypertarget{classQuery3__GUI_ae28882c0291a82d66578cd8cbef24dcf}{\index{Query3\-\_\-\-G\-U\-I@{Query3\-\_\-\-G\-U\-I}!query3\-\_\-reset@{query3\-\_\-reset}}
+\index{query3\-\_\-reset@{query3\-\_\-reset}!Query3_GUI@{Query3\-\_\-\-G\-U\-I}}
+\subsubsection[{query3\-\_\-reset}]{\setlength{\rightskip}{0pt plus 5cm}void Query3\-\_\-\-G\-U\-I.\-query3\-\_\-reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classQuery3__GUI_ae28882c0291a82d66578cd8cbef24dcf}
+
+
+Definition at line 35 of file Query3\-\_\-\-G\-U\-I.\-java.
+
+
+\begin{DoxyCode}
+35                               \{
+36         text\_name.setText(\textcolor{stringliteral}{""});
+37         text\_year.setText(\textcolor{stringliteral}{""});
+38     \}
+\end{DoxyCode}
+\hypertarget{classQuery3__GUI_a5a3482ed71d3e567e47607ddb61028cc}{\index{Query3\-\_\-\-G\-U\-I@{Query3\-\_\-\-G\-U\-I}!smoothing@{smoothing}}
+\index{smoothing@{smoothing}!Query3_GUI@{Query3\-\_\-\-G\-U\-I}}
+\subsubsection[{smoothing}]{\setlength{\rightskip}{0pt plus 5cm}Array\-List$<$Double$>$ Query3\-\_\-\-G\-U\-I.\-smoothing (
+\begin{DoxyParamCaption}
+\item[{double\mbox{[}$\,$\mbox{]}}]{t, }
+\item[{double\mbox{[}$\,$\mbox{]}}]{y, }
+\item[{double}]{alpha, }
+\item[{double}]{beta}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classQuery3__GUI_a5a3482ed71d3e567e47607ddb61028cc}
+
+
+Definition at line 47 of file Query3\-\_\-\-G\-U\-I.\-java.
+
+
+\begin{DoxyCode}
+47                                                                                       \{
+48         \textcolor{keywordtype}{double} pred\_y = y[1];
+49         \textcolor{keywordtype}{double} pred\_t = (y[1] - y[0])/(t[1] - t[0]);
+50         ArrayList<Double> y\_hat = \textcolor{keyword}{new} ArrayList<Double>();
+51         y\_hat.add(y[0]);
+52         y\_hat.add(y[1]);
+53         \textcolor{keywordflow}{return} y\_hat;
+54         
+55     \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{Query3__GUI_8java}{Query3\-\_\-\-G\-U\-I.\-java}\end{DoxyCompactItemize}

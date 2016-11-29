@@ -42,7 +42,7 @@ public class Query3_GUI {
 		double [] temp = new double[2];
 		temp[0] = pred_y_new;
 		temp[1] = pred_t_new;
-		return temp; 
+		return temp;
 	}
 	public ArrayList<Double> smoothing(double[] t,double[] y,double alpha,double beta){
 		double pred_y = y[1];
@@ -50,6 +50,7 @@ public class Query3_GUI {
 		ArrayList<Double> y_hat = new ArrayList<Double>();
 		y_hat.add(y[0]);
 		y_hat.add(y[1]);
+		return y_hat;
 		
 	}
 }
