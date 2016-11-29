@@ -128,7 +128,7 @@ public class XmlHandlerTitleForAuthor implements Runnable{
 				z = z + e;
 				z = z + " | ";
 			}
-			write.print( snum +"~"+ z + "~" + title + "~" + pages + "~" + year + "~"+ volume+ "~"+journal+"~" + url + "\n");
+			write.print( snum +"!!"+ z + "!!" + title + "!!" + pages + "!!" + year + "!!"+ volume+ "!!"+journal+"!!" + url + "\n");
 			write.flush();
 			write.close();
 		}
@@ -150,7 +150,7 @@ public class XmlHandlerTitleForAuthor implements Runnable{
 	    	String call;
 			while((call = read.readLine())!= null){
 			ArrayList<String> temp = new ArrayList<String>();
-			String[] x = call.split("~");
+			String[] x = call.split("!!");
 			for(int i = 0;i<x.length;i++){
 				temp.add(x[i]);
 			}
@@ -160,7 +160,7 @@ public class XmlHandlerTitleForAuthor implements Runnable{
 	    	Collections.sort(csvLines,comp);
 	    	PrintWriter write = new PrintWriter( new BufferedWriter( new FileWriter ( "Ref.txt") ) );
 	    	for(int i = 0;i<csvLines.size();i++){
-	    		write.print((i+1)+"~"+csvLines.get(i).get(1)+ "~" +csvLines.get(i).get(2)+ "~" +csvLines.get(i).get(3)+ "~" + csvLines.get(i).get(4) + "~"+ csvLines.get(i).get(5)+ "~" + csvLines.get(i).get(6)+ "~" + csvLines.get(i).get(7) +"\n");
+	    		write.print((i+1)+"!!"+csvLines.get(i).get(1)+ "!!" +csvLines.get(i).get(2)+ "!!" +csvLines.get(i).get(3)+ "!!" + csvLines.get(i).get(4) + "!!"+ csvLines.get(i).get(5)+ "!!" + csvLines.get(i).get(6)+ "!!" + csvLines.get(i).get(7) +"\n");
 	    		write.flush();
 	    	}
 			write.close();

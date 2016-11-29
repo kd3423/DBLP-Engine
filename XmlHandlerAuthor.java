@@ -49,7 +49,6 @@ public class XmlHandlerAuthor implements Runnable{
 					if(qname.equals("author")){
 						checkAuth = false;
 						temp.add(join);
-						System.out.println(join);
 					}
 					else if(qname.equals("www")){
 						if(checkString && check){

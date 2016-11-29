@@ -171,12 +171,12 @@ public class DBLP_GUI extends JFrame{
 		try{
 			BufferedReader read = new BufferedReader(new FileReader("sort.txt"));
 			for(int i = 0;i<k;i++){
-				read.readLine().split("~");
+				read.readLine().split("!!");
 			}
 			for(int i = 0;i<20;i++){
 				String call;
 				if((call = read.readLine())!= null){
-					data[i] = call.split("~");
+					data[i] = call.split("!!");
 				}
 			}
 			read.close();

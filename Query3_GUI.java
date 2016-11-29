@@ -89,10 +89,10 @@ public class Query3_GUI {
 		int i = 0;
 		int k = 0;
 		while((call = read.readLine())!= null){
-			String [] z = call.split("~");
+			String [] z = call.split("!!");
 			
 			if(year > Integer.parseInt(z[4])){
-				write.write(i+1 +"~"+ z[1] + "~" + z[2] + "~" + z[3] + "~" + z[4] + "~"+ z[5] + "~" + z[6] + "~" + z[7]+"\n");
+				write.write(i+1 +"!!"+ z[1] + "!!" + z[2] + "!!" + z[3] + "!!" + z[4] + "!!"+ z[5] + "!!" + z[6] + "!!" + z[7]+"\n");
 				if(map.containsKey(Integer.parseInt(z[4]))){
 					k++;
 					map.put(Integer.parseInt(z[4]), k);
