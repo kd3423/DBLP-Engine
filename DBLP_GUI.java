@@ -29,17 +29,15 @@ public class DBLP_GUI extends JFrame{
 	private JButton next = new JButton("Next->>");
 	private JButton prev = new JButton("<<-Prev");
 	private int k =0 ;
-	private Object[][] data = new Object[20][7];
-	private Object[] columnNames = {"Sno","Author","Title","Pages","Year","Volume","URL"};
+	private Object[][] data = new Object[20][8];
+	private Object[] columnNames = {"Sno","Author","Title","Pages","Year","Volume","Journal/Booktitle","URL"};
 	private JTable table;
 	private JScrollPane pane;
 	private int flag = 0;
 	private Loading load = new Loading();
 	private JButton reset  = new JButton(new AbstractAction("Reset"){
 		public void actionPerformed(ActionEvent e) {
-			query1.query1_reset();
-			query2.query2_reset();
-			query3.query3_reset();
+			query1.query1_reset();query2.query2_reset();query3.query3_reset();
 		}
 	});
 	private JButton search  = new JButton(new AbstractAction("Search"){
@@ -47,19 +45,12 @@ public class DBLP_GUI extends JFrame{
 				if(dropdown.getSelectedItem().equals("Query 1")){
 					try {
 						if(flag == 0){
-							flag = 1;
-							k = 0;
-							load.start();
-							query1.query1_search();
+							flag = 1;k = 0;load.start();query1.query1_search();
 							Timer timer = new Timer();
 							timer.schedule(new TimerTask(){
 								public void run() {
 									if(query1.cache == 1){
-										counter();
-										update();
-										load.stop();
-										flag = 0;
-										timer.cancel();
+										counter();update();load.stop();flag = 0;timer.cancel();
 									}
 								}
 							}, 1000,1000);
@@ -76,38 +67,20 @@ public class DBLP_GUI extends JFrame{
 		file.delete();
 		file = new File("sort.txt");
 		file.delete();
-		label.setBounds(200,10,400,45);
-		label.setFont(new Font("Courier New",Font.PLAIN,40));
+		label.setBounds(400,10,400,45);label.setFont(new Font("Courier New",Font.PLAIN,40));
 		Dropdown();
-		table = new JTable(data, columnNames);
-		pane = new JScrollPane(table);
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		pane.setBounds(0,0,525,360);
-		panel2.add(pane);
-		prev.setBounds(300,450,100, 30);
-		no.setFont(new Font("Courier New",Font.PLAIN,15));
-		no.setBounds(450,450,200,30);
-		prev.setBackground(Color.white);
-		next.setBounds(650,450,100, 30);
-		next.setBackground(Color.white);
+		table = new JTable(data, columnNames);pane = new JScrollPane(table);pane.setBounds(0,0,925,343);
+		panel2.add(pane);panel2.setBounds(260,80,925,360);
+		prev.setBounds(300,450,100, 30);prev.setBackground(Color.white);
+		no.setFont(new Font("Courier New",Font.PLAIN,15));no.setBounds(450,450,200,30);
+		next.setBounds(650,450,100, 30);next.setBackground(Color.white);
 		panel.setBounds(getBounds());
-		query1 = new Query1_GUI(panel);
-		query1.query1_add();
+		query1 = new Query1_GUI(panel);query1.query1_add();
 		query2 = new Query2_GUI(panel);
 		query3 = new Query3_GUI(panel);
-		panel2.setBounds(260,80,525,360);
-		panel.add(panel2);
-		panel.add(label);
-		panel.add(prev);
-		panel.add(next);
-		panel.add(dropdown);
-		panel.add(search);
-		panel.add(reset);
-		panel.add(no);
-		reset.setBounds(150,400,100,30);
-		reset.setBackground(Color.white);
-		search.setBounds(20,400,100,30); 
-		search.setBackground(Color.white);
+		panel.add(panel2);panel.add(label);	panel.add(prev);panel.add(next);panel.add(dropdown);panel.add(search);panel.add(reset);	panel.add(no);
+		reset.setBounds(150,400,100,30);reset.setBackground(Color.white);
+		search.setBounds(20,400,100,30);search.setBackground(Color.white);
 		next.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				k=k+20;
@@ -117,22 +90,14 @@ public class DBLP_GUI extends JFrame{
 				else if(k > count){
 					k=k-20;
 				}
-			}
-		});
+			}});
 		prev.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				if(k != 0){
-					k=k-20;
-					update();
+					k=k-20;update();
 				}
-			}
-		});
-		setSize(800, 500);
-		setLocationRelativeTo(null);
-		setResizable(false);
-		setVisible(true);
-		add(panel);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+			}});
+		setSize(1200, 500);setLocationRelativeTo(null);setResizable(false);setVisible(true);add(panel);setDefaultCloseOperation(EXIT_ON_CLOSE);
 		File f1 = new File("author.txt");
 		if(!(f1.exists())){
 			XmlHandlerAuthor xml_author = new XmlHandlerAuthor();
@@ -143,20 +108,11 @@ public class DBLP_GUI extends JFrame{
 			timer.schedule(new TimerTask(){
 				public void run() {
 					if(xml_author.working == 1){
-						load.stop();
-						timer.cancel();
-					}
-				}
-			}, 1000,1000);
-		}
+						load.stop();timer.cancel();
+					}}}, 1000,1000);}
 	}
 	void Dropdown(){		
-		dropdown.addItem("Query 1");
-		dropdown.addItem("Query 2");
-		dropdown.addItem("Query 3");
-		dropdown.setBounds(45,100,100,25);
-		dropdown.setBackground(Color.WHITE);
-		dropdown.addActionListener(new ActionListener(){
+		dropdown.addItem("Query 1");dropdown.addItem("Query 2");dropdown.addItem("Query 3");dropdown.setBounds(45,100,100,25);dropdown.setBackground(Color.WHITE);dropdown.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				if(((JComboBox<String>) e.getSource()).getSelectedItem().equals("Query 1")){
 					query1();
@@ -166,24 +122,16 @@ public class DBLP_GUI extends JFrame{
 				}
 				else if(((JComboBox<String>) e.getSource()).getSelectedItem().equals("Query 3")){
 					query3();
-				}
-			}});
+				}}});
 	}
-	
 	void query1(){
-		query1.query1_add();
-		query2.query2_remove();
-		query3.query3_remove();
+		query1.query1_add();query2.query2_remove();query3.query3_remove();
 	}
 	void query2(){
-		query2.query2_add();
-		query1.query1_remove();
-		query3.query3_remove();
+		query2.query2_add();query1.query1_remove();query3.query3_remove();
 	}
 	void query3(){
-		query1.query1_remove();
-		query2.query2_remove();
-		query3.query3_add();
+		query1.query1_remove();query2.query2_remove();query3.query3_add();
 	}
 	public static void main(String[] args) throws IOException{
 		new DBLP_GUI();
@@ -202,7 +150,7 @@ public class DBLP_GUI extends JFrame{
 		}
 	}
 	public Object[][] reader(){
-		Object[][] data = new Object[20][7];
+		Object[][] data = new Object[20][8];
 		try{
 			BufferedReader read = new BufferedReader(new FileReader("sort.txt"));
 			for(int i = 0;i<k;i++){
@@ -226,10 +174,8 @@ public class DBLP_GUI extends JFrame{
 		panel2.remove(pane);
 		data = reader();
 		table = new JTable(data, columnNames);
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		pane = new JScrollPane(table);
-		pane.setBounds(0,0,525,360);
-		panel2.add(pane);
+		table.getColumnModel().getColumn(0).setPreferredWidth(10);table.getColumnModel().getColumn(4).setPreferredWidth(10);table.getColumnModel().getColumn(3).setPreferredWidth(10);table.getColumnModel().getColumn(5).setPreferredWidth(10);
+		pane = new JScrollPane(table);pane.setBounds(0,0,925,343);panel2.add(pane);
 		panel2.repaint();
 	}
 }

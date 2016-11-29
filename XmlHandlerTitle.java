@@ -24,14 +24,14 @@ public class XmlHandlerTitle implements Runnable{
 			SAXParserFactory fac = SAXParserFactory.newInstance();
 			SAXParser saxTheFile = fac.newSAXParser();
 			DefaultHandler defHandler = new DefaultHandler(){
-				String title,pages,url,volume,year,snum;
+				String title,pages,url,volume,year,snum,journal;
 				int counter=0;
-				boolean titleCheck = false,relcheck=false,volCheck = false,yearCheck = false,urlCheck = false,checkAuth = false,pagesCheck = false,checkCat = true;
+				boolean titleCheck = false,relcheck=false,volCheck = false,yearCheck = false,urlCheck = false,checkAuth = false,pagesCheck = false, journalCheck = false,checkCat = true;
 				public void startElement(String uri,String localName,String qname,Attributes att)throws SAXException{
 					if(qname.equals("www")){
 						checkCat = false;
 					}
-					else if(qname.equals("author")){
+					else if(qname.equals("author") || qname.equals("editor")){
 						checkAuth = true;
 						join = "";
 					}
@@ -50,7 +50,9 @@ public class XmlHandlerTitle implements Runnable{
 					else if(qname.equals("volume")){
 						volCheck = true;
 					}
-
+					else if(qname.equals("journal") || qname.equals("booktitle")){
+						journalCheck = true;
+					}
 				}
 				public void characters(char chArray[],int start,int length)throws SAXException{
 					if(checkAuth && checkCat){
@@ -89,6 +91,9 @@ public class XmlHandlerTitle implements Runnable{
 					else if(yearCheck && checkCat){
 						year = new String(chArray,start,length);
 					}
+					else if(journalCheck && checkCat){
+						journal = new String(chArray,start,length);
+					}
 				}
 				public void endElement(String uri,String localName,String qname)throws SAXException{
 					if(qname.equals("title")){
@@ -99,7 +104,7 @@ public class XmlHandlerTitle implements Runnable{
 						if(relcheck){
 							snum = Integer.toString(counter);
 							counter = 0;
-							writer(snum,author,title,url,year,pages,volume);
+							writer(snum,author,title,url,year,pages,volume,journal);
 							relcheck = false;
 						}
 						author.clear();
@@ -113,7 +118,10 @@ public class XmlHandlerTitle implements Runnable{
 					else if(qname.equals("volume")){
 						volCheck = false;
 					}
-					else if(qname.equals("author")){
+					else if(qname.equals("journal") || qname.equals("booktitle")){
+						journalCheck = false;
+					}
+					else if(qname.equals("author") || qname.equals("editor")){
 						checkAuth = false;
 						author.add(join);
 					}
@@ -125,7 +133,7 @@ public class XmlHandlerTitle implements Runnable{
 			e.printStackTrace();
 		}
 	}
-	private void writer(String snum, ArrayList<String> author,String title , String url,String year,String pages,String volume){
+	private void writer(String snum, ArrayList<String> author,String title , String url,String year,String pages,String volume,String journal){
 		try{
 			PrintWriter write = new PrintWriter( new BufferedWriter( new FileWriter ("Ref.txt",true) ) );
 			String z = "";
@@ -133,7 +141,7 @@ public class XmlHandlerTitle implements Runnable{
 				z = z + e;
 				z = z + " | ";
 			}
-			write.print( snum +"~"+ z + "~" + title + "~" + pages + "~" + year + "~"+ volume+ "~" + url + "\n");
+			write.print( snum +"~"+ z + "~" + title + "~" + pages + "~" + year + "~"+ volume+ "~"+journal+"~"+ url + "\n");
 			write.flush();
 			write.close();
 		}
@@ -165,7 +173,7 @@ public class XmlHandlerTitle implements Runnable{
 	    	Collections.sort(csvLines,comp);
 	    	PrintWriter write = new PrintWriter( new BufferedWriter( new FileWriter ( "Ref.txt") ) );
 	    	for(int i = 0;i<csvLines.size();i++){
-	    		write.print(csvLines.get(i).get(0)+"~"+csvLines.get(i).get(1)+ "~" +csvLines.get(i).get(2)+ "~" +csvLines.get(i).get(3)+ "~" + csvLines.get(i).get(4) + "~"+ csvLines.get(i).get(5)+ "~" + csvLines.get(i).get(6)+ "\n");
+	    		write.print(csvLines.get(i).get(0)+"~"+csvLines.get(i).get(1)+ "~" +csvLines.get(i).get(2)+ "~" +csvLines.get(i).get(3)+ "~" + csvLines.get(i).get(4) + "~"+ csvLines.get(i).get(5)+ "~" + csvLines.get(i).get(6)+"~"+csvLines.get(i).get(7)+ "\n");
 	    		write.flush();
 	    	}
 			write.close();
@@ -173,11 +181,7 @@ public class XmlHandlerTitle implements Runnable{
 			catch(Exception e){
 			e.printStackTrace();
 			}
-			finally{
-				
-			}
 		}
-	@Override
 	public void run() {
 		findTitle();
 		sort();

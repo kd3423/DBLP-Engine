@@ -151,25 +151,22 @@ public class Query1_GUI{
 		while((call = read.readLine())!= null){
 			String[] z = call.split("~");
 			if(x == 1){
-				write.write(i +"~"+ z[1] + "~" + z[2] + "~" + z[3] + "~" + z[4] + "~"+ z[5] + "~" + z[6] + "\n");
+				write.write(i +"~"+ z[1] + "~" + z[2] + "~" + z[3] + "~" + z[4] + "~"+ z[5] + "~" + z[6] + "~" + z[7]+"\n");
 				write.flush();
 				i++;
 			}
 			else if(x == 2){
 				int year = Integer.parseInt(text_year.getText());
 				if(year <= Integer.parseInt(z[4])){
-					write.write(i +"~"+ z[1] + "~" + z[2] + "~" + z[3] + "~" + z[4] + "~"+ z[5] + "~" + z[6] + "\n");
+					write.write(i +"~"+ z[1] + "~" + z[2] + "~" + z[3] + "~" + z[4] + "~"+ z[5] + "~" + z[6] + "~" + z[7]+"\n");
 					write.flush();
 					i++;
 				}
 			}
-			else if(x == 3){
-				
-			}
 			else if(x == 4){
 				int year1 = Integer.parseInt(text_range1.getText()),year2 = Integer.parseInt(text_range2.getText());
 				if(year1 <= Integer.parseInt(z[4]) && Integer.parseInt(z[4]) <= year2){
-					write.write(i +"~"+ z[1] + "~" + z[2] + "~" + z[3] + "~" + z[4] + "~"+ z[5] + "~" + z[6] + "\n");
+					write.write(i +"~"+ z[1] + "~" + z[2] + "~" + z[3] + "~" + z[4] + "~"+ z[5] + "~" + z[6] + "~" + z[7]+"\n");
 					write.flush();
 					i++;
 				}

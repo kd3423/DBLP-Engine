@@ -20,8 +20,8 @@ public class XmlHandlerTitleForAuthor implements Runnable{
 			SAXParser saxTheFile = fac.newSAXParser();
 			DefaultHandler defHandler = new DefaultHandler(){
 				int counter = 0;
-				String title,pages,url,volume,year,snum;
-				boolean titleCheck = false,volCheck = false,yearCheck = false,urlCheck = false,checkAuth = false,pagesCheck = false,checkforall = false,checkCat = true;
+				String title,pages,url,volume,year,snum,journal;
+				boolean titleCheck = false,volCheck = false,yearCheck = false,urlCheck = false,checkAuth = false,pagesCheck = false,checkforall = false,journalCheck = false,checkCat = true;
 				public void startElement(String uri,String localName,String qname,Attributes att)throws SAXException{
 					if(qname.equals("www")){
 						checkCat = false;
@@ -44,6 +44,9 @@ public class XmlHandlerTitleForAuthor implements Runnable{
 					}
 					else if(qname.equals("volume")){
 						volCheck = true;
+					}
+					else if(qname.equals("journal") || qname.equals("booktitle")){
+						journalCheck = true;
 					}
 				}
 				public void characters(char chArray[],int start,int length)throws SAXException{
@@ -71,6 +74,9 @@ public class XmlHandlerTitleForAuthor implements Runnable{
 					else if(yearCheck && checkCat && checkforall){
 						year = new String(chArray,start,length);
 					}
+					else if(journalCheck && checkCat && checkforall){
+						journal = new String(chArray,start,length);
+					}
 				}
 				public void endElement(String uri,String localName,String qname)throws SAXException{
 					if(qname.equals("title")){
@@ -84,7 +90,7 @@ public class XmlHandlerTitleForAuthor implements Runnable{
 						else{
 							counter = counter + 1;
 							snum = Integer.toString(counter);
-							writer(snum,author,title,url,year,pages,volume);
+							writer(snum,author,title,url,year,pages,volume,journal);
 							checkforall = false;				
 						}
 					}
@@ -96,6 +102,9 @@ public class XmlHandlerTitleForAuthor implements Runnable{
 					}
 					else if(qname.equals("volume")){
 						volCheck = false;
+					}
+					else if(qname.equals("journal") || qname.equals("booktitle")){
+						journalCheck = false;
 					}
 					else if(qname.equals("author")){
 						checkAuth = false;
@@ -109,7 +118,7 @@ public class XmlHandlerTitleForAuthor implements Runnable{
 			e.printStackTrace();
 		}
 	}
-	private void writer(String snum, ArrayList<String> author,String title , String url,String year,String pages,String volume){
+	private void writer(String snum, ArrayList<String> author,String title , String url,String year,String pages,String volume,String journal){
 		try{
 			PrintWriter write = new PrintWriter( new BufferedWriter( new FileWriter ( "Ref.txt",true) ) );
 			String z = "";
@@ -117,7 +126,7 @@ public class XmlHandlerTitleForAuthor implements Runnable{
 				z = z + e;
 				z = z + " | ";
 			}
-			write.print( snum +"~"+ z + "~" + title + "~" + pages + "~" + year + "~"+ volume+ "~" + url + "\n");
+			write.print( snum +"~"+ z + "~" + title + "~" + pages + "~" + year + "~"+ volume+ "~"+journal+"~" + url + "\n");
 			write.flush();
 			write.close();
 		}
@@ -149,7 +158,7 @@ public class XmlHandlerTitleForAuthor implements Runnable{
 	    	Collections.sort(csvLines,comp);
 	    	PrintWriter write = new PrintWriter( new BufferedWriter( new FileWriter ( "Ref.txt") ) );
 	    	for(int i = 0;i<csvLines.size();i++){
-	    		write.print((i+1)+"~"+csvLines.get(i).get(1)+ "~" +csvLines.get(i).get(2)+ "~" +csvLines.get(i).get(3)+ "~" + csvLines.get(i).get(4) + "~"+ csvLines.get(i).get(5)+ "~" + csvLines.get(i).get(6)+ "\n");
+	    		write.print((i+1)+"~"+csvLines.get(i).get(1)+ "~" +csvLines.get(i).get(2)+ "~" +csvLines.get(i).get(3)+ "~" + csvLines.get(i).get(4) + "~"+ csvLines.get(i).get(5)+ "~" + csvLines.get(i).get(6)+ "~" + csvLines.get(i).get(7) +"\n");
 	    		write.flush();
 	    	}
 			write.close();
