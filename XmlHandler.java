@@ -5,7 +5,7 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.*;
 import java.util.*;
-public class XmlHandlerTitleForAuthor implements Runnable{
+public class XmlHandler implements Runnable{
 	private ArrayList<String> auth;
 	private ArrayList<String> author = new ArrayList<>();	
 	public volatile int working;
@@ -118,13 +118,14 @@ public class XmlHandlerTitleForAuthor implements Runnable{
 				String k="";
 				for(String ee : e){
 					if(ee != ""){
-						k = k+"#"+ee;
+						k = ee;
 					}
 				}
 				write.println(hash2.get(e) + "#" + k);
 				write.flush();
 			}
 			write.close();
+			working = 1;
 		}
 		catch(Exception e){
 			e.printStackTrace();
