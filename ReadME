@@ -1,0 +1,39 @@
+Authors: Karan Dabas & Kshitij Gupta
+
+**Add the dblp file with the rest of the files.
+
+You can download dblp xml file link below:
+http://dblp.uni-trier.de/xml/
+
+**Note: If you tend to open your xml file do it with a powerfull text editor like sublime or else you system may hang or crash,as the xml file size is ~1.9GB.
+======================
+Language used: JAVA
+======================
+Brief discription:
+DBLP Query Engine provides us with three search querys.
+1st query:
+In this query one can input any author name or title of any paper and engine will find and display all the relevant information about your search.
+One can also use filters such as show result between only given years, from this year, you can also provide any specific text for which your search will show results.
+2nd query:
+In this query you have to input number of publication let say k, then the output will show all the authors with more than k number of publication.
+3rd query:
+In this query you have to input a author name along with year of prediction,the output will show the number of publications author will give in the prediction year.
+
+*Parser used : SAX Parser
+*It only takes 40-50sec for the first run and then after every run of the code it will show you results in 1-5sec per search.
+**Note: time may vary depending on your system performance.  
+======================
+Run DBLP Query Engine:
+1:For command from terminal
+
+>javac DBLP_GUI.java
+>java DBLP_GUI
+
+2:For Eclipse user:
+>Just run DBPL_GUI.java class
+
+=====================
+For Doxygen Documentation:
+>cd docs/html/
+>firefox index.html
+=====================
